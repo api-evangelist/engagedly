@@ -1,0 +1,150 @@
+name: Engagedly Plans and Pricing
+description: Pricing plans for Engagedly's people strategy execution platform, covering performance management, learning, recognition, engagement, and talent mobility modules.
+url: https://engagedly.com/pricing
+plans:
+
+  - name: Manage Performance
+    description: Core performance management suite with reviews, goals, feedback, and AI-powered insights.
+    price_per_user_month: 5
+    price_per_user_month_max: 8
+    billing: annually
+    minimum_annual: 7500
+    currency: USD
+    features:
+      - Customizable review templates
+      - 30-60-90 day reviews
+      - Goal tracking and OKR management
+      - 9-Box talent assessments
+      - Advanced calibration
+      - Integrated individual development plans (IDPs)
+      - Learning integration
+      - AI-powered goal suggestions
+      - Goals directory and weightage management
+      - Meeting templates
+      - Real-time feedback
+      - Check-ins
+      - Competency models
+
+  - name: Learn and Grow
+    description: Learning and development suite with personalized paths, assessments, and skill intelligence.
+    price_per_user_month: 3
+    price_per_user_month_max: 5
+    billing: annually
+    minimum_annual: 7500
+    currency: USD
+    features:
+      - Learning recommendations
+      - Unified performance management integration
+      - Integrated development plans
+      - Content partner integration (LinkedIn Learning, Udemy, Cornerstone)
+      - Compliance tracking
+      - Assessments and certification
+      - Learning paths
+      - Live training
+      - Mobile learning
+      - AI-powered role recommendations
+      - Skill library with gap analysis
+      - 360-degree feedback with bias reduction and AI summaries
+
+  - name: Recognize and Reward
+    description: Employee recognition and rewards suite with gamification and redeemable points.
+    price_per_user_month: 2
+    billing: annually
+    minimum_annual: 7500
+    currency: USD
+    features:
+      - Gamification badges
+      - Redeemable points
+      - Leaderboards
+      - Social recognition
+      - Reward storefront (Tango gift cards)
+      - Public praise functionality
+
+  - name: Engage and Listen
+    description: Employee engagement and listening suite with surveys and social features.
+    price_per_user_month: 2
+    billing: annually
+    minimum_annual: 7500
+    currency: USD
+    features:
+      - Engagement surveys
+      - Employee surveys
+      - Team pulse
+      - Employee social groups
+      - Intranet capabilities
+      - Centralized communication hub
+      - Document repository
+
+  - name: Talent Mobility
+    description: Talent development and succession planning suite.
+    price_per_user_month: 2
+    billing: annually
+    minimum_annual: 7500
+    currency: USD
+    features:
+      - Skill gap analysis
+      - Individual development plans (IDPs)
+      - Career paths
+      - Talent discovery
+      - Succession planning
+
+  - name: Mentoring Suite
+    description: Structured mentoring program management.
+    price_per_user_month: 8
+    billing: annually
+    currency: USD
+    features:
+      - Mentoring program management
+      - Mentor/mentee matching
+      - Progress tracking
+
+  - name: Manage Compensation
+    description: Compensation management and planning suite.
+    price_per_user_month: 10
+    billing: annually
+    currency: USD
+    features:
+      - Compensation planning
+      - Pay equity analysis
+      - Budget management
+
+  - name: Deskless Employee Communication
+    description: Communication tools for deskless and frontline workers.
+    price_per_user_month: 5
+    billing: annually
+    currency: USD
+    features:
+      - Mobile-first communication
+      - Push notifications
+      - Frontline workforce engagement
+
+included_all_plans:
+  - Marissa AI Coach
+  - Playbooks and templates
+  - Engagedly Academy
+  - AI HR Assistant
+  - Social wall
+  - Talent analysis
+  - Workflow automation
+  - Platform gamification
+  - Mobile app access
+
+professional_services:
+  - name: Essential
+    description: Included with all purchases - setup, training, and ongoing support
+    price: included
+
+  - name: Accelerate
+    description: Partner-guided personalized implementation
+    price: custom
+
+  - name: Optimize
+    description: Full managed services
+    price: custom
+
+notes:
+  - Pricing requires annual billing commitment
+  - Minimum platform spend is $7,500/year
+  - Enterprise pricing available for large organizations
+  - Full platform bundle pricing available via custom quote
+  - API access included with platform subscription (no separate API tier documented)

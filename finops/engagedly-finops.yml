@@ -1,0 +1,59 @@
+name: Engagedly FinOps
+description: Financial operations guidance for managing Engagedly API and platform costs, helping organizations optimize spend across performance, learning, engagement, and recognition modules.
+url: https://engagedly.com/pricing
+
+cost_model:
+  type: per-user-per-month
+  billing_cycle: annually
+  minimum_annual_spend: 7500
+  currency: USD
+  notes:
+    - Pricing scales with active user count
+    - Each functional module is priced separately per user
+    - Full platform bundle discounts may be available via negotiation
+
+cost_optimization:
+  - strategy: Module selection
+    description: Only license the specific modules (Performance, Learn, Recognize, Engage, Talent) required for your workforce program rather than the full platform.
+
+  - strategy: User count management
+    description: Regularly audit active vs. inactive users; deactivate departed employees promptly to avoid paying for unused licenses.
+
+  - strategy: Annual commitment negotiation
+    description: All pricing requires annual billing. Negotiate multi-year contracts or larger user counts for volume discounts.
+
+  - strategy: Bundle discount
+    description: Purchasing multiple modules together or as the full platform may unlock lower per-module pricing versus buying modules individually.
+
+  - strategy: API usage monitoring
+    description: Monitor API call volumes to identify integrations driving unnecessary load. Use pagination (max 50 records/page) efficiently to minimize total request counts.
+
+  - strategy: Integration consolidation
+    description: Evaluate integration touchpoints (HRIS sync, SSO, Slack, Teams) to avoid redundant data fetches and reduce API call overhead.
+
+budget_planning:
+  minimum_scenario:
+    description: Single module (e.g., Recognize & Reward only) for small team
+    estimate_per_user_month: 2
+    minimum_annual: 7500
+
+  mid_tier_scenario:
+    description: Performance + Learn modules for mid-size organization
+    estimate_per_user_month: 8
+    notes: Combined Manage Performance ($5-8) and Learn & Grow ($3-5) per user/month
+
+  full_platform_scenario:
+    description: All core modules (Performance + Learn + Recognize + Engage + Talent)
+    estimate_per_user_month: 14
+    notes: Sum of all five core module prices at lower bound; actual bundle pricing may vary
+
+  enterprise_scenario:
+    description: Full platform with Mentoring and Compensation add-ons
+    estimate_per_user_month: 32
+    notes: Includes all modules plus Mentoring ($8) and Compensation ($10); enterprise custom pricing recommended
+
+api_cost_notes:
+  - API access is included with the platform subscription; no separate API usage fees are documented
+  - No per-call or per-request charges are documented for the Engagedly API
+  - Integration development costs (engineering time) should be factored into total cost of ownership
+  - Third-party integration platforms (e.g., Unified.to) may add additional per-request costs

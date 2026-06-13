@@ -1,0 +1,64 @@
+aid: engagedly
+name: Engagedly
+description: Engagedly is a people strategy execution platform with a REST API for managing performance reviews, goal tracking, 360 feedback, learning paths, and employee recognition programs. The API enables programmatic access to users, departments, locations, job titles, activities, and organizational data using header-based authentication with client and secret keys.
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/engagedly/refs/heads/main/apis.yml
+created: '2026-06-13'
+modified: '2026-06-13'
+specificationVersion: '0.19'
+tags:
+  - Performance Management
+  - HR Software
+  - Employee Engagement
+  - Goal Tracking
+  - 360 Feedback
+  - Learning Management
+  - Employee Recognition
+  - Talent Management
+  - OKR
+  - People Operations
+apis:
+  - aid: engagedly:engagedly-api
+    name: Engagedly API
+    description: REST API for the Engagedly people strategy execution platform, providing endpoints for managing users, departments, locations, job titles, permissions, and employee activity such as praises and recognition. Supports performance review workflows, goal management, and organizational data integration.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://engagedly.github.io/api-docs/
+    baseURL: https://api.engagedly.com/beta/
+    tags:
+      - Performance Management
+      - Users
+      - Departments
+      - Goals
+      - Recognition
+      - 360 Feedback
+    properties:
+      - type: Documentation
+        url: https://engagedly.github.io/api-docs/
+      - type: OpenAPI
+        url: https://engagedly.github.io/api-docs/
+common:
+  - type: Website
+    url: https://engagedly.com
+  - type: Documentation
+    url: https://engagedly.github.io/api-docs/
+  - type: GitHubOrg
+    url: https://github.com/engagedly
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/9246522/
+  - type: Blog
+    url: https://engagedly.com/blog/
+  - type: Pricing
+    url: https://engagedly.com/pricing
+  - type: StatusPage
+    url: https://status.engagedly.com/
+  - type: X
+    url: https://twitter.com/engagedlyInc
+  - type: Plans
+    url: plans/engagedly-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/engagedly-rate-limits.yml
+  - type: FinOps
+    url: finops/engagedly-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

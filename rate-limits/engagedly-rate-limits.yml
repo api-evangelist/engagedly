@@ -1,0 +1,27 @@
+name: Engagedly API Rate Limits
+description: Rate limiting information for the Engagedly REST API. Specific numeric thresholds are not publicly documented; rate limiting is enforced via HTTP 429 responses.
+url: https://engagedly.github.io/api-docs/
+
+enforcement:
+  - status_code: 429
+    message: Too many requests within a certain time frame
+    action: Request rejected; caller should back off and retry
+
+pagination:
+  default_page_size: 25
+  maximum_page_size: 50
+  parameters:
+    - name: page
+      description: Page number for paginated results
+    - name: size
+      description: Number of records per page (max 50)
+  response_fields:
+    - has_more
+    - total_records
+
+notes:
+  - Specific rate limit thresholds (requests per minute/hour/day) are not publicly documented
+  - Rate limits are enforced server-side and signaled via HTTP 429 status codes
+  - Callers should implement exponential backoff when receiving 429 responses
+  - All API keys carry the permissions of the Site Administrator who generated them
+  - Contact Engagedly support for rate limit details applicable to your subscription tier
