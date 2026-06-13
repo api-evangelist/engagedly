@@ -1,0 +1,20 @@
+{
+  "first_name": "John",
+  "last_name": "Doe",
+  "email": "john.doe@company.com",
+  "employee_id": "EMP001",
+  "joining_date": "2024-01-15",
+  "birth_date": "1990-06-20",
+  "location": "11",
+  "job_title": "261",
+  "employee_type": "Full-Time",
+  "level": "3",
+  "phone_number": "5551234567",
+  "departments": ["f5afec62-21ff-40d3-a06e-9a2162ef6b69"],
+  "businesses": ["23eceer-21ff-23cd-a06e-9a2162ef6b69"],
+  "hr_managers": ["a178a039-4e79-4e3e-87f0-c88440a6d8c6"],
+  "manager_id": "b62167d0-2718-4e45-9721-27535991becf",
+  "custom-attribute-93cbf": "Product Management",
+  "custom-attribute-d3b49": 9,
+  "custom-attribute-eb39c": "Meets Expectations"
+}

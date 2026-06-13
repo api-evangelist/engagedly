@@ -1,0 +1,121 @@
+vocabulary:
+  name: Engagedly API Vocabulary
+  description: Key terms and domain concepts used across the Engagedly API
+  url: https://engagedly.github.io/api-docs/
+  terms:
+
+    - term: user
+      definition: >
+        A person within the organization who has an account on the Engagedly
+        platform. Users have system attributes (name, email, employee ID) and
+        may have custom attributes defined by the organization. Users can be
+        Active or Blocked.
+      api_fields: [id, name, status, email, first_name, last_name, employee_id]
+
+    - term: department
+      definition: >
+        An organizational grouping of users within the company. Departments
+        have members and administrators. Users can belong to multiple
+        departments.
+      api_fields: [id, name, members_count, administrators_count, members]
+
+    - term: business_unit
+      definition: >
+        A business division or unit within the organization. Similar to
+        departments, business units group users and can have administrators.
+        Referred to as "businesses" in the API.
+      api_fields: [id, name, members_count, administrators_count, members]
+
+    - term: location
+      definition: >
+        A physical office location with address details. Users are assigned to
+        locations to indicate their primary work site.
+      api_fields: [id, name, address_line1, address_line2, city, state, country, postal_code]
+
+    - term: job_title
+      definition: >
+        A named role or position within the organization, optionally including
+        a description and responsibilities. Users are assigned job titles to
+        define their organizational role.
+      api_fields: [id, name, description, responsibilities]
+
+    - term: permission
+      definition: >
+        A role granting specific capabilities within the Engagedly platform.
+        The Site Administrator permission is a built-in role with full access.
+        Permissions can be assigned to or revoked from users.
+      api_fields: [id, name, is_admin, description]
+
+    - term: user_attribute
+      definition: >
+        A configurable field associated with user profiles. System attributes
+        (preset: true) are built-in fields like email, first_name, departments.
+        Custom attributes (preset: false) are organization-defined fields
+        referenced by their attribute_key.
+      api_fields: [id, name, attribute_key, preset, mandatory, data_type, attribute_options]
+
+    - term: attribute_key
+      definition: >
+        The unique identifier used as a field name when submitting custom
+        attribute data in API requests. Examples include "custom-attribute-93cbf"
+        for organization-specific fields. Retrieve available keys from
+        GET /beta/user-attributes.
+      example: "custom-attribute-93cbf"
+
+    - term: praise
+      definition: >
+        A type of activity in which one user publicly recognizes another user
+        or group for their contributions. Part of the employee recognition
+        module. Praises can be tagged, liked, and commented on.
+      api_fields: [id, activity_type, activity_date, content, author, recognized_actors, tags, audience]
+
+    - term: block_reason_code
+      definition: >
+        A standardized code indicating the reason why a user was deactivated
+        (blocked). Examples include involuntary, dismissal_with_cause,
+        fatigue (burnout), sabatical, and not_known.
+      enum_values: [involuntary, dismissal_with_cause, fatigue, sabatical, not_known]
+
+    - term: ClientKey
+      definition: >
+        One of two required authentication headers for all API requests. The
+        ClientKey is obtained from the Engagedly portal under
+        Integrations > Engagedly API. It identifies the API client.
+      header_name: ClientKey
+
+    - term: SecretKey
+      definition: >
+        One of two required authentication headers for all API requests. The
+        SecretKey is obtained from the Engagedly portal and is shown only once
+        upon generation. It must be stored securely by the integrator.
+      header_name: SecretKey
+
+    - term: pagination
+      definition: >
+        The mechanism by which list endpoints return data in pages. Controlled
+        by the "page" (default 1) and "size" (default 25, max 50) query
+        parameters. Responses include a "pagination" object with page, size,
+        has_more, and total_records fields.
+      api_fields: [page, size, has_more, total_records]
+
+    - term: primary_reporter
+      definition: >
+        The direct manager to whom a user reports. Equivalent to the manager
+        relationship in an organizational hierarchy. Can be included in user
+        responses using the "include" query parameter.
+
+    - term: direct_reports
+      definition: >
+        Users who directly report to a given user, representing the manager's
+        direct subordinates in the organizational hierarchy. Can be included
+        in user responses using the "include" query parameter.
+
+    - term: hr_manager
+      definition: >
+        An HR professional assigned to manage the HR relationship for a user.
+        Multiple HR managers can be assigned to a single user.
+
+    - term: secondary_manager
+      definition: >
+        An additional reporting manager for a user beyond their primary
+        reporter. Supports matrix reporting structures.

@@ -1,0 +1,1712 @@
+openapi: 3.0.3
+info:
+  title: Engagedly API
+  description: >
+    REST API for the Engagedly people strategy execution platform. Provides
+    endpoints for managing users, departments, locations, job titles, business
+    units, permissions, user attributes, and employee activities such as praises
+    and recognition. Supports performance review workflows, goal management, and
+    organizational data integration using header-based authentication with
+    ClientKey and SecretKey.
+  version: beta
+  contact:
+    url: https://engagedly.com
+  license:
+    name: Proprietary
+servers:
+  - url: https://api.engagedly.com/beta
+    description: Production API server
+
+security:
+  - clientKeyAuth: []
+    secretKeyAuth: []
+
+tags:
+  - name: User Attributes
+    description: Retrieve system and custom user attribute definitions
+  - name: Users
+    description: Manage user profiles, permissions, and activation status
+  - name: Departments
+    description: Create and manage organizational departments
+  - name: Businesses
+    description: Handle business unit operations
+  - name: Locations
+    description: Manage office locations and addresses
+  - name: Job Titles
+    description: Define and manage job roles
+  - name: Permissions
+    description: List available permission roles
+  - name: Activities
+    description: Access praise and recognition activities
+
+paths:
+  /user-attributes:
+    get:
+      operationId: listUserAttributes
+      summary: List all user attributes
+      description: >
+        Retrieves all available user attributes including both system attributes
+        (preset: true) and custom attributes (preset: false). Returns field
+        configurations, validation rules, and available options.
+      tags:
+        - User Attributes
+      parameters:
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/sizeParam'
+      responses:
+        '200':
+          description: List of user attributes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserAttributeListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /users:
+    get:
+      operationId: listUsers
+      summary: List all users
+      description: Returns a paginated list of all users in the organization.
+      tags:
+        - Users
+      parameters:
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/sizeParam'
+        - name: include
+          in: query
+          description: Comma-separated list of related data to include
+          schema:
+            type: string
+            example: primary_reporter,direct_reports
+        - name: email
+          in: query
+          description: Filter users by email address
+          schema:
+            type: string
+            format: email
+      responses:
+        '200':
+          description: Paginated list of users
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+    post:
+      operationId: createUser
+      summary: Create a new user
+      description: >
+        Creates a new user in the organization. Both system attributes and
+        custom attributes (using their attribute_key as field names) can be
+        included in the request body.
+      tags:
+        - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCreateRequest'
+            example:
+              first_name: John
+              last_name: Doe
+              email: john.doe@company.com
+              employee_id: EMP001
+              departments:
+                - dept-123
+              businesses:
+                - biz-456
+              hr_managers:
+                - manager-789
+      responses:
+        '201':
+          description: User created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserSingleResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+
+  /users/block-reason-codes:
+    get:
+      operationId: listBlockReasonCodes
+      summary: Get block reason codes
+      description: Returns all available reason codes for deactivating (blocking) a user.
+      tags:
+        - Users
+      responses:
+        '200':
+          description: List of block reason codes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlockReasonCodeListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /users/{id}:
+    get:
+      operationId: getUser
+      summary: Get a single user
+      description: Returns detailed information for a single user by ID.
+      tags:
+        - Users
+      parameters:
+        - $ref: '#/components/parameters/idPathParam'
+        - name: include
+          in: query
+          description: Comma-separated list of related data to include
+          schema:
+            type: string
+            example: primary_reporter,direct_reports,hr_managers,secondary_managers
+      responses:
+        '200':
+          description: User details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserSingleResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    put:
+      operationId: updateUser
+      summary: Update an existing user
+      description: Fully updates an existing user record by ID.
+      tags:
+        - Users
+      parameters:
+        - $ref: '#/components/parameters/idPathParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserUpdateRequest'
+      responses:
+        '200':
+          description: User updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserSingleResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+
+    patch:
+      operationId: partialUpdateUser
+      summary: Partially update an existing user
+      description: >
+        Partially updates a user record. Only the fields provided in the request
+        body are updated.
+      tags:
+        - Users
+      parameters:
+        - $ref: '#/components/parameters/idPathParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserUpdateRequest'
+      responses:
+        '200':
+          description: User partially updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserSingleResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+
+  /users/{id}/profile/picture:
+    put:
+      operationId: updateUserProfilePicture
+      summary: Update user's profile picture
+      description: Uploads and sets a new profile picture for the specified user.
+      tags:
+        - Users
+      parameters:
+        - $ref: '#/components/parameters/idPathParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                profile_picture:
+                  type: string
+                  format: byte
+                  description: Base64-encoded bytes of the picture
+      responses:
+        '200':
+          description: Profile picture updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /users/{id}/deactivate:
+    put:
+      operationId: deactivateUser
+      summary: Deactivate a user
+      description: Deactivates (blocks) the specified user, optionally with a reason code.
+      tags:
+        - Users
+      parameters:
+        - $ref: '#/components/parameters/idPathParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                block_reason_code:
+                  type: string
+                  description: Optional code indicating the reason for deactivation
+                  example: involuntary
+      responses:
+        '200':
+          description: User deactivated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserSingleResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /users/{id}/activate:
+    put:
+      operationId: activateUser
+      summary: Activate a user
+      description: Re-activates a previously deactivated user.
+      tags:
+        - Users
+      parameters:
+        - $ref: '#/components/parameters/idPathParam'
+      responses:
+        '200':
+          description: User activated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserSingleResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /users/{id}/permissions:
+    get:
+      operationId: getUserPermissions
+      summary: Get permissions of a user
+      description: Returns all permission roles assigned to the specified user.
+      tags:
+        - Users
+      parameters:
+        - $ref: '#/components/parameters/idPathParam'
+      responses:
+        '200':
+          description: User permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserPermissionsResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    put:
+      operationId: updateUserPermissions
+      summary: Update permissions of a user
+      description: Replaces the permission roles assigned to the specified user.
+      tags:
+        - Users
+      parameters:
+        - $ref: '#/components/parameters/idPathParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                permission_ids:
+                  type: array
+                  items:
+                    type: integer
+                  description: Array of permission IDs to assign
+      responses:
+        '200':
+          description: User permissions updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserPermissionsResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /departments:
+    get:
+      operationId: listDepartments
+      summary: List all departments
+      description: Returns a paginated list of all departments in the organization.
+      tags:
+        - Departments
+      parameters:
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/sizeParam'
+      responses:
+        '200':
+          description: Paginated list of departments
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DepartmentListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+    post:
+      operationId: createDepartment
+      summary: Create a new department
+      description: Creates a new department in the organization.
+      tags:
+        - Departments
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DepartmentRequest'
+      responses:
+        '201':
+          description: Department created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DepartmentSingleResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+
+  /departments/{id}:
+    get:
+      operationId: getDepartment
+      summary: Get a single department
+      description: Returns details for a single department including its members.
+      tags:
+        - Departments
+      parameters:
+        - $ref: '#/components/parameters/idPathParam'
+      responses:
+        '200':
+          description: Department details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DepartmentSingleResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    put:
+      operationId: updateDepartment
+      summary: Update an existing department
+      description: Updates the name and/or members of an existing department.
+      tags:
+        - Departments
+      parameters:
+        - $ref: '#/components/parameters/idPathParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DepartmentRequest'
+      responses:
+        '200':
+          description: Department updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DepartmentSingleResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    delete:
+      operationId: deleteDepartment
+      summary: Delete a department
+      description: Permanently deletes the specified department.
+      tags:
+        - Departments
+      parameters:
+        - $ref: '#/components/parameters/idPathParam'
+      responses:
+        '204':
+          description: Department deleted successfully
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /businesses:
+    get:
+      operationId: listBusinesses
+      summary: List all businesses
+      description: Returns a paginated list of all business units in the organization.
+      tags:
+        - Businesses
+      parameters:
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/sizeParam'
+      responses:
+        '200':
+          description: Paginated list of business units
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BusinessListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+    post:
+      operationId: createBusiness
+      summary: Create a new business
+      description: Creates a new business unit in the organization.
+      tags:
+        - Businesses
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BusinessRequest'
+      responses:
+        '201':
+          description: Business created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BusinessSingleResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /businesses/{id}:
+    get:
+      operationId: getBusiness
+      summary: Get a single business
+      description: Returns details for a single business unit including its members.
+      tags:
+        - Businesses
+      parameters:
+        - $ref: '#/components/parameters/idPathParam'
+      responses:
+        '200':
+          description: Business details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BusinessSingleResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    put:
+      operationId: updateBusiness
+      summary: Update an existing business
+      description: Updates the name and/or members of an existing business unit.
+      tags:
+        - Businesses
+      parameters:
+        - $ref: '#/components/parameters/idPathParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BusinessRequest'
+      responses:
+        '200':
+          description: Business updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BusinessSingleResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    delete:
+      operationId: deleteBusiness
+      summary: Delete a business
+      description: Permanently deletes the specified business unit.
+      tags:
+        - Businesses
+      parameters:
+        - $ref: '#/components/parameters/idPathParam'
+      responses:
+        '204':
+          description: Business deleted successfully
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /locations:
+    get:
+      operationId: listLocations
+      summary: List all locations
+      description: Returns a paginated list of all office locations in the organization.
+      tags:
+        - Locations
+      parameters:
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/sizeParam'
+      responses:
+        '200':
+          description: Paginated list of locations
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LocationListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+    post:
+      operationId: createLocation
+      summary: Create a new location
+      description: Creates a new office location in the organization.
+      tags:
+        - Locations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LocationRequest'
+      responses:
+        '201':
+          description: Location created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LocationSingleResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /locations/{id}:
+    get:
+      operationId: getLocation
+      summary: Get a single location
+      description: Returns details for a single office location.
+      tags:
+        - Locations
+      parameters:
+        - $ref: '#/components/parameters/idPathParam'
+      responses:
+        '200':
+          description: Location details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LocationSingleResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    put:
+      operationId: updateLocation
+      summary: Update an existing location
+      description: Updates details of an existing office location.
+      tags:
+        - Locations
+      parameters:
+        - $ref: '#/components/parameters/idPathParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LocationRequest'
+      responses:
+        '200':
+          description: Location updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LocationSingleResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    delete:
+      operationId: deleteLocation
+      summary: Delete a location
+      description: Permanently deletes the specified office location.
+      tags:
+        - Locations
+      parameters:
+        - $ref: '#/components/parameters/idPathParam'
+      responses:
+        '204':
+          description: Location deleted successfully
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /job_titles:
+    get:
+      operationId: listJobTitles
+      summary: List all job titles
+      description: Returns a paginated list of all job titles in the organization.
+      tags:
+        - Job Titles
+      parameters:
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/sizeParam'
+      responses:
+        '200':
+          description: Paginated list of job titles
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobTitleListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+    post:
+      operationId: createJobTitle
+      summary: Create a new job title
+      description: Creates a new job title in the organization.
+      tags:
+        - Job Titles
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JobTitleRequest'
+      responses:
+        '201':
+          description: Job title created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobTitleSingleResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /job_titles/{id}:
+    get:
+      operationId: getJobTitle
+      summary: Get a single job title
+      description: Returns details for a single job title.
+      tags:
+        - Job Titles
+      parameters:
+        - $ref: '#/components/parameters/idPathParam'
+      responses:
+        '200':
+          description: Job title details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobTitleSingleResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    put:
+      operationId: updateJobTitle
+      summary: Update an existing job title
+      description: Updates details of an existing job title.
+      tags:
+        - Job Titles
+      parameters:
+        - $ref: '#/components/parameters/idPathParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JobTitleRequest'
+      responses:
+        '200':
+          description: Job title updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobTitleSingleResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    delete:
+      operationId: deleteJobTitle
+      summary: Delete a job title
+      description: Permanently deletes the specified job title.
+      tags:
+        - Job Titles
+      parameters:
+        - $ref: '#/components/parameters/idPathParam'
+      responses:
+        '204':
+          description: Job title deleted successfully
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /permissions:
+    get:
+      operationId: listPermissions
+      summary: List all permissions
+      description: Returns a paginated list of all permission roles available in the system.
+      tags:
+        - Permissions
+      parameters:
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/sizeParam'
+      responses:
+        '200':
+          description: Paginated list of permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PermissionListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /activities/praises:
+    get:
+      operationId: listPublicPraises
+      summary: Get all public praises
+      description: Returns a paginated list of all public praise activities in the organization.
+      tags:
+        - Activities
+      parameters:
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/sizeParam'
+      responses:
+        '200':
+          description: Paginated list of praise activities
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PraiseListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+components:
+  securitySchemes:
+    clientKeyAuth:
+      type: apiKey
+      in: header
+      name: ClientKey
+      description: Client key obtained from the Engagedly portal under Integrations > Engagedly API
+    secretKeyAuth:
+      type: apiKey
+      in: header
+      name: SecretKey
+      description: Secret key obtained from the Engagedly portal. Shown only once upon generation.
+
+  parameters:
+    idPathParam:
+      name: id
+      in: path
+      required: true
+      description: The unique identifier of the resource
+      schema:
+        type: string
+    pageParam:
+      name: page
+      in: query
+      description: Page number (starts at 1)
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+    sizeParam:
+      name: size
+      in: query
+      description: Number of records per page (maximum 50)
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 50
+        default: 25
+
+  responses:
+    BadRequest:
+      description: Bad request — missing or invalid parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Unauthorized — invalid or missing ClientKey/SecretKey
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Not Found — resource does not exist
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    UnprocessableEntity:
+      description: Unprocessable Entity — validation error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+
+  schemas:
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+
+    Pagination:
+      type: object
+      properties:
+        page:
+          type: integer
+          example: 1
+        size:
+          type: integer
+          example: 25
+        has_more:
+          type: boolean
+          example: false
+        total_records:
+          type: integer
+          example: 42
+
+    ErrorDetail:
+      type: object
+      properties:
+        field:
+          type: string
+          example: name
+        message:
+          type: string
+          example: Mandatory attribute missing
+        code:
+          type: string
+          example: missing_field
+
+    ErrorResponse:
+      type: object
+      properties:
+        error_type:
+          type: string
+          enum:
+            - api_connection_error
+            - authentication_error
+            - invalid_request_error
+            - validation_error
+          example: validation_error
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorDetail'
+
+    DisplayPicture:
+      type: object
+      properties:
+        large:
+          type: string
+          format: uri
+          nullable: true
+        medium:
+          type: string
+          format: uri
+          nullable: true
+        small:
+          type: string
+          format: uri
+          nullable: true
+        original:
+          type: string
+          format: uri
+          nullable: true
+        reduced:
+          type: string
+          format: uri
+          nullable: true
+
+    UserRef:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        first_name:
+          type: string
+        middle_name:
+          type: string
+          nullable: true
+        last_name:
+          type: string
+        display_picture:
+          $ref: '#/components/schemas/DisplayPicture'
+        is_admin:
+          type: boolean
+          nullable: true
+
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          example: b62167d0-2718-4e45-9721-27535991becf
+        name:
+          type: string
+          example: Adam Smith
+        status:
+          type: string
+          enum:
+            - Active
+            - Blocked
+          example: Active
+        email:
+          type: string
+          format: email
+          example: adam.smith@company.com
+        first_name:
+          type: string
+          example: Adam
+        middle_name:
+          type: string
+          nullable: true
+        last_name:
+          type: string
+          example: Smith
+        employee_id:
+          type: string
+          example: E007
+        display_picture:
+          $ref: '#/components/schemas/DisplayPicture'
+        job_title:
+          type: object
+          nullable: true
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+        location:
+          type: object
+          nullable: true
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+        departments:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              name:
+                type: string
+              is_admin:
+                type: boolean
+                nullable: true
+        business_unit:
+          type: array
+          items:
+            type: object
+        education:
+          type: string
+          nullable: true
+        about_me:
+          type: string
+          nullable: true
+        phone_number:
+          type: string
+          nullable: true
+        secondary_phone_number:
+          type: string
+          nullable: true
+        level:
+          type: string
+          nullable: true
+        joining_date:
+          type: string
+          nullable: true
+        birthdate:
+          type: string
+          nullable: true
+        promotion_date:
+          type: string
+          nullable: true
+        review_date:
+          type: string
+          nullable: true
+        employee_type:
+          type: string
+          nullable: true
+        primary_reporter:
+          nullable: true
+          type: object
+        direct_reports:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserRef'
+        hr_managers:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserRef'
+        secondary_managers:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserRef'
+        custom_attributes:
+          type: object
+          additionalProperties: true
+          description: Organization-specific custom attributes keyed by attribute_key
+
+    UserListResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+
+    UserSingleResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          $ref: '#/components/schemas/User'
+
+    UserCreateRequest:
+      type: object
+      required:
+        - first_name
+        - last_name
+        - email
+      properties:
+        first_name:
+          type: string
+        middle_name:
+          type: string
+        last_name:
+          type: string
+        email:
+          type: string
+          format: email
+        employee_id:
+          type: string
+        joining_date:
+          type: string
+          format: date
+        birth_date:
+          type: string
+          format: date
+        location:
+          type: string
+          description: ID of the location
+        job_title:
+          type: string
+          description: ID of the job title
+        employee_type:
+          type: string
+        level:
+          type: string
+        phone_number:
+          type: string
+        secondary_phone_number:
+          type: string
+        promotion_date:
+          type: string
+        review_date:
+          type: string
+        departments:
+          type: array
+          items:
+            type: string
+          description: Array of department IDs
+        businesses:
+          type: array
+          items:
+            type: string
+          description: Array of business unit IDs
+        hr_managers:
+          type: array
+          items:
+            type: string
+          description: Array of HR manager user IDs
+        secondary_managers:
+          type: array
+          items:
+            type: string
+          description: Array of secondary manager user IDs
+        manager_id:
+          type: string
+          description: ID of the primary manager
+
+    UserUpdateRequest:
+      type: object
+      properties:
+        first_name:
+          type: string
+        middle_name:
+          type: string
+        last_name:
+          type: string
+        email:
+          type: string
+          format: email
+        employee_id:
+          type: string
+        joining_date:
+          type: string
+          format: date
+        birth_date:
+          type: string
+          format: date
+        location:
+          type: string
+          description: ID of the location
+        job_title:
+          type: string
+          description: ID of the job title
+        level:
+          type: string
+        phone_number:
+          type: string
+        secondary_phone_number:
+          type: string
+        promotion_date:
+          type: string
+        review_date:
+          type: string
+        departments:
+          type: array
+          items:
+            type: string
+        businesses:
+          type: array
+          items:
+            type: string
+        hr_managers:
+          type: array
+          items:
+            type: string
+        secondary_managers:
+          type: array
+          items:
+            type: string
+        manager_id:
+          type: string
+        custom_attributes:
+          type: object
+          additionalProperties: true
+          description: Custom attributes using their attribute_key as field names
+
+    BlockReasonCode:
+      type: object
+      properties:
+        code:
+          type: string
+          example: involuntary
+        display_text:
+          type: string
+          example: Involuntary
+        description:
+          type: string
+
+    BlockReasonCodeListResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/BlockReasonCode'
+
+    Permission:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+          example: Site Administrator
+        is_admin:
+          type: boolean
+          nullable: true
+        description:
+          type: string
+
+    PermissionListResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Permission'
+
+    UserPermissionsResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Permission'
+
+    Department:
+      type: object
+      properties:
+        id:
+          type: string
+          example: f5afec62-21ff-40d3-a06e-9a2162ef6b69
+        name:
+          type: string
+          example: Customer Support
+        members_count:
+          type: string
+          example: "10"
+        administrators_count:
+          type: string
+          example: "2"
+        members:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserRef'
+
+    DepartmentListResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Department'
+
+    DepartmentSingleResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          $ref: '#/components/schemas/Department'
+
+    DepartmentRequest:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+        members:
+          type: array
+          items:
+            type: string
+          description: Array of user IDs
+
+    Business:
+      type: object
+      properties:
+        id:
+          type: string
+          example: f5afec62-21ff-40d3-a06e-9a2162ef6b69
+        name:
+          type: string
+          example: Manufacturing Unit
+        members_count:
+          type: string
+          example: "10"
+        administrators_count:
+          type: string
+          example: "2"
+        members:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserRef'
+
+    BusinessListResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Business'
+
+    BusinessSingleResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          $ref: '#/components/schemas/Business'
+
+    BusinessRequest:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+        members:
+          type: array
+          items:
+            type: string
+          description: Array of user IDs
+
+    Location:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "1"
+        name:
+          type: string
+          example: Head Office
+        address_line1:
+          type: string
+        address_line2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        postal_code:
+          type: string
+
+    LocationListResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Location'
+
+    LocationSingleResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          $ref: '#/components/schemas/Location'
+
+    LocationRequest:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+        address_line1:
+          type: string
+        address_line2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        postal_code:
+          type: string
+
+    JobTitle:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "1"
+        name:
+          type: string
+          example: CEO
+        description:
+          type: string
+        responsibilities:
+          type: string
+
+    JobTitleListResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/JobTitle'
+
+    JobTitleSingleResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          $ref: '#/components/schemas/JobTitle'
+
+    JobTitleRequest:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        responsibilities:
+          type: string
+
+    AttributeOption:
+      type: object
+      properties:
+        id:
+          type: integer
+        value:
+          type: string
+
+    UserAttribute:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 865
+        name:
+          type: string
+          example: Department
+        attribute_key:
+          type: string
+          example: custom-attribute-93cbf
+        preset:
+          type: boolean
+          description: True for system attributes, false for custom attributes
+        mandatory:
+          type: boolean
+        data_type:
+          type: string
+          enum:
+            - text
+            - number
+            - date
+            - boolean
+            - single-select
+            - multiple-select
+        attribute_options:
+          type: array
+          nullable: true
+          items:
+            $ref: '#/components/schemas/AttributeOption'
+
+    UserAttributeListResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserAttribute'
+
+    PraiseAuthor:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        display_picture:
+          $ref: '#/components/schemas/DisplayPicture'
+        designation:
+          type: string
+
+    PraiseActor:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        display_picture:
+          $ref: '#/components/schemas/DisplayPicture'
+        designation:
+          type: string
+
+    PraiseTag:
+      type: object
+      properties:
+        code:
+          type: string
+        label:
+          type: string
+
+    PraiseAudience:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        display_picture:
+          $ref: '#/components/schemas/DisplayPicture'
+        type:
+          type: string
+
+    Praise:
+      type: object
+      properties:
+        id:
+          type: integer
+        activity_type:
+          type: string
+          example: Praise
+        activity_date:
+          type: string
+          format: date-time
+        last_updated_at:
+          type: string
+          format: date-time
+        title:
+          type: string
+          nullable: true
+        content:
+          type: string
+        pinned:
+          type: boolean
+        author:
+          $ref: '#/components/schemas/PraiseAuthor'
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/PraiseTag'
+        audience:
+          type: array
+          items:
+            $ref: '#/components/schemas/PraiseAudience'
+        links:
+          type: array
+          items:
+            type: object
+        attachments:
+          type: array
+          items:
+            type: object
+        comment_details:
+          type: object
+          properties:
+            count:
+              type: integer
+        like_details:
+          type: object
+          properties:
+            count:
+              type: integer
+            is_liked:
+              type: boolean
+        can_edit:
+          type: boolean
+        can_delete:
+          type: boolean
+        recognized_actors:
+          type: array
+          items:
+            $ref: '#/components/schemas/PraiseActor'
+
+    PraiseListResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Praise'

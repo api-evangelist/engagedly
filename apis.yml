@@ -35,7 +35,7 @@ apis:
       - type: Documentation
         url: https://engagedly.github.io/api-docs/
       - type: OpenAPI
-        url: https://engagedly.github.io/api-docs/
+        url: https://raw.githubusercontent.com/api-evangelist/engagedly/refs/heads/main/openapi/engagedly-openapi.yml
 common:
   - type: Website
     url: https://engagedly.com

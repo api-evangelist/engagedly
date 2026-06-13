@@ -1,0 +1,47 @@
+{
+  "success": true,
+  "pagination": {
+    "page": 1,
+    "size": 25,
+    "has_more": false,
+    "total_records": 1
+  },
+  "data": [
+    {
+      "id": "b62167d0-2718-4e45-9721-27535991becf",
+      "name": "Adam Smith",
+      "status": "Active",
+      "email": "adam.smith@teamyogi.com",
+      "first_name": "Adam",
+      "middle_name": null,
+      "last_name": "Smith",
+      "employee_id": "E007",
+      "display_picture": {
+        "medium": "https://social.engagedly.com/uploads/picture/file/9634/reduced_Denzel.jpg",
+        "small": "https://social.engagedly.com/uploads/picture/file/9634/small_Denzel.jpg"
+      },
+      "job_title": {
+        "id": "261",
+        "name": "CEO"
+      },
+      "location": {
+        "id": "11",
+        "name": "United States"
+      },
+      "custom_attributes": {
+        "custom-attribute-35ba2": {
+          "name": "Date Field",
+          "value": "2024-05-15"
+        },
+        "custom-attribute-18e28": {
+          "name": "Text Field",
+          "value": "Sample Text"
+        },
+        "custom-attribute-6c6f6": {
+          "name": "Single Select",
+          "value": "Dayshift"
+        }
+      }
+    }
+  ]
+}

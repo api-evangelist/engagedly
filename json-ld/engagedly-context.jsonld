@@ -1,0 +1,199 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "engagedly": "https://engagedly.com/api/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "User": "schema:Person",
+    "id": "@id",
+    "name": "schema:name",
+    "email": "schema:email",
+    "first_name": "schema:givenName",
+    "middle_name": "schema:additionalName",
+    "last_name": "schema:familyName",
+    "employee_id": {
+      "@id": "schema:identifier",
+      "@type": "xsd:string"
+    },
+    "status": {
+      "@id": "engagedly:status",
+      "@type": "xsd:string"
+    },
+    "phone_number": "schema:telephone",
+    "secondary_phone_number": {
+      "@id": "engagedly:secondaryPhoneNumber",
+      "@type": "xsd:string"
+    },
+    "education": "schema:educationalCredentialAwarded",
+    "about_me": "schema:description",
+    "joining_date": {
+      "@id": "schema:startDate",
+      "@type": "xsd:date"
+    },
+    "birthdate": {
+      "@id": "schema:birthDate",
+      "@type": "xsd:date"
+    },
+    "promotion_date": {
+      "@id": "engagedly:promotionDate",
+      "@type": "xsd:date"
+    },
+    "review_date": {
+      "@id": "engagedly:reviewDate",
+      "@type": "xsd:date"
+    },
+    "level": {
+      "@id": "engagedly:level",
+      "@type": "xsd:string"
+    },
+    "employee_type": {
+      "@id": "schema:employmentType",
+      "@type": "xsd:string"
+    },
+    "display_picture": {
+      "@id": "schema:image",
+      "@type": "@id"
+    },
+    "job_title": "schema:jobTitle",
+    "location": "schema:workLocation",
+    "departments": {
+      "@id": "engagedly:department",
+      "@container": "@set"
+    },
+    "business_unit": {
+      "@id": "schema:memberOf",
+      "@container": "@set"
+    },
+    "direct_reports": {
+      "@id": "engagedly:directReport",
+      "@container": "@set"
+    },
+    "primary_reporter": {
+      "@id": "schema:reportsTo"
+    },
+    "hr_managers": {
+      "@id": "engagedly:hrManager",
+      "@container": "@set"
+    },
+    "secondary_managers": {
+      "@id": "engagedly:secondaryManager",
+      "@container": "@set"
+    },
+    "custom_attributes": {
+      "@id": "engagedly:customAttributes"
+    },
+    "pagination": {
+      "@id": "engagedly:pagination"
+    },
+    "page": {
+      "@id": "engagedly:page",
+      "@type": "xsd:integer"
+    },
+    "size": {
+      "@id": "engagedly:pageSize",
+      "@type": "xsd:integer"
+    },
+    "has_more": {
+      "@id": "engagedly:hasMore",
+      "@type": "xsd:boolean"
+    },
+    "total_records": {
+      "@id": "engagedly:totalRecords",
+      "@type": "xsd:integer"
+    },
+    "success": {
+      "@id": "engagedly:success",
+      "@type": "xsd:boolean"
+    },
+    "data": {
+      "@id": "engagedly:data"
+    },
+    "Department": "schema:Organization",
+    "members_count": {
+      "@id": "engagedly:membersCount",
+      "@type": "xsd:string"
+    },
+    "administrators_count": {
+      "@id": "engagedly:administratorsCount",
+      "@type": "xsd:string"
+    },
+    "members": {
+      "@id": "schema:member",
+      "@container": "@set"
+    },
+    "is_admin": {
+      "@id": "engagedly:isAdmin",
+      "@type": "xsd:boolean"
+    },
+    "Location": "schema:Place",
+    "address_line1": "schema:streetAddress",
+    "address_line2": {
+      "@id": "engagedly:addressLine2",
+      "@type": "xsd:string"
+    },
+    "city": "schema:addressLocality",
+    "state": "schema:addressRegion",
+    "country": "schema:addressCountry",
+    "postal_code": "schema:postalCode",
+    "JobTitle": "schema:DefinedTerm",
+    "description": "schema:description",
+    "responsibilities": {
+      "@id": "engagedly:responsibilities",
+      "@type": "xsd:string"
+    },
+    "Permission": "schema:Role",
+    "Praise": "schema:AchieveAction",
+    "activity_type": {
+      "@id": "engagedly:activityType",
+      "@type": "xsd:string"
+    },
+    "activity_date": {
+      "@id": "schema:startDate",
+      "@type": "xsd:dateTime"
+    },
+    "last_updated_at": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    },
+    "content": "schema:text",
+    "pinned": {
+      "@id": "engagedly:pinned",
+      "@type": "xsd:boolean"
+    },
+    "author": "schema:author",
+    "recognized_actors": {
+      "@id": "schema:object",
+      "@container": "@set"
+    },
+    "tags": {
+      "@id": "schema:keywords",
+      "@container": "@set"
+    },
+    "audience": {
+      "@id": "schema:audience",
+      "@container": "@set"
+    },
+    "UserAttribute": "schema:PropertyValue",
+    "attribute_key": {
+      "@id": "schema:propertyID",
+      "@type": "xsd:string"
+    },
+    "preset": {
+      "@id": "engagedly:preset",
+      "@type": "xsd:boolean"
+    },
+    "mandatory": {
+      "@id": "engagedly:mandatory",
+      "@type": "xsd:boolean"
+    },
+    "data_type": {
+      "@id": "schema:valuePattern",
+      "@type": "xsd:string"
+    },
+    "attribute_options": {
+      "@id": "schema:valueReference",
+      "@container": "@set"
+    }
+  }
+}

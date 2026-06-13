@@ -1,0 +1,165 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/engagedly/main/json-schema/engagedly-user.json",
+  "title": "Engagedly User",
+  "description": "Schema for an Engagedly platform user object returned by the Users API",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier of the user (UUID)"
+    },
+    "name": {
+      "type": "string",
+      "description": "Full name of the user"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["Active", "Blocked"],
+      "description": "Current activation status of the user"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "Email address of the user"
+    },
+    "first_name": {
+      "type": "string",
+      "description": "First name of the user"
+    },
+    "middle_name": {
+      "type": ["string", "null"],
+      "description": "Middle name of the user"
+    },
+    "last_name": {
+      "type": "string",
+      "description": "Last name of the user"
+    },
+    "employee_id": {
+      "type": ["string", "null"],
+      "description": "Organizational employee identifier"
+    },
+    "display_picture": {
+      "type": ["object", "null"],
+      "description": "Profile picture URLs in multiple sizes",
+      "properties": {
+        "large": { "type": ["string", "null"], "format": "uri" },
+        "medium": { "type": ["string", "null"], "format": "uri" },
+        "small": { "type": ["string", "null"], "format": "uri" },
+        "original": { "type": ["string", "null"], "format": "uri" },
+        "reduced": { "type": ["string", "null"], "format": "uri" }
+      }
+    },
+    "job_title": {
+      "type": ["object", "null"],
+      "description": "Job title assigned to the user",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" }
+      }
+    },
+    "location": {
+      "type": ["object", "null"],
+      "description": "Office location assigned to the user",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" }
+      }
+    },
+    "departments": {
+      "type": "array",
+      "description": "Departments the user belongs to",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "is_admin": { "type": ["boolean", "null"] }
+        }
+      }
+    },
+    "business_unit": {
+      "type": "array",
+      "description": "Business units the user belongs to",
+      "items": { "type": "object" }
+    },
+    "education": {
+      "type": ["string", "null"],
+      "description": "Educational background of the user"
+    },
+    "about_me": {
+      "type": ["string", "null"],
+      "description": "Bio or about section of the user"
+    },
+    "phone_number": {
+      "type": ["string", "null"],
+      "description": "Primary phone number"
+    },
+    "secondary_phone_number": {
+      "type": ["string", "null"],
+      "description": "Secondary phone number"
+    },
+    "level": {
+      "type": ["string", "null"],
+      "description": "Organizational level of the employee"
+    },
+    "joining_date": {
+      "type": ["string", "null"],
+      "description": "Date the employee was hired (ISO8601 UTC)"
+    },
+    "birthdate": {
+      "type": ["string", "null"],
+      "description": "Date of birth of the user"
+    },
+    "promotion_date": {
+      "type": ["string", "null"],
+      "description": "Impending promotion date"
+    },
+    "review_date": {
+      "type": ["string", "null"],
+      "description": "Impending review date"
+    },
+    "employee_type": {
+      "type": ["string", "null"],
+      "description": "Employment type classification"
+    },
+    "primary_reporter": {
+      "type": ["object", "null"],
+      "description": "Primary reporting manager"
+    },
+    "direct_reports": {
+      "type": "array",
+      "description": "Users who directly report to this user",
+      "items": {
+        "$ref": "#/$defs/userRef"
+      }
+    },
+    "custom_attributes": {
+      "type": "object",
+      "description": "Organization-specific custom attributes keyed by attribute_key",
+      "additionalProperties": true
+    }
+  },
+  "required": ["id", "email", "first_name", "last_name", "status"],
+  "$defs": {
+    "userRef": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "first_name": { "type": "string" },
+        "middle_name": { "type": ["string", "null"] },
+        "last_name": { "type": "string" },
+        "display_picture": {
+          "type": ["object", "null"],
+          "properties": {
+            "medium": { "type": ["string", "null"], "format": "uri" },
+            "small": { "type": ["string", "null"], "format": "uri" }
+          }
+        },
+        "is_admin": { "type": ["boolean", "null"] }
+      }
+    }
+  }
+}
