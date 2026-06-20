@@ -1,7 +1,7 @@
 aid: engagedly
 name: Engagedly
 description: Engagedly is a people strategy execution platform with a REST API for managing performance reviews, goal tracking, 360 feedback, learning paths, and employee recognition programs. The API enables programmatic access to users, departments, locations, job titles, activities, and organizational data using header-based authentication with client and secret keys.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/engagedly/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -21,7 +21,7 @@ apis:
   - aid: engagedly:engagedly-api
     name: Engagedly API
     description: REST API for the Engagedly people strategy execution platform, providing endpoints for managing users, departments, locations, job titles, permissions, and employee activity such as praises and recognition. Supports performance review workflows, goal management, and organizational data integration.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://engagedly.github.io/api-docs/
     baseURL: https://api.engagedly.com/beta/
     tags:
