@@ -1,0 +1,24 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/engagedly-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: clientKeyAuth
+  type: apiKey
+  in: header
+  parameter: ClientKey
+  description: Client key obtained from the Engagedly portal under Integrations > Engagedly
+    API
+  sources:
+  - openapi/engagedly-openapi.yml
+- name: secretKeyAuth
+  type: apiKey
+  in: header
+  parameter: SecretKey
+  description: Secret key obtained from the Engagedly portal. Shown only once upon generation.
+  sources:
+  - openapi/engagedly-openapi.yml
