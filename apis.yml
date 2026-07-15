@@ -37,6 +37,8 @@ apis:
       - type: OpenAPI
         url: https://raw.githubusercontent.com/api-evangelist/engagedly/refs/heads/main/openapi/engagedly-openapi.yml
 common:
+  - type: AgenticAccess
+    url: agentic-access/engagedly-agentic-access.yml
   - type: DomainSecurity
     url: security/engagedly-domain-security.yml
   - type: Authentication
