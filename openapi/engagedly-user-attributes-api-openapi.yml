@@ -1,0 +1,154 @@
+openapi: 3.0.3
+info:
+  title: Engagedly Activities User Attributes API
+  description: 'REST API for the Engagedly people strategy execution platform. Provides endpoints for managing users, departments, locations, job titles, business units, permissions, user attributes, and employee activities such as praises and recognition. Supports performance review workflows, goal management, and organizational data integration using header-based authentication with ClientKey and SecretKey.
+
+    '
+  version: beta
+  contact:
+    url: https://engagedly.com
+  license:
+    name: Proprietary
+servers:
+- url: https://api.engagedly.com/beta
+  description: Production API server
+security:
+- clientKeyAuth: []
+  secretKeyAuth: []
+tags:
+- name: User Attributes
+  description: Retrieve system and custom user attribute definitions
+paths:
+  /user-attributes:
+    get:
+      operationId: listUserAttributes
+      summary: List all user attributes
+      description: 'Retrieves all available user attributes including both system attributes (preset: true) and custom attributes (preset: false). Returns field configurations, validation rules, and available options.
+
+        '
+      tags:
+      - User Attributes
+      parameters:
+      - $ref: '#/components/parameters/pageParam'
+      - $ref: '#/components/parameters/sizeParam'
+      responses:
+        '200':
+          description: List of user attributes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserAttributeListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  schemas:
+    UserAttribute:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 865
+        name:
+          type: string
+          example: Department
+        attribute_key:
+          type: string
+          example: custom-attribute-93cbf
+        preset:
+          type: boolean
+          description: True for system attributes, false for custom attributes
+        mandatory:
+          type: boolean
+        data_type:
+          type: string
+          enum:
+          - text
+          - number
+          - date
+          - boolean
+          - single-select
+          - multiple-select
+        attribute_options:
+          type: array
+          nullable: true
+          items:
+            $ref: '#/components/schemas/AttributeOption'
+    AttributeOption:
+      type: object
+      properties:
+        id:
+          type: integer
+        value:
+          type: string
+    ErrorResponse:
+      type: object
+      properties:
+        error_type:
+          type: string
+          enum:
+          - api_connection_error
+          - authentication_error
+          - invalid_request_error
+          - validation_error
+          example: validation_error
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorDetail'
+    ErrorDetail:
+      type: object
+      properties:
+        field:
+          type: string
+          example: name
+        message:
+          type: string
+          example: Mandatory attribute missing
+        code:
+          type: string
+          example: missing_field
+    UserAttributeListResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserAttribute'
+  responses:
+    Unauthorized:
+      description: Unauthorized — invalid or missing ClientKey/SecretKey
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    pageParam:
+      name: page
+      in: query
+      description: Page number (starts at 1)
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+    sizeParam:
+      name: size
+      in: query
+      description: Number of records per page (maximum 50)
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 50
+        default: 25
+  securitySchemes:
+    clientKeyAuth:
+      type: apiKey
+      in: header
+      name: ClientKey
+      description: Client key obtained from the Engagedly portal under Integrations > Engagedly API
+    secretKeyAuth:
+      type: apiKey
+      in: header
+      name: SecretKey
+      description: Secret key obtained from the Engagedly portal. Shown only once upon generation.

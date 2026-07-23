@@ -1,0 +1,253 @@
+openapi: 3.0.3
+info:
+  title: Engagedly Activities API
+  description: 'REST API for the Engagedly people strategy execution platform. Provides endpoints for managing users, departments, locations, job titles, business units, permissions, user attributes, and employee activities such as praises and recognition. Supports performance review workflows, goal management, and organizational data integration using header-based authentication with ClientKey and SecretKey.
+
+    '
+  version: beta
+  contact:
+    url: https://engagedly.com
+  license:
+    name: Proprietary
+servers:
+- url: https://api.engagedly.com/beta
+  description: Production API server
+security:
+- clientKeyAuth: []
+  secretKeyAuth: []
+tags:
+- name: Activities
+  description: Access praise and recognition activities
+paths:
+  /activities/praises:
+    get:
+      operationId: listPublicPraises
+      summary: Get all public praises
+      description: Returns a paginated list of all public praise activities in the organization.
+      tags:
+      - Activities
+      parameters:
+      - $ref: '#/components/parameters/pageParam'
+      - $ref: '#/components/parameters/sizeParam'
+      responses:
+        '200':
+          description: Paginated list of praise activities
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PraiseListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  responses:
+    Unauthorized:
+      description: Unauthorized — invalid or missing ClientKey/SecretKey
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  schemas:
+    PraiseAudience:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        display_picture:
+          $ref: '#/components/schemas/DisplayPicture'
+        type:
+          type: string
+    PraiseTag:
+      type: object
+      properties:
+        code:
+          type: string
+        label:
+          type: string
+    PraiseActor:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        display_picture:
+          $ref: '#/components/schemas/DisplayPicture'
+        designation:
+          type: string
+    Praise:
+      type: object
+      properties:
+        id:
+          type: integer
+        activity_type:
+          type: string
+          example: Praise
+        activity_date:
+          type: string
+          format: date-time
+        last_updated_at:
+          type: string
+          format: date-time
+        title:
+          type: string
+          nullable: true
+        content:
+          type: string
+        pinned:
+          type: boolean
+        author:
+          $ref: '#/components/schemas/PraiseAuthor'
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/PraiseTag'
+        audience:
+          type: array
+          items:
+            $ref: '#/components/schemas/PraiseAudience'
+        links:
+          type: array
+          items:
+            type: object
+        attachments:
+          type: array
+          items:
+            type: object
+        comment_details:
+          type: object
+          properties:
+            count:
+              type: integer
+        like_details:
+          type: object
+          properties:
+            count:
+              type: integer
+            is_liked:
+              type: boolean
+        can_edit:
+          type: boolean
+        can_delete:
+          type: boolean
+        recognized_actors:
+          type: array
+          items:
+            $ref: '#/components/schemas/PraiseActor'
+    PraiseListResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Praise'
+    PraiseAuthor:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        display_picture:
+          $ref: '#/components/schemas/DisplayPicture'
+        designation:
+          type: string
+    ErrorResponse:
+      type: object
+      properties:
+        error_type:
+          type: string
+          enum:
+          - api_connection_error
+          - authentication_error
+          - invalid_request_error
+          - validation_error
+          example: validation_error
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorDetail'
+    ErrorDetail:
+      type: object
+      properties:
+        field:
+          type: string
+          example: name
+        message:
+          type: string
+          example: Mandatory attribute missing
+        code:
+          type: string
+          example: missing_field
+    Pagination:
+      type: object
+      properties:
+        page:
+          type: integer
+          example: 1
+        size:
+          type: integer
+          example: 25
+        has_more:
+          type: boolean
+          example: false
+        total_records:
+          type: integer
+          example: 42
+    DisplayPicture:
+      type: object
+      properties:
+        large:
+          type: string
+          format: uri
+          nullable: true
+        medium:
+          type: string
+          format: uri
+          nullable: true
+        small:
+          type: string
+          format: uri
+          nullable: true
+        original:
+          type: string
+          format: uri
+          nullable: true
+        reduced:
+          type: string
+          format: uri
+          nullable: true
+  parameters:
+    pageParam:
+      name: page
+      in: query
+      description: Page number (starts at 1)
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+    sizeParam:
+      name: size
+      in: query
+      description: Number of records per page (maximum 50)
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 50
+        default: 25
+  securitySchemes:
+    clientKeyAuth:
+      type: apiKey
+      in: header
+      name: ClientKey
+      description: Client key obtained from the Engagedly portal under Integrations > Engagedly API
+    secretKeyAuth:
+      type: apiKey
+      in: header
+      name: SecretKey
+      description: Secret key obtained from the Engagedly portal. Shown only once upon generation.

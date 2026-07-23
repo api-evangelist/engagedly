@@ -1,0 +1,264 @@
+openapi: 3.0.3
+info:
+  title: Engagedly Activities Job Titles API
+  description: 'REST API for the Engagedly people strategy execution platform. Provides endpoints for managing users, departments, locations, job titles, business units, permissions, user attributes, and employee activities such as praises and recognition. Supports performance review workflows, goal management, and organizational data integration using header-based authentication with ClientKey and SecretKey.
+
+    '
+  version: beta
+  contact:
+    url: https://engagedly.com
+  license:
+    name: Proprietary
+servers:
+- url: https://api.engagedly.com/beta
+  description: Production API server
+security:
+- clientKeyAuth: []
+  secretKeyAuth: []
+tags:
+- name: Job Titles
+  description: Define and manage job roles
+paths:
+  /job_titles:
+    get:
+      operationId: listJobTitles
+      summary: List all job titles
+      description: Returns a paginated list of all job titles in the organization.
+      tags:
+      - Job Titles
+      parameters:
+      - $ref: '#/components/parameters/pageParam'
+      - $ref: '#/components/parameters/sizeParam'
+      responses:
+        '200':
+          description: Paginated list of job titles
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobTitleListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createJobTitle
+      summary: Create a new job title
+      description: Creates a new job title in the organization.
+      tags:
+      - Job Titles
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JobTitleRequest'
+      responses:
+        '201':
+          description: Job title created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobTitleSingleResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /job_titles/{id}:
+    get:
+      operationId: getJobTitle
+      summary: Get a single job title
+      description: Returns details for a single job title.
+      tags:
+      - Job Titles
+      parameters:
+      - $ref: '#/components/parameters/idPathParam'
+      responses:
+        '200':
+          description: Job title details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobTitleSingleResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateJobTitle
+      summary: Update an existing job title
+      description: Updates details of an existing job title.
+      tags:
+      - Job Titles
+      parameters:
+      - $ref: '#/components/parameters/idPathParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JobTitleRequest'
+      responses:
+        '200':
+          description: Job title updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobTitleSingleResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteJobTitle
+      summary: Delete a job title
+      description: Permanently deletes the specified job title.
+      tags:
+      - Job Titles
+      parameters:
+      - $ref: '#/components/parameters/idPathParam'
+      responses:
+        '204':
+          description: Job title deleted successfully
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    JobTitleSingleResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          $ref: '#/components/schemas/JobTitle'
+    JobTitleRequest:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        responsibilities:
+          type: string
+    JobTitle:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '1'
+        name:
+          type: string
+          example: CEO
+        description:
+          type: string
+        responsibilities:
+          type: string
+    JobTitleListResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/JobTitle'
+    ErrorResponse:
+      type: object
+      properties:
+        error_type:
+          type: string
+          enum:
+          - api_connection_error
+          - authentication_error
+          - invalid_request_error
+          - validation_error
+          example: validation_error
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorDetail'
+    ErrorDetail:
+      type: object
+      properties:
+        field:
+          type: string
+          example: name
+        message:
+          type: string
+          example: Mandatory attribute missing
+        code:
+          type: string
+          example: missing_field
+    Pagination:
+      type: object
+      properties:
+        page:
+          type: integer
+          example: 1
+        size:
+          type: integer
+          example: 25
+        has_more:
+          type: boolean
+          example: false
+        total_records:
+          type: integer
+          example: 42
+  responses:
+    Unauthorized:
+      description: Unauthorized — invalid or missing ClientKey/SecretKey
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Bad request — missing or invalid parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Not Found — resource does not exist
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    pageParam:
+      name: page
+      in: query
+      description: Page number (starts at 1)
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+    idPathParam:
+      name: id
+      in: path
+      required: true
+      description: The unique identifier of the resource
+      schema:
+        type: string
+    sizeParam:
+      name: size
+      in: query
+      description: Number of records per page (maximum 50)
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 50
+        default: 25
+  securitySchemes:
+    clientKeyAuth:
+      type: apiKey
+      in: header
+      name: ClientKey
+      description: Client key obtained from the Engagedly portal under Integrations > Engagedly API
+    secretKeyAuth:
+      type: apiKey
+      in: header
+      name: SecretKey
+      description: Secret key obtained from the Engagedly portal. Shown only once upon generation.

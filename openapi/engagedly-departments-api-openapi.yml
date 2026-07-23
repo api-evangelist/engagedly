@@ -1,0 +1,324 @@
+openapi: 3.0.3
+info:
+  title: Engagedly Activities Departments API
+  description: 'REST API for the Engagedly people strategy execution platform. Provides endpoints for managing users, departments, locations, job titles, business units, permissions, user attributes, and employee activities such as praises and recognition. Supports performance review workflows, goal management, and organizational data integration using header-based authentication with ClientKey and SecretKey.
+
+    '
+  version: beta
+  contact:
+    url: https://engagedly.com
+  license:
+    name: Proprietary
+servers:
+- url: https://api.engagedly.com/beta
+  description: Production API server
+security:
+- clientKeyAuth: []
+  secretKeyAuth: []
+tags:
+- name: Departments
+  description: Create and manage organizational departments
+paths:
+  /departments:
+    get:
+      operationId: listDepartments
+      summary: List all departments
+      description: Returns a paginated list of all departments in the organization.
+      tags:
+      - Departments
+      parameters:
+      - $ref: '#/components/parameters/pageParam'
+      - $ref: '#/components/parameters/sizeParam'
+      responses:
+        '200':
+          description: Paginated list of departments
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DepartmentListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createDepartment
+      summary: Create a new department
+      description: Creates a new department in the organization.
+      tags:
+      - Departments
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DepartmentRequest'
+      responses:
+        '201':
+          description: Department created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DepartmentSingleResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+  /departments/{id}:
+    get:
+      operationId: getDepartment
+      summary: Get a single department
+      description: Returns details for a single department including its members.
+      tags:
+      - Departments
+      parameters:
+      - $ref: '#/components/parameters/idPathParam'
+      responses:
+        '200':
+          description: Department details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DepartmentSingleResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateDepartment
+      summary: Update an existing department
+      description: Updates the name and/or members of an existing department.
+      tags:
+      - Departments
+      parameters:
+      - $ref: '#/components/parameters/idPathParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DepartmentRequest'
+      responses:
+        '200':
+          description: Department updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DepartmentSingleResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteDepartment
+      summary: Delete a department
+      description: Permanently deletes the specified department.
+      tags:
+      - Departments
+      parameters:
+      - $ref: '#/components/parameters/idPathParam'
+      responses:
+        '204':
+          description: Department deleted successfully
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    ErrorDetail:
+      type: object
+      properties:
+        field:
+          type: string
+          example: name
+        message:
+          type: string
+          example: Mandatory attribute missing
+        code:
+          type: string
+          example: missing_field
+    ErrorResponse:
+      type: object
+      properties:
+        error_type:
+          type: string
+          enum:
+          - api_connection_error
+          - authentication_error
+          - invalid_request_error
+          - validation_error
+          example: validation_error
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorDetail'
+    DepartmentRequest:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+        members:
+          type: array
+          items:
+            type: string
+          description: Array of user IDs
+    DepartmentSingleResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          $ref: '#/components/schemas/Department'
+    Department:
+      type: object
+      properties:
+        id:
+          type: string
+          example: f5afec62-21ff-40d3-a06e-9a2162ef6b69
+        name:
+          type: string
+          example: Customer Support
+        members_count:
+          type: string
+          example: '10'
+        administrators_count:
+          type: string
+          example: '2'
+        members:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserRef'
+    Pagination:
+      type: object
+      properties:
+        page:
+          type: integer
+          example: 1
+        size:
+          type: integer
+          example: 25
+        has_more:
+          type: boolean
+          example: false
+        total_records:
+          type: integer
+          example: 42
+    DepartmentListResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Department'
+    UserRef:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        first_name:
+          type: string
+        middle_name:
+          type: string
+          nullable: true
+        last_name:
+          type: string
+        display_picture:
+          $ref: '#/components/schemas/DisplayPicture'
+        is_admin:
+          type: boolean
+          nullable: true
+    DisplayPicture:
+      type: object
+      properties:
+        large:
+          type: string
+          format: uri
+          nullable: true
+        medium:
+          type: string
+          format: uri
+          nullable: true
+        small:
+          type: string
+          format: uri
+          nullable: true
+        original:
+          type: string
+          format: uri
+          nullable: true
+        reduced:
+          type: string
+          format: uri
+          nullable: true
+  responses:
+    Unauthorized:
+      description: Unauthorized — invalid or missing ClientKey/SecretKey
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    UnprocessableEntity:
+      description: Unprocessable Entity — validation error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Bad request — missing or invalid parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Not Found — resource does not exist
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    pageParam:
+      name: page
+      in: query
+      description: Page number (starts at 1)
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+    idPathParam:
+      name: id
+      in: path
+      required: true
+      description: The unique identifier of the resource
+      schema:
+        type: string
+    sizeParam:
+      name: size
+      in: query
+      description: Number of records per page (maximum 50)
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 50
+        default: 25
+  securitySchemes:
+    clientKeyAuth:
+      type: apiKey
+      in: header
+      name: ClientKey
+      description: Client key obtained from the Engagedly portal under Integrations > Engagedly API
+    secretKeyAuth:
+      type: apiKey
+      in: header
+      name: SecretKey
+      description: Secret key obtained from the Engagedly portal. Shown only once upon generation.
