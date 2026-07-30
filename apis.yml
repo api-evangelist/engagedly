@@ -1,7 +1,20 @@
 aid: engagedly
 name: Engagedly
 description: Engagedly is a people strategy execution platform with a REST API for managing performance reviews, goal tracking, 360 feedback, learning paths, and employee recognition programs. The API enables programmatic access to users, departments, locations, job titles, activities, and organizational data using header-based authentication with client and secret keys.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/engagedly.png
 url: https://raw.githubusercontent.com/api-evangelist/engagedly/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -18,24 +31,102 @@ tags:
   - OKR
   - People Operations
 apis:
-  - aid: engagedly:engagedly-api
-    name: Engagedly API
-    description: REST API for the Engagedly people strategy execution platform, providing endpoints for managing users, departments, locations, job titles, permissions, and employee activity such as praises and recognition. Supports performance review workflows, goal management, and organizational data integration.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://engagedly.github.io/api-docs/
-    baseURL: https://api.engagedly.com/beta/
-    tags:
-      - Performance Management
-      - Users
-      - Departments
-      - Goals
-      - Recognition
-      - 360 Feedback
-    properties:
-      - type: Documentation
-        url: https://engagedly.github.io/api-docs/
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/engagedly/refs/heads/main/openapi/engagedly-openapi.yml
+- aid: engagedly:engagedly-activities-api
+  name: Engagedly Activities API
+  description: Access praise and recognition activities
+  humanURL: https://engagedly.github.io/api-docs/
+  baseURL: https://api.engagedly.com/beta/
+  tags:
+  - Activities
+  properties:
+  - type: OpenAPI
+    url: openapi/engagedly-activities-api-openapi.yml
+  - type: Documentation
+    url: https://engagedly.github.io/api-docs/
+- aid: engagedly:engagedly-businesses-api
+  name: Engagedly Businesses API
+  description: Handle business unit operations
+  humanURL: https://engagedly.github.io/api-docs/
+  baseURL: https://api.engagedly.com/beta/
+  tags:
+  - Businesses
+  properties:
+  - type: OpenAPI
+    url: openapi/engagedly-businesses-api-openapi.yml
+  - type: Documentation
+    url: https://engagedly.github.io/api-docs/
+- aid: engagedly:engagedly-departments-api
+  name: Engagedly Departments API
+  description: Create and manage organizational departments
+  humanURL: https://engagedly.github.io/api-docs/
+  baseURL: https://api.engagedly.com/beta/
+  tags:
+  - Departments
+  properties:
+  - type: OpenAPI
+    url: openapi/engagedly-departments-api-openapi.yml
+  - type: Documentation
+    url: https://engagedly.github.io/api-docs/
+- aid: engagedly:engagedly-job-titles-api
+  name: Engagedly Job Titles API
+  description: Define and manage job roles
+  humanURL: https://engagedly.github.io/api-docs/
+  baseURL: https://api.engagedly.com/beta/
+  tags:
+  - Job Titles
+  properties:
+  - type: OpenAPI
+    url: openapi/engagedly-job-titles-api-openapi.yml
+  - type: Documentation
+    url: https://engagedly.github.io/api-docs/
+- aid: engagedly:engagedly-locations-api
+  name: Engagedly Locations API
+  description: Manage office locations and addresses
+  humanURL: https://engagedly.github.io/api-docs/
+  baseURL: https://api.engagedly.com/beta/
+  tags:
+  - Locations
+  properties:
+  - type: OpenAPI
+    url: openapi/engagedly-locations-api-openapi.yml
+  - type: Documentation
+    url: https://engagedly.github.io/api-docs/
+- aid: engagedly:engagedly-permissions-api
+  name: Engagedly Permissions API
+  description: List available permission roles
+  humanURL: https://engagedly.github.io/api-docs/
+  baseURL: https://api.engagedly.com/beta/
+  tags:
+  - Permissions
+  properties:
+  - type: OpenAPI
+    url: openapi/engagedly-permissions-api-openapi.yml
+  - type: Documentation
+    url: https://engagedly.github.io/api-docs/
+- aid: engagedly:engagedly-user-attributes-api
+  name: Engagedly User Attributes API
+  description: Retrieve system and custom user attribute definitions
+  humanURL: https://engagedly.github.io/api-docs/
+  baseURL: https://api.engagedly.com/beta/
+  tags:
+  - User Attributes
+  properties:
+  - type: OpenAPI
+    url: openapi/engagedly-user-attributes-api-openapi.yml
+  - type: Documentation
+    url: https://engagedly.github.io/api-docs/
+- aid: engagedly:engagedly-users-api
+  name: Engagedly Users API
+  description: Manage user profiles, permissions, and activation status
+  humanURL: https://engagedly.github.io/api-docs/
+  baseURL: https://api.engagedly.com/beta/
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/engagedly-users-api-openapi.yml
+  - type: Documentation
+    url: https://engagedly.github.io/api-docs/
 common:
   - type: AgenticAccess
     url: agentic-access/engagedly-agentic-access.yml
