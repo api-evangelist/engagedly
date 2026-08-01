@@ -1,0 +1,28 @@
+{
+  "provider": "engagedly",
+  "sources": [
+    "engagedly-activities-api-openapi.yml",
+    "engagedly-businesses-api-openapi.yml",
+    "engagedly-departments-api-openapi.yml",
+    "engagedly-job-titles-api-openapi.yml",
+    "engagedly-locations-api-openapi.yml",
+    "engagedly-permissions-api-openapi.yml",
+    "engagedly-user-attributes-api-openapi.yml",
+    "engagedly-users-api-openapi.yml"
+  ],
+  "outputs": [
+    "engagedly-activities-api-openapi.yml",
+    "engagedly-businesses-api-openapi.yml",
+    "engagedly-departments-api-openapi.yml",
+    "engagedly-job-titles-api-openapi.yml",
+    "engagedly-locations-api-openapi.yml",
+    "engagedly-permissions-api-openapi.yml",
+    "engagedly-user-attributes-api-openapi.yml",
+    "engagedly-users-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
