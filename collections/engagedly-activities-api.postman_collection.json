@@ -1,0 +1,204 @@
+{
+  "item": [
+    {
+      "id": "bb67f526-d514-47d4-b4b9-85ce0b2ed49c",
+      "name": "Activities",
+      "description": {
+        "content": "Access praise and recognition activities",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bc5ff640-5524-4b54-97b5-cb12f0f77c0b",
+          "name": "Get all public praises",
+          "request": {
+            "name": "Get all public praises",
+            "description": {
+              "content": "Returns a paginated list of all public praise activities in the organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "activities",
+                "praises"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number (starts at 1)"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "25",
+                  "description": "Number of records per page (maximum 50)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a7990859-85d9-4bbd-8ded-af4da08a3782",
+              "name": "Paginated list of praise activities",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activities",
+                    "praises"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"pagination\": {\n    \"page\": 1,\n    \"size\": 25,\n    \"has_more\": false,\n    \"total_records\": 42\n  },\n  \"data\": [\n    {\n      \"id\": 593,\n      \"activity_type\": \"Praise\",\n      \"activity_date\": \"1957-07-03T16:32:48.802Z\",\n      \"last_updated_at\": \"2004-03-10T13:08:25.495Z\",\n      \"title\": \"string\",\n      \"content\": \"string\",\n      \"pinned\": true,\n      \"author\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"display_picture\": {\n          \"large\": \"https://WWrncFNzZmSKJwbbrRjBprZJpCAuT.jqulxUmppCRnf67MNLoYAAFO\",\n          \"medium\": \"http://kDDNzQiD.vhgfFu+oekYMvYDxfbRQ5bb4MLD\",\n          \"small\": \"https://rMBMjPIvQziddWCGZTjUAdwnbUCOmN.pxxpxEltFG1j3Iat7o7JcO4bRuzc5e,N\",\n          \"original\": \"https://qIZPUedzvDONOU.tumN+AwK.N4WUZuwBc7DMm5\",\n          \"reduced\": \"http://pXYVXvjvJetKhKQyrTdjqSWstTh.bsrreVnE2opKJPRqnOFUMBt3qCz5FtdnxNuYE42YvBI3efHaji3imafXUrnoLLF1\"\n        },\n        \"designation\": \"string\"\n      },\n      \"tags\": [\n        {\n          \"code\": \"string\",\n          \"label\": \"string\"\n        },\n        {\n          \"code\": \"string\",\n          \"label\": \"string\"\n        }\n      ],\n      \"audience\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"display_picture\": {\n            \"large\": \"http://sVOB.ykyeDNnlJgeCJEuxkqh2rbyGAcCoyYPBYXTcULVUU8\",\n            \"medium\": \"http://cYTmzYXiXndUfaelcALjJXXaAg.ajHlE-rHRYsW-.RFtMckVsjrkW0h6vVpLNWAVJ0jEWD8aybm8XdlAK\",\n            \"small\": \"https://BLFKkZqmCzruodK.xllGy4glMA63QlQXgkIIKawWi,-YM503-AsjdJUybr2G5Qk3UDJ\",\n            \"original\": \"https://ZEbqgmTOw.vnxuSR0rbbzQLkn3eKgO6nohxxtlNXtSspYfK.tTx60l+PSr2gu6HXYT9c\",\n            \"reduced\": \"https://beRqaEWOMbWrzHfSgwOU.itahFiaHUog0K1sG+2Ev+MeyZzX\"\n          },\n          \"type\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"display_picture\": {\n            \"large\": \"http://wsYZQyFwhkoxPfgoMq.sxfsWTHpacfTq\",\n            \"medium\": \"https://kzQHfFx.ackfxZ2lvfBopnlccgoSoGqS3NHl3b\",\n            \"small\": \"https://RneHyHJHyMJzXJxmQAbpSUFaHV.lusaCxuGrbg8Zw\",\n            \"original\": \"https://NMiRpDKnnn.cwqbpeoin\",\n            \"reduced\": \"http://eRPXKjvBCwLYdTdQapnoqXNQOxqBID.qnrtqVv4tjlE.HSc4dQieC83pWx\"\n          },\n          \"type\": \"string\"\n        }\n      ],\n      \"comment_details\": {\n        \"count\": 8380\n      },\n      \"like_details\": {\n        \"count\": 403,\n        \"is_liked\": false\n      },\n      \"can_edit\": false,\n      \"can_delete\": true,\n      \"recognized_actors\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"display_picture\": {\n            \"large\": \"http://RUSLhAthulAWC.oxe059NRT42mf\",\n            \"medium\": \"https://XFevgXbhCTWN.yynQ-fI,DIKiamaJfU996Huadsmm4L\",\n            \"small\": \"http://jFQGHyiVcy.wsgIGax2AjAneljA\",\n            \"original\": \"http://DgyfKsqDpmaMtE.siH\",\n            \"reduced\": \"http://oNLcKJWKIVqZAMmFruMI.pvtzZytTtUSd0uAycmMTXpLOjAKEr+D,QtrIlEpuHi,al,d\"\n          },\n          \"designation\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"display_picture\": {\n            \"large\": \"http://MV.muizXFVtGagEOQPNY.wCM9S+9PE0HKCD18VdydFSs-m13VjAuJ0ObvC7tv2HP0E\",\n            \"medium\": \"http://wmWxVGdqfbDmMgzICFFRgZtkFEmzoc.oohdeoxLFAHXZUZxz\",\n            \"small\": \"https://qGoKD.tpfyYf6q,McEq2QyidUkkpCK,cPncVs2\",\n            \"original\": \"https://FEkJCOxUdt.cipeUkBsq\",\n            \"reduced\": \"https://LGGqkVPTBRcrUcrDrymDTCkQYyODE.tkxvATsw5zY5ANOcZ0pB.zhISBSjt2csoacNPOtgXQen7SZYMAHAMs8-ap0N\"\n          },\n          \"designation\": \"string\"\n        }\n      ]\n    },\n    {\n      \"id\": 2645,\n      \"activity_type\": \"Praise\",\n      \"activity_date\": \"1974-10-21T09:04:47.481Z\",\n      \"last_updated_at\": \"1986-05-15T00:33:40.624Z\",\n      \"title\": \"string\",\n      \"content\": \"string\",\n      \"pinned\": false,\n      \"author\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"display_picture\": {\n          \"large\": \"http://gUByQ.wpucFslV092,UhPuHSLA6,s\",\n          \"medium\": \"https://KMbhauveEEiXfwJvMiuDqbuvjs.uwm,SGjLD2ohUYrdv1FU2uZIKmf3q6NWuXAO7.GUjzTtKMbT\",\n          \"small\": \"http://oD.tfmsAqTXmES1fBVazNvoB1iVU3NjhBs0PJh8vwzczXVpz2lJ8gA1Y0zntT9XqH2u\",\n          \"original\": \"https://sqgqoIXDdqIOVE.otdZJXOcoEztx1JZS9.z5x3+7UlyS,b5cE3VKSYCJP7EleKIl\",\n          \"reduced\": \"http://gkYzqAfYHHhSyspy.mnxJWruUM0NjMa4ya2zaKi-y4xVQqXFkARhb0ctqR0\"\n        },\n        \"designation\": \"string\"\n      },\n      \"tags\": [\n        {\n          \"code\": \"string\",\n          \"label\": \"string\"\n        },\n        {\n          \"code\": \"string\",\n          \"label\": \"string\"\n        }\n      ],\n      \"audience\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"display_picture\": {\n            \"large\": \"http://djewWiqkZFIDtMYqhxnRP.sjuCVhOC0Ga5R7fbbArNuS638fU\",\n            \"medium\": \"https://rYEarGyh.pwMxFL\",\n            \"small\": \"http://i.bcF8Q6vh,mDvGKdM-DDHFBd6aeAhLssP.4HKsXOnWn7T\",\n            \"original\": \"http://LlpGtnahbTovIqRTvryEDYk.quzu.oI7CJAxasIIOew.Tx7By-qaRKXJFxBLgOO+o,jTgrpq9UX\",\n            \"reduced\": \"https://sbE.pyBB61a8S+sfKJ.wNraUaVtZ4L9Gj8WI8L8sIxO,\"\n          },\n          \"type\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"display_picture\": {\n            \"large\": \"https://jViuRcLcobaUJnIvganfwtEvQBYJcNDv.cpTbThyfLTBnK6QB1,sERCXsKyJlt3i0Jpcot1Zcmt-jhVVWkW6in-i\",\n            \"medium\": \"http://TeLUuzYhVaVuAlGrhO.vahQ7uoK\",\n            \"small\": \"https://sNxQoJS.eebZOOcD.aGWVzCU+wTJlBAW4bTvhxrVFfLHP2vD7t\",\n            \"original\": \"https://sBRgqABHCgbKhyEhZlsSVCRWMcrIF.lxbpsiiHdg-yRCwXkZ\",\n            \"reduced\": \"https://CplGOdTDv.lvmtI8Y0tP2Id96TTPUXUNjM0WfC-MfF7\"\n          },\n          \"type\": \"string\"\n        }\n      ],\n      \"comment_details\": {\n        \"count\": 5063\n      },\n      \"like_details\": {\n        \"count\": 4171,\n        \"is_liked\": false\n      },\n      \"can_edit\": false,\n      \"can_delete\": true,\n      \"recognized_actors\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"display_picture\": {\n            \"large\": \"http://rxerZQvTLfndcWlZkxvyjIQYJQomPUMTi.soSuD1GD8wyfv.FqzFRCi.s6\",\n            \"medium\": \"https://wAzQpbssyzQznupLBtsmah.tcddr3WGtC.TQvelu2QUObOXjzpsOg4B5.n\",\n            \"small\": \"http://jfMXTRsKlhiepKObeaQwuxuKUiGb.xkRyQEB55JFzrXhC1NZnEOcT+\",\n            \"original\": \"https://uORFCh.cqCeLyzScgigM5DX0pi7r7jJ-CO7MlsHcTNiShhhX96cMB\",\n            \"reduced\": \"http://BPEdyjRJOMCmkyHfCYhh.bmoglHT3rs,eD3UzwI6uibjibAVfHoBTdj.Nc3OYFEzZHUueFvjNkttIztJnY9FLox67dCY++i\"\n          },\n          \"designation\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"display_picture\": {\n            \"large\": \"https://mJYJlbnkhJkeiKRxqpkLF.ofsU0hDMy.pI15mi2NiGoVRHWR5q3y58SmML\",\n            \"medium\": \"http://HhDLMNrx.tfcQ-twsFgyj8\",\n            \"small\": \"http://wHGxgxnvXxOZOrwqDcX.zvxb9xQgwuz3DmGxFdG8d4Q1tr1GYZE8u-EJn7nQhZieIOH,QJvCS,CBfkFJAfyRG-Cd95gnu2\",\n            \"original\": \"http://BzCuslIyJLhoXIPNHlxhSKTfnMoPg.qbsrMjMkiJk\",\n            \"reduced\": \"https://nDSfJZPMRAnjRQYgf.peqpljzQZi7MdBcdqIpI23tEkUvUgFgGhozf1rb+Xh\"\n          },\n          \"designation\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "89aac6ca-e9b9-4b1f-9866-608aac9b8689",
+              "name": "Unauthorized — invalid or missing ClientKey/SecretKey",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activities",
+                    "praises"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    },\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.engagedly.com/beta",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "ClientKey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "de959423-85a3-4654-a48d-967938bacb36",
+    "name": "Engagedly Activities API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the Engagedly people strategy execution platform. Provides endpoints for managing users, departments, locations, job titles, business units, permissions, user attributes, and employee activities such as praises and recognition. Supports performance review workflows, goal management, and organizational data integration using header-based authentication with ClientKey and SecretKey.\n",
+      "type": "text/plain"
+    }
+  }
+}

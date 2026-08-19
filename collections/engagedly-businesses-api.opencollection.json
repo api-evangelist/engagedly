@@ -1,0 +1,127 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Engagedly Activities Businesses API",
+    "version": "beta"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "ClientKey",
+      "value": "{{ClientKey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Businesses",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all businesses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.engagedly.com/beta/businesses",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number (starts at 1)"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of records per page (maximum 50)"
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of all business units in the organization."
+        },
+        {
+          "info": {
+            "name": "Create a new business",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.engagedly.com/beta/businesses",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new business unit in the organization."
+        },
+        {
+          "info": {
+            "name": "Get a single business",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.engagedly.com/beta/businesses/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the resource"
+              }
+            ]
+          },
+          "docs": "Returns details for a single business unit including its members."
+        },
+        {
+          "info": {
+            "name": "Update an existing business",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.engagedly.com/beta/businesses/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the resource"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the name and/or members of an existing business unit."
+        },
+        {
+          "info": {
+            "name": "Delete a business",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.engagedly.com/beta/businesses/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the resource"
+              }
+            ]
+          },
+          "docs": "Permanently deletes the specified business unit."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

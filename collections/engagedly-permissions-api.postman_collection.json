@@ -1,0 +1,201 @@
+{
+  "item": [
+    {
+      "id": "cb083fb5-1371-4e5e-b54d-df7183c57041",
+      "name": "Permissions",
+      "description": {
+        "content": "List available permission roles",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fb6103bc-9e33-40a4-8cd0-9ee37376761a",
+          "name": "List all permissions",
+          "request": {
+            "name": "List all permissions",
+            "description": {
+              "content": "Returns a paginated list of all permission roles available in the system.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "permissions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number (starts at 1)"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "25",
+                  "description": "Number of records per page (maximum 50)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "202a666a-7556-49fc-b52f-7e4deaad8cc3",
+              "name": "Paginated list of permissions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "permissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"pagination\": {\n    \"page\": 1,\n    \"size\": 25,\n    \"has_more\": false,\n    \"total_records\": 42\n  },\n  \"data\": [\n    {\n      \"id\": 6932,\n      \"name\": \"Site Administrator\",\n      \"is_admin\": false,\n      \"description\": \"string\"\n    },\n    {\n      \"id\": 5174,\n      \"name\": \"Site Administrator\",\n      \"is_admin\": true,\n      \"description\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7f74ad08-2de0-43bc-a9e7-21d423c33dd5",
+              "name": "Unauthorized — invalid or missing ClientKey/SecretKey",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "permissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    },\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.engagedly.com/beta",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "ClientKey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "8fc59a2c-c558-4439-82bc-e5f571828367",
+    "name": "Engagedly Activities Permissions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the Engagedly people strategy execution platform. Provides endpoints for managing users, departments, locations, job titles, business units, permissions, user attributes, and employee activities such as praises and recognition. Supports performance review workflows, goal management, and organizational data integration using header-based authentication with ClientKey and SecretKey.\n",
+      "type": "text/plain"
+    }
+  }
+}

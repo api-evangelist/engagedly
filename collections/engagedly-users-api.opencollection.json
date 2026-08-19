@@ -1,0 +1,267 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Engagedly Activities Users API",
+    "version": "beta"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "ClientKey",
+      "value": "{{ClientKey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.engagedly.com/beta/users",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number (starts at 1)"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of records per page (maximum 50)"
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of related data to include"
+              },
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Filter users by email address"
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of all users in the organization."
+        },
+        {
+          "info": {
+            "name": "Create a new user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.engagedly.com/beta/users",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new user in the organization. Both system attributes and custom attributes (using their attribute_key as field names) can be included in the request body.\n"
+        },
+        {
+          "info": {
+            "name": "Get block reason codes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.engagedly.com/beta/users/block-reason-codes"
+          },
+          "docs": "Returns all available reason codes for deactivating (blocking) a user."
+        },
+        {
+          "info": {
+            "name": "Get a single user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.engagedly.com/beta/users/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the resource"
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of related data to include"
+              }
+            ]
+          },
+          "docs": "Returns detailed information for a single user by ID."
+        },
+        {
+          "info": {
+            "name": "Update an existing user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.engagedly.com/beta/users/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the resource"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Fully updates an existing user record by ID."
+        },
+        {
+          "info": {
+            "name": "Partially update an existing user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.engagedly.com/beta/users/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the resource"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Partially updates a user record. Only the fields provided in the request body are updated.\n"
+        },
+        {
+          "info": {
+            "name": "Update user's profile picture",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.engagedly.com/beta/users/:id/profile/picture",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the resource"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Uploads and sets a new profile picture for the specified user."
+        },
+        {
+          "info": {
+            "name": "Deactivate a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.engagedly.com/beta/users/:id/deactivate",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the resource"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deactivates (blocks) the specified user, optionally with a reason code."
+        },
+        {
+          "info": {
+            "name": "Activate a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.engagedly.com/beta/users/:id/activate",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the resource"
+              }
+            ]
+          },
+          "docs": "Re-activates a previously deactivated user."
+        },
+        {
+          "info": {
+            "name": "Get permissions of a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.engagedly.com/beta/users/:id/permissions",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the resource"
+              }
+            ]
+          },
+          "docs": "Returns all permission roles assigned to the specified user."
+        },
+        {
+          "info": {
+            "name": "Update permissions of a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.engagedly.com/beta/users/:id/permissions",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the resource"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Replaces the permission roles assigned to the specified user."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

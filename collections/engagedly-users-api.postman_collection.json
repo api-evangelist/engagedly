@@ -1,0 +1,2676 @@
+{
+  "item": [
+    {
+      "id": "78266e9c-0a27-4aeb-810c-fe31b13706a4",
+      "name": "Users",
+      "description": {
+        "content": "Manage user profiles, permissions, and activation status",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ecf89fde-c318-49e7-bb5e-6a696a3ab759",
+          "name": "List all users",
+          "request": {
+            "name": "List all users",
+            "description": {
+              "content": "Returns a paginated list of all users in the organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number (starts at 1)"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "25",
+                  "description": "Number of records per page (maximum 50)"
+                },
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>",
+                  "description": "Comma-separated list of related data to include"
+                },
+                {
+                  "disabled": false,
+                  "key": "email",
+                  "value": "<email>",
+                  "description": "Filter users by email address"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a3a86bf2-acc0-4e0e-b8ca-780254d00049",
+              "name": "Paginated list of users",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "25"
+                    },
+                    {
+                      "key": "include",
+                      "value": "primary_reporter,direct_reports"
+                    },
+                    {
+                      "key": "email",
+                      "value": "<email>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"pagination\": {\n    \"page\": 1,\n    \"size\": 25,\n    \"has_more\": false,\n    \"total_records\": 42\n  },\n  \"data\": [\n    {\n      \"id\": \"b62167d0-2718-4e45-9721-27535991becf\",\n      \"name\": \"Adam Smith\",\n      \"status\": \"Active\",\n      \"email\": \"adam.smith@company.com\",\n      \"first_name\": \"Adam\",\n      \"middle_name\": \"string\",\n      \"last_name\": \"Smith\",\n      \"employee_id\": \"E007\",\n      \"display_picture\": {\n        \"large\": \"https://MTsomopSpUJsWBaSBtWiEEZvVmwbvV.xdgrBAt.+VgDRunL5OXbF\",\n        \"medium\": \"http://VdErqOVJgDxx.ivfrkTH+qQ1yzWR,OehNKoYy3ihPpArnCaHDOBaGsQ2IRsEPZnPLg1eSg8ST7\",\n        \"small\": \"https://HVZG.ecabUC,FwNwv1+x49lAy9AvBv\",\n        \"original\": \"https://rrkwZSdZXm.twcP5,Hvc5tWJDjxheb+pBSflQGMnhGd.qN-mxZ+FsEGFnn9UVGe4N5p\",\n        \"reduced\": \"https://QHSZggWIFtCuoMZbjpWQiGZOZGS.nnneatLJjHcnE+QLhZO2ndHZt3iEVMHbZITudas7FGkPHXwD\"\n      },\n      \"job_title\": {\n        \"id\": \"string\",\n        \"name\": \"string\"\n      },\n      \"location\": {\n        \"id\": \"string\",\n        \"name\": \"string\"\n      },\n      \"departments\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"is_admin\": false\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"is_admin\": true\n        }\n      ],\n      \"education\": \"string\",\n      \"about_me\": \"string\",\n      \"phone_number\": \"string\",\n      \"secondary_phone_number\": \"string\",\n      \"level\": \"string\",\n      \"joining_date\": \"string\",\n      \"birthdate\": \"string\",\n      \"promotion_date\": \"string\",\n      \"review_date\": \"string\",\n      \"employee_type\": \"string\",\n      \"primary_reporter\": {},\n      \"direct_reports\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"email\": \"u85Mf9Ev8@YoCJHIzarxKzTHHnrQLeeteSdOOjjSD.ie\",\n          \"first_name\": \"string\",\n          \"middle_name\": \"string\",\n          \"last_name\": \"string\",\n          \"display_picture\": {\n            \"large\": \"http://umISTotAyhqwipHPJ.nnUy0-SrXlow1RSJWG6Sn\",\n            \"medium\": \"https://cc.truydBmwWy4Sc4OfhRKiAY\",\n            \"small\": \"http://vcvsqgfrZsapHftrPrFEdCBXmXfqth.lpYyI3s1vMWnxvx\",\n            \"original\": \"https://bRhhmJwefFQRjI.mjR3MmeT+91DNOfHPXkOEPvWl.hQR6WLSqj-dHkPnUiF0J,Bf7KYJBWermNr7zg\",\n            \"reduced\": \"http://XWdAmUFMjTGcTspLtorSfaWZsVLCFNPa.aeaytl1B6TWAvWcY1iKWQmc.w4ZW4FNG6mzJrHxtOdofR4-\"\n          },\n          \"is_admin\": false\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"email\": \"7LKgZT9G6@zcnLzTyimtZWQhxZylXMSLKcDCkEHbK.aj\",\n          \"first_name\": \"string\",\n          \"middle_name\": \"string\",\n          \"last_name\": \"string\",\n          \"display_picture\": {\n            \"large\": \"http://UmyKJgfsaXRFdlhqxGhDTVzMzoTKlE.xcyVptl-kxApJXXybPRKyzTMBa2JF4t9DXXQ9AIKXq.\",\n            \"medium\": \"https://THHnQashAvvqPeXplwpcFEX.gopdLcLUJ.ATDMHl9uQj.uWo8NWYqul5gk3hUDWmGo4SXSQebLS\",\n            \"small\": \"https://rYovuYZrHxrCefwXr.armzWaETOOpDgoI2BRq\",\n            \"original\": \"http://uTYbEffigNsXjtZONHiFT.gtF45n8dhU5VRIqDOJL5gZyOQr5M4dTp5r\",\n            \"reduced\": \"http://EQbErIHGfQxuwGFjMtOusidM.szhUBAcYdAL91ctLZNTOkqgtGKuTrIzbeJCgtwu7\"\n          },\n          \"is_admin\": false\n        }\n      ],\n      \"hr_managers\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"email\": \"gbF6OljgX4Xm@VZdsihFNTHGPdKCHWaJUITvEkwFadE.dosl\",\n          \"first_name\": \"string\",\n          \"middle_name\": \"string\",\n          \"last_name\": \"string\",\n          \"display_picture\": {\n            \"large\": \"http://Ipu.hjkdcZ1rPVOc19yP-bPl\",\n            \"medium\": \"http://tkyBspMsWQdmuIMd.eqofQgxps0cihk6FvaL-8wuWUt3O8Q\",\n            \"small\": \"http://fC.bdtaZzfxYQQK2\",\n            \"original\": \"https://EFVVotWmeobjLiCe.cnjxXr8ZLu5osW++lvvDK6sojw8\",\n            \"reduced\": \"https://LCPfSkoks.uruAJuhxIsVZ\"\n          },\n          \"is_admin\": false\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"email\": \"mcIpGmj@BEoLsexuunhDKQreiQRTArRmo.tm\",\n          \"first_name\": \"string\",\n          \"middle_name\": \"string\",\n          \"last_name\": \"string\",\n          \"display_picture\": {\n            \"large\": \"http://JQGIQBXKuymrcfQzkqoOEAkPp.vzcnWFggMAzC5L-YMf-fU\",\n            \"medium\": \"http://vXDgsGZnOLhNuaytiGmsRBrl.fdxyMU,ctK8VU1LJN\",\n            \"small\": \"https://IJKgvGndquXtUDogK.xty9j4HYnzurHW41Zyt4ff2FWvExkGhhDjL9ybMusnB9mlDI8XuVIOxAHhVekVqoJPc87.0Vm679KFj\",\n            \"original\": \"http://FJqAqAlXSLHbQinn.nllkiHawshWvA+DlBnQdYvZwbmrtM.z4NJX+vudTBU2yXJpi2XZm99ubeFidZjdafhXxl,\",\n            \"reduced\": \"http://rlFAke.ezhIUxpJRzqZfC8DGJyrNfxg3StCUEAmvX7LKY\"\n          },\n          \"is_admin\": true\n        }\n      ],\n      \"secondary_managers\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"email\": \"LbJ7Co@JPWile.ol\",\n          \"first_name\": \"string\",\n          \"middle_name\": \"string\",\n          \"last_name\": \"string\",\n          \"display_picture\": {\n            \"large\": \"https://nuuwQZo.rjeHjTfHUgeRxs4KLattuKYDtkli7YZuXjDCbYk34N\",\n            \"medium\": \"https://Vn.hywuA4I2,Nl0EXAWg\",\n            \"small\": \"https://oDmBUbvZsMICPBJVHtfDqZFkNw.olrmDxQeZ,R\",\n            \"original\": \"http://tQenQKnmrJOpFrLaYKSDYBwjztscOHMSh.sldgFNip7ZJXxdCbRuQw+XFp8.fhf6RcE54Y7lwAd,rBOe+-tGFL\",\n            \"reduced\": \"https://uaxJeNlGWGhcyWvZQlUGso.enmI7bDyFu55wKJGi79zZVMZOyPDz1nLnm7d3LtkLotdfXhiJoeTRvvk2a,os\"\n          },\n          \"is_admin\": true\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"email\": \"FW19m0p@HWVbhOnQnVh.tn\",\n          \"first_name\": \"string\",\n          \"middle_name\": \"string\",\n          \"last_name\": \"string\",\n          \"display_picture\": {\n            \"large\": \"http://ZDJpWlqUqqteXQcqrljydmP.zzpcwZ29qRJZCaU0r-rZMwSgtMqSgK8pmtX.SlxWFj6gi.MNBb2nemEpSpHFwy9-VO,ZUQTt8j\",\n            \"medium\": \"http://bCjtVkazFPYiLVVS.hvzGDOK.nMSCjEB10DomCq5bnhizGfy7-hIgcao2aDbFgyGiQBh26VxJuLYFM\",\n            \"small\": \"https://lIlVdrnJnB.qzwDgaiAUpqoBPnr1eSQz028OUO2yPb6ZvikrDV1Vg\",\n            \"original\": \"http://CZtZSJogqxTjd.nepu-zKiX-Jzn-30Qv5irWbDnPbw2A2V3VCKrV\",\n            \"reduced\": \"http://rfhsLy.duvpvYBCPIQS.uglGUNBF2zIM+oYx.xNtb\"\n          },\n          \"is_admin\": true\n        }\n      ],\n      \"custom_attributes\": {\n        \"key_0\": 9339.86034196974\n      }\n    },\n    {\n      \"id\": \"b62167d0-2718-4e45-9721-27535991becf\",\n      \"name\": \"Adam Smith\",\n      \"status\": \"Active\",\n      \"email\": \"adam.smith@company.com\",\n      \"first_name\": \"Adam\",\n      \"middle_name\": \"string\",\n      \"last_name\": \"Smith\",\n      \"employee_id\": \"E007\",\n      \"display_picture\": {\n        \"large\": \"https://hMhFAeu.gurff,q4cLgnv,mJ2BdfNVK-buPw3bfRXJNHz-RzEXysKE5\",\n        \"medium\": \"http://qUimPnKBy.rkF2FokUG,p7WPAww-r1loAfZSEVO,Hd\",\n        \"small\": \"https://gYDoM.yifXrJYtG2r30yA0qu6BkaZQlW7WuT6swSe-4HrCadhfOewvqQpynwe,MqKsJQ6IyJ2\",\n        \"original\": \"http://lOvWuIvWtrUEudcxb.ckkq5pkk-ALFIwhOt\",\n        \"reduced\": \"https://IwwhvOBOqstgMVvRlSxEneCNjgrPlQZ.ofzqFyjKD2TIaCn68xvOhm58viEqdn5QN6Cl2K,9ldZrHwP6nRkfxN\"\n      },\n      \"job_title\": {\n        \"id\": \"string\",\n        \"name\": \"string\"\n      },\n      \"location\": {\n        \"id\": \"string\",\n        \"name\": \"string\"\n      },\n      \"departments\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"is_admin\": true\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"is_admin\": true\n        }\n      ],\n      \"education\": \"string\",\n      \"about_me\": \"string\",\n      \"phone_number\": \"string\",\n      \"secondary_phone_number\": \"string\",\n      \"level\": \"string\",\n      \"joining_date\": \"string\",\n      \"birthdate\": \"string\",\n      \"promotion_date\": \"string\",\n      \"review_date\": \"string\",\n      \"employee_type\": \"string\",\n      \"primary_reporter\": {},\n      \"direct_reports\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"email\": \"BVRG@blNNeLBxrMQppGEshFcZuntWkV.sjbx\",\n          \"first_name\": \"string\",\n          \"middle_name\": \"string\",\n          \"last_name\": \"string\",\n          \"display_picture\": {\n            \"large\": \"http://PKajJqJaiVruvEp.itlDQ6EI+wuBEsKPumWA\",\n            \"medium\": \"http://AuNGgmgbuSt.tloeUGRBrwxG-nBlIN5df7WQRCtz\",\n            \"small\": \"https://TXNmxnLKjAUZCqaWDnzktwixHJKyFx.xkenpPYilRzm\",\n            \"original\": \"http://uiCsmNjEOrcmoJXBafplLQbHI.zbuojBNstT7xdWe6EqHlmdHGvT34lYwpSEqLrmsD\",\n            \"reduced\": \"https://oZwu.vofzxAAWVfCG6PpCxTa.V88Um3ANPjC7SkH0V5spFc8-hYUeXPVpjV2zHizKwfIxrKyRmbYYj1\"\n          },\n          \"is_admin\": true\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"email\": \"cinvk3uuZBR@ErhxnOgolfqa.dmq\",\n          \"first_name\": \"string\",\n          \"middle_name\": \"string\",\n          \"last_name\": \"string\",\n          \"display_picture\": {\n            \"large\": \"http://QrG.nfmu,6vdRz76fHpMeY5BZEXX1JCwxXV13pK9fsZG-cTTGxKKvAIVd.iOEqAmEnGxP9,UtPhu5\",\n            \"medium\": \"http://UauVinGJkJQo.qshdHoXmD+8\",\n            \"small\": \"http://IsxMnHoGsHX.zrzcVfJ61lIyeM+d\",\n            \"original\": \"https://JwlHdwgZaMCyKeaeS.uiyzFoERvLeP6-ETtt3SpNQRE-3-v9QefSnBRBtTNWW\",\n            \"reduced\": \"http://pjty.ktcs50JrVOoAoKJKpMYn.U2dF\"\n          },\n          \"is_admin\": false\n        }\n      ],\n      \"hr_managers\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"email\": \"re44qmvG@EyfgkcqJyvgWMYMZG.qe\",\n          \"first_name\": \"string\",\n          \"middle_name\": \"string\",\n          \"last_name\": \"string\",\n          \"display_picture\": {\n            \"large\": \"https://XDOGaZHYIikIpLsAbbPtNdzo.udsrwTRU9anzpLUb4h4GqexjkwiheP9mt.sBD,ur7grENGYK-pzpmiOnJNJyrCTjYx9+kH0VmzSc3Kipnzut\",\n            \"medium\": \"https://JEfc.owmG,XSC.EvfWLDuX24jUiwN7x\",\n            \"small\": \"https://zgJoykaYpsfBxEhjPgnnxHd.ukpV9CGWqqFvKNjT5gotaIo5dcqxOiXkxKTfx\",\n            \"original\": \"http://ekuarpsvKSUMKywOBWKtRulISqlaItk.wdamP0hdsdfSCo3KbSVWJ7x5TyCPyCKgDBOmVwgHov,tiw-wyd02OgrBBNEqTpAwk6iKfoAgvwn-\",\n            \"reduced\": \"http://ssPrgnfdog.gpSPr2XU3ImqwQxThG2Mx\"\n          },\n          \"is_admin\": true\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"email\": \"1bALUIBo9Tv@peEoCaZGbxWjOKUVUYh.bj\",\n          \"first_name\": \"string\",\n          \"middle_name\": \"string\",\n          \"last_name\": \"string\",\n          \"display_picture\": {\n            \"large\": \"https://UaKnPnolyadGdNncpORmVc.uxqeE5tS\",\n            \"medium\": \"http://AJGpREmsGqllDxuyaBAoyA.bueznsBU8qV-Z+7\",\n            \"small\": \"https://ovJgpRymjvVFdfZUj.ryt41CfxgCGMyMfPU6lhEtD8YZV+SzFdrhOdmY5CMn2kbtmjTNzuKz9XidGcHZ4m9PxQ\",\n            \"original\": \"http://mbKcRB.oqkho1pE5yzsskiaqPHN+ilRjzRecclTxweMQlK5s\",\n            \"reduced\": \"http://IwDSkejCQitMGasYOQAzisDukQCUbZ.hmwgq9QMGxByDsgwQufgSzpK26fUPK3\"\n          },\n          \"is_admin\": false\n        }\n      ],\n      \"secondary_managers\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"email\": \"3SMQaIUTQUg@jTtLldqxIKlfXzUuHL.jl\",\n          \"first_name\": \"string\",\n          \"middle_name\": \"string\",\n          \"last_name\": \"string\",\n          \"display_picture\": {\n            \"large\": \"http://IVPrgpuysRiQOXkfsO.lemB5HpMdgAO,rQnCYBF8X8qx,bAFZPsY3\",\n            \"medium\": \"https://ykfLYZG.xeBwVHDf5-R.yqrEaPsQdXiTCZUwZ6\",\n            \"small\": \"https://wAMosFQWGWoR.ixqtrfmLY2ScUYTFJTR1,NMkQAO9znyjIfrNAABTfm2CoPtHFSZzQKjGZVs7jQDqWYqh\",\n            \"original\": \"https://pa.ulGRE\",\n            \"reduced\": \"https://DRovHEewrzizNEynJIqmJyubBqZcdHO.qxLwfuUOZl5yIX.wiwmBAGtRjzB,Ti\"\n          },\n          \"is_admin\": false\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"email\": \"VOY@cfAVKrqzuBjrqAVtyKwlzhHgIYbzgx.ru\",\n          \"first_name\": \"string\",\n          \"middle_name\": \"string\",\n          \"last_name\": \"string\",\n          \"display_picture\": {\n            \"large\": \"http://Mcui.kdfsaqbosoNWfekwKlur8JV7NmMtNWYUlczZ47xfvdsvIi.dCURM2FvF,mX\",\n            \"medium\": \"http://TUMPNCwfCJwrQClFQOhEqbUbHfhQT.wuojZSF\",\n            \"small\": \"http://kKFGjluTXSgDoliwvh.turdO5uwzh3S+calysqkFlMj43JTpejUrCr2UNfVrExOoeDVGuYa\",\n            \"original\": \"https://kdKYVZeKxrcelVXrlYLhsNZeWzg.gjusabNu1w.pphxlNNDIUAzewHcbGTKdo0oMBeIXfJBMyveD0V.hjSkz.NjFbJA.\",\n            \"reduced\": \"https://oFVJTYseSVWtmiyndfTRLCvrssDz.pyIBcEwuTotJJ9\"\n          },\n          \"is_admin\": true\n        }\n      ],\n      \"custom_attributes\": {\n        \"key_0\": 2661.3948392195184,\n        \"key_1\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "14f8ba4e-b5bf-4403-8638-2e8df6ccd13a",
+              "name": "Unauthorized — invalid or missing ClientKey/SecretKey",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "25"
+                    },
+                    {
+                      "key": "include",
+                      "value": "primary_reporter,direct_reports"
+                    },
+                    {
+                      "key": "email",
+                      "value": "<email>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    },\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "53244b13-9bb0-40ca-867c-2c2ad51161ac",
+          "name": "Create a new user",
+          "request": {
+            "name": "Create a new user",
+            "description": {
+              "content": "Creates a new user in the organization. Both system attributes and custom attributes (using their attribute_key as field names) can be included in the request body.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"middle_name\": \"<string>\",\n  \"employee_id\": \"<string>\",\n  \"joining_date\": \"<date>\",\n  \"birth_date\": \"<date>\",\n  \"location\": \"<string>\",\n  \"job_title\": \"<string>\",\n  \"employee_type\": \"<string>\",\n  \"level\": \"<string>\",\n  \"phone_number\": \"<string>\",\n  \"secondary_phone_number\": \"<string>\",\n  \"promotion_date\": \"<string>\",\n  \"review_date\": \"<string>\",\n  \"departments\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"businesses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"hr_managers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"secondary_managers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"manager_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ba85cb78-39c0-4858-a2b1-c1c26a681c3f",
+              "name": "User created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"first_name\": \"John\",\n  \"last_name\": \"Doe\",\n  \"email\": \"john.doe@company.com\",\n  \"employee_id\": \"EMP001\",\n  \"departments\": [\n    \"dept-123\"\n  ],\n  \"businesses\": [\n    \"biz-456\"\n  ],\n  \"hr_managers\": [\n    \"manager-789\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"data\": {\n    \"id\": \"b62167d0-2718-4e45-9721-27535991becf\",\n    \"name\": \"Adam Smith\",\n    \"status\": \"Active\",\n    \"email\": \"adam.smith@company.com\",\n    \"first_name\": \"Adam\",\n    \"middle_name\": \"string\",\n    \"last_name\": \"Smith\",\n    \"employee_id\": \"E007\",\n    \"display_picture\": {\n      \"large\": \"https://wlgPIrLIsRvXnhhpgCaKgpxiNEd.qidbeeTofRcXd7Mwp.uBTzMR\",\n      \"medium\": \"http://NyjpmTTQjzdpSGHDbTQnZubbLi.rfcxzwfp9uGDlO-JHfyA7rVsSJtDr9sSvi71RxGXg\",\n      \"small\": \"https://Y.llfUjvrRVFAKWIWdV6ugTNonVT2XpuEr\",\n      \"original\": \"http://aJqJoBwnjhdBeCjDSNHnZpaqXXsHYj.pwkrdyK2YHm9VH4Bd358mLsKvj3btXbr1.URIIYvyoW4r7HxeGqDaL\",\n      \"reduced\": \"https://a.rrgrIvgt,qU,mBL+IbIVFErVkx2B-WV1uapuxjjXIPI+OlADPeOewCRqY6ZClhVnxy\"\n    },\n    \"job_title\": {\n      \"id\": \"string\",\n      \"name\": \"string\"\n    },\n    \"location\": {\n      \"id\": \"string\",\n      \"name\": \"string\"\n    },\n    \"departments\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"is_admin\": false\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"is_admin\": false\n      }\n    ],\n    \"education\": \"string\",\n    \"about_me\": \"string\",\n    \"phone_number\": \"string\",\n    \"secondary_phone_number\": \"string\",\n    \"level\": \"string\",\n    \"joining_date\": \"string\",\n    \"birthdate\": \"string\",\n    \"promotion_date\": \"string\",\n    \"review_date\": \"string\",\n    \"employee_type\": \"string\",\n    \"primary_reporter\": {},\n    \"direct_reports\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"jAkFi@YkxQVJOhSguDVQSHjtihSWZTnQ.gmie\",\n        \"first_name\": \"string\",\n        \"middle_name\": \"string\",\n        \"last_name\": \"string\",\n        \"display_picture\": {\n          \"large\": \"http://yrtAzxkhSvqmpdndPWErLkyRAJPump.gjwxsRGwPBsZTnKwTae3Jk0gPRyoVURSiGobLtliVGw23,2IoWXc5oWNnCvF3IrEPmN\",\n          \"medium\": \"https://LNGmwG.sleksigIA8ZZP-3s68aUnfPN8nmtWq9\",\n          \"small\": \"https://PBfGVvBJmAYalQS.whna4A8.uVjVUfxDPQnJH3ljO8toLHAMejDazV4VbxOdiamzOHKeUszV,qB,jKAnbz77.Gkof\",\n          \"original\": \"https://jAbvtAPbLxMsfdRMhkmiGFXDDyRg.qhiza+RQ4uNcX3PmpF5nqvm3X1k94CLsxbd0lH\",\n          \"reduced\": \"https://WulgABpNhNasNto.ciX311Q+UNf051SPFBjTLUUbj3srsKpVcCMBS\"\n        },\n        \"is_admin\": false\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"bHhYE7mzsb@pStilqalTvWTJMYcpdAeO.prxx\",\n        \"first_name\": \"string\",\n        \"middle_name\": \"string\",\n        \"last_name\": \"string\",\n        \"display_picture\": {\n          \"large\": \"https://CAFBCgjEXmYyJXf.rnirnq37l6M5RFox6Yxi1Hk-qVkK,SW4ij7uyrECV4GzvzK2N8pXbM.dNmjJG1o+L8o\",\n          \"medium\": \"http://mxDsYr.ostiN-ANxnxHjCsCjKTCGEzNdDK\",\n          \"small\": \"https://aVfUocZxvLobbmbBGkfDCWriFX.qgkkKeBpYVfUAqjLom9,zgHSyP.lAGoVEMXvXFsXexPjhLVwJD7VkfzsvFkuI,\",\n          \"original\": \"https://GOpUtMZNEzCITfdOToNV.lchXbkYEogCBGFjSrhZpNGcE\",\n          \"reduced\": \"http://cmbWJrpVKCzBm.lswnEJrWw9VFjA.G.igXGvsSTSn9XzCtq+W1n3fQIc09hbGqxuIuYdz8t\"\n        },\n        \"is_admin\": false\n      }\n    ],\n    \"hr_managers\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"WHMF3Jyy7Oo@SxoAwIfnYawf.fkv\",\n        \"first_name\": \"string\",\n        \"middle_name\": \"string\",\n        \"last_name\": \"string\",\n        \"display_picture\": {\n          \"large\": \"https://sFCARpiJgkMnuSnOIqYpv.npmEU6fkVa1Q3RJVj7Ix4WeP+Gf8YaMxsSosxRGfyWmkq9Qw\",\n          \"medium\": \"http://MNBdKrSfQ.qtwLpxx+tSaXAabClW3CmF5\",\n          \"small\": \"https://UhHlWjTKXmgXHjDIMHsBjCbkVychUq.naawfhw4g\",\n          \"original\": \"https://k.bpmv11bVqFll80KQztlKWMWUr0GVtlfip3G31.sPW-uhFGu+\",\n          \"reduced\": \"http://xFuBjPwrRQZcpzimfpYgZynY.capNOPPiF5mZmVw-vn9076fU.crk\"\n        },\n        \"is_admin\": true\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"SYywDniZQL8@uINhC.sxn\",\n        \"first_name\": \"string\",\n        \"middle_name\": \"string\",\n        \"last_name\": \"string\",\n        \"display_picture\": {\n          \"large\": \"https://UPNjfvxSjRJKisddm.yvfyEzlt,ZQA\",\n          \"medium\": \"https://QHEvvzsylyzlTblImblnPsP.fpqJJlQuPwUa.wJWvcv\",\n          \"small\": \"http://XdNFbNMLtlorjzBsghWMBuFvHbWCyKx.uiqBIg8H.IEOrFfULWiRS,DVzFGwQ7.EI2ZsL-Vk4VnKf\",\n          \"original\": \"https://SLGQrORgsDDSlZM.pupdOzsv,AjWAr,FaTUsrAlOqtrLN8.8\",\n          \"reduced\": \"http://RxCodgSTLfstAJaUhgQQ.sruoY1DX7PpqOnprxYuDJykq\"\n        },\n        \"is_admin\": false\n      }\n    ],\n    \"secondary_managers\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"PrwZ5XKb4Kz@ytJnOkaJBRKrkCuUHizJlK.ctuk\",\n        \"first_name\": \"string\",\n        \"middle_name\": \"string\",\n        \"last_name\": \"string\",\n        \"display_picture\": {\n          \"large\": \"http://rJsDnUMlJJOAUkXrs.mhrryj5ZaBOi93r9JcKSJcmSfEv\",\n          \"medium\": \"http://WySrMGpgetQZswdfdNmgEBUfvx.jtqGQzkvmT8NfRkqSDkPV5kNqqPHvvx7UH7qCC4cgEBX4v83DKTdRH,QT-e\",\n          \"small\": \"http://tkkbiMTUrUPTknjZdhwPLR.ybpdqDxB3o5vY+38bkC84mtqG7.xjX5kNYl2j9pxzy\",\n          \"original\": \"https://uwVYCmXtaSeUsfFDGMhylFlBSvpl.qovpjnn7PaBt+F6Ba82,ZwzfHn+fKsDK,nWVFQ8\",\n          \"reduced\": \"http://GMxqlAzBgxIGeRJlNC.mwoohNt2r5ikvPZK4mOf-HZ838dNbXsnAgvWDPZ0iwR\"\n        },\n        \"is_admin\": false\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"0lsb@NvmdN.wift\",\n        \"first_name\": \"string\",\n        \"middle_name\": \"string\",\n        \"last_name\": \"string\",\n        \"display_picture\": {\n          \"large\": \"https://eCTKMiuWGFRIqj.wzqmE94N89oNw.ORTeKgj8EN2Hlz3ukKTs0tLwTgKHGBn3TtoHXErHRYg8bxLd2XS\",\n          \"medium\": \"http://eGOgdETIMxGELPjDFYfceApRqm.klDWBLb4gbvCHDOBBktiXygD7mfl2uhDbX7b\",\n          \"small\": \"https://NjanQKqAdwtKiI.dnzvlYtUczKKuBVHeAStrkuD+9NqY0\",\n          \"original\": \"http://gsvhz.riKRBYiGoOm,fSkXlo4-yhk7v.juqo4,.9ba.N-iXj0l1Eu5og\",\n          \"reduced\": \"https://VTSPgVLBGlfqmVjpofsJDEhbNrXjvAd.dohwOAhA3rpRdtg1IIwKCIW.eD4-zd56YaQV+i2ySJb-Kb2m8lpDF\"\n        },\n        \"is_admin\": false\n      }\n    ],\n    \"custom_attributes\": {\n      \"key_0\": \"string\",\n      \"key_1\": 5630\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "61294da1-c997-4776-886f-1f1d3dbffef8",
+              "name": "Bad request — missing or invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"first_name\": \"John\",\n  \"last_name\": \"Doe\",\n  \"email\": \"john.doe@company.com\",\n  \"employee_id\": \"EMP001\",\n  \"departments\": [\n    \"dept-123\"\n  ],\n  \"businesses\": [\n    \"biz-456\"\n  ],\n  \"hr_managers\": [\n    \"manager-789\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    },\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8cd72f88-08b9-4713-9a9b-6fd9cb082b00",
+              "name": "Unauthorized — invalid or missing ClientKey/SecretKey",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"first_name\": \"John\",\n  \"last_name\": \"Doe\",\n  \"email\": \"john.doe@company.com\",\n  \"employee_id\": \"EMP001\",\n  \"departments\": [\n    \"dept-123\"\n  ],\n  \"businesses\": [\n    \"biz-456\"\n  ],\n  \"hr_managers\": [\n    \"manager-789\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    },\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fcc27f08-e05b-4872-8273-05f8563dcf31",
+              "name": "Unprocessable Entity — validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"first_name\": \"John\",\n  \"last_name\": \"Doe\",\n  \"email\": \"john.doe@company.com\",\n  \"employee_id\": \"EMP001\",\n  \"departments\": [\n    \"dept-123\"\n  ],\n  \"businesses\": [\n    \"biz-456\"\n  ],\n  \"hr_managers\": [\n    \"manager-789\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    },\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3bbcfbc1-c4f4-4fa7-900c-e8d90871ed18",
+          "name": "Get block reason codes",
+          "request": {
+            "name": "Get block reason codes",
+            "description": {
+              "content": "Returns all available reason codes for deactivating (blocking) a user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                "block-reason-codes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "354cca40-60f5-44b2-b317-d873fb9794f2",
+              "name": "List of block reason codes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    "block-reason-codes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"code\": \"involuntary\",\n      \"display_text\": \"Involuntary\",\n      \"description\": \"string\"\n    },\n    {\n      \"code\": \"involuntary\",\n      \"display_text\": \"Involuntary\",\n      \"description\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4668a988-3545-4149-ac4e-f3b60de56cc2",
+              "name": "Unauthorized — invalid or missing ClientKey/SecretKey",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    "block-reason-codes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    },\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "84c32425-37bf-4f9a-91b3-d70dc018a991",
+          "name": "Get a single user",
+          "request": {
+            "name": "Get a single user",
+            "description": {
+              "content": "Returns detailed information for a single user by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>",
+                  "description": "Comma-separated list of related data to include"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier of the resource"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d5b574da-b8f8-4fbd-a4e4-03e897929977",
+              "name": "User details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include",
+                      "value": "primary_reporter,direct_reports,hr_managers,secondary_managers"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"data\": {\n    \"id\": \"b62167d0-2718-4e45-9721-27535991becf\",\n    \"name\": \"Adam Smith\",\n    \"status\": \"Active\",\n    \"email\": \"adam.smith@company.com\",\n    \"first_name\": \"Adam\",\n    \"middle_name\": \"string\",\n    \"last_name\": \"Smith\",\n    \"employee_id\": \"E007\",\n    \"display_picture\": {\n      \"large\": \"https://wlgPIrLIsRvXnhhpgCaKgpxiNEd.qidbeeTofRcXd7Mwp.uBTzMR\",\n      \"medium\": \"http://NyjpmTTQjzdpSGHDbTQnZubbLi.rfcxzwfp9uGDlO-JHfyA7rVsSJtDr9sSvi71RxGXg\",\n      \"small\": \"https://Y.llfUjvrRVFAKWIWdV6ugTNonVT2XpuEr\",\n      \"original\": \"http://aJqJoBwnjhdBeCjDSNHnZpaqXXsHYj.pwkrdyK2YHm9VH4Bd358mLsKvj3btXbr1.URIIYvyoW4r7HxeGqDaL\",\n      \"reduced\": \"https://a.rrgrIvgt,qU,mBL+IbIVFErVkx2B-WV1uapuxjjXIPI+OlADPeOewCRqY6ZClhVnxy\"\n    },\n    \"job_title\": {\n      \"id\": \"string\",\n      \"name\": \"string\"\n    },\n    \"location\": {\n      \"id\": \"string\",\n      \"name\": \"string\"\n    },\n    \"departments\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"is_admin\": false\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"is_admin\": false\n      }\n    ],\n    \"education\": \"string\",\n    \"about_me\": \"string\",\n    \"phone_number\": \"string\",\n    \"secondary_phone_number\": \"string\",\n    \"level\": \"string\",\n    \"joining_date\": \"string\",\n    \"birthdate\": \"string\",\n    \"promotion_date\": \"string\",\n    \"review_date\": \"string\",\n    \"employee_type\": \"string\",\n    \"primary_reporter\": {},\n    \"direct_reports\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"jAkFi@YkxQVJOhSguDVQSHjtihSWZTnQ.gmie\",\n        \"first_name\": \"string\",\n        \"middle_name\": \"string\",\n        \"last_name\": \"string\",\n        \"display_picture\": {\n          \"large\": \"http://yrtAzxkhSvqmpdndPWErLkyRAJPump.gjwxsRGwPBsZTnKwTae3Jk0gPRyoVURSiGobLtliVGw23,2IoWXc5oWNnCvF3IrEPmN\",\n          \"medium\": \"https://LNGmwG.sleksigIA8ZZP-3s68aUnfPN8nmtWq9\",\n          \"small\": \"https://PBfGVvBJmAYalQS.whna4A8.uVjVUfxDPQnJH3ljO8toLHAMejDazV4VbxOdiamzOHKeUszV,qB,jKAnbz77.Gkof\",\n          \"original\": \"https://jAbvtAPbLxMsfdRMhkmiGFXDDyRg.qhiza+RQ4uNcX3PmpF5nqvm3X1k94CLsxbd0lH\",\n          \"reduced\": \"https://WulgABpNhNasNto.ciX311Q+UNf051SPFBjTLUUbj3srsKpVcCMBS\"\n        },\n        \"is_admin\": false\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"bHhYE7mzsb@pStilqalTvWTJMYcpdAeO.prxx\",\n        \"first_name\": \"string\",\n        \"middle_name\": \"string\",\n        \"last_name\": \"string\",\n        \"display_picture\": {\n          \"large\": \"https://CAFBCgjEXmYyJXf.rnirnq37l6M5RFox6Yxi1Hk-qVkK,SW4ij7uyrECV4GzvzK2N8pXbM.dNmjJG1o+L8o\",\n          \"medium\": \"http://mxDsYr.ostiN-ANxnxHjCsCjKTCGEzNdDK\",\n          \"small\": \"https://aVfUocZxvLobbmbBGkfDCWriFX.qgkkKeBpYVfUAqjLom9,zgHSyP.lAGoVEMXvXFsXexPjhLVwJD7VkfzsvFkuI,\",\n          \"original\": \"https://GOpUtMZNEzCITfdOToNV.lchXbkYEogCBGFjSrhZpNGcE\",\n          \"reduced\": \"http://cmbWJrpVKCzBm.lswnEJrWw9VFjA.G.igXGvsSTSn9XzCtq+W1n3fQIc09hbGqxuIuYdz8t\"\n        },\n        \"is_admin\": false\n      }\n    ],\n    \"hr_managers\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"WHMF3Jyy7Oo@SxoAwIfnYawf.fkv\",\n        \"first_name\": \"string\",\n        \"middle_name\": \"string\",\n        \"last_name\": \"string\",\n        \"display_picture\": {\n          \"large\": \"https://sFCARpiJgkMnuSnOIqYpv.npmEU6fkVa1Q3RJVj7Ix4WeP+Gf8YaMxsSosxRGfyWmkq9Qw\",\n          \"medium\": \"http://MNBdKrSfQ.qtwLpxx+tSaXAabClW3CmF5\",\n          \"small\": \"https://UhHlWjTKXmgXHjDIMHsBjCbkVychUq.naawfhw4g\",\n          \"original\": \"https://k.bpmv11bVqFll80KQztlKWMWUr0GVtlfip3G31.sPW-uhFGu+\",\n          \"reduced\": \"http://xFuBjPwrRQZcpzimfpYgZynY.capNOPPiF5mZmVw-vn9076fU.crk\"\n        },\n        \"is_admin\": true\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"SYywDniZQL8@uINhC.sxn\",\n        \"first_name\": \"string\",\n        \"middle_name\": \"string\",\n        \"last_name\": \"string\",\n        \"display_picture\": {\n          \"large\": \"https://UPNjfvxSjRJKisddm.yvfyEzlt,ZQA\",\n          \"medium\": \"https://QHEvvzsylyzlTblImblnPsP.fpqJJlQuPwUa.wJWvcv\",\n          \"small\": \"http://XdNFbNMLtlorjzBsghWMBuFvHbWCyKx.uiqBIg8H.IEOrFfULWiRS,DVzFGwQ7.EI2ZsL-Vk4VnKf\",\n          \"original\": \"https://SLGQrORgsDDSlZM.pupdOzsv,AjWAr,FaTUsrAlOqtrLN8.8\",\n          \"reduced\": \"http://RxCodgSTLfstAJaUhgQQ.sruoY1DX7PpqOnprxYuDJykq\"\n        },\n        \"is_admin\": false\n      }\n    ],\n    \"secondary_managers\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"PrwZ5XKb4Kz@ytJnOkaJBRKrkCuUHizJlK.ctuk\",\n        \"first_name\": \"string\",\n        \"middle_name\": \"string\",\n        \"last_name\": \"string\",\n        \"display_picture\": {\n          \"large\": \"http://rJsDnUMlJJOAUkXrs.mhrryj5ZaBOi93r9JcKSJcmSfEv\",\n          \"medium\": \"http://WySrMGpgetQZswdfdNmgEBUfvx.jtqGQzkvmT8NfRkqSDkPV5kNqqPHvvx7UH7qCC4cgEBX4v83DKTdRH,QT-e\",\n          \"small\": \"http://tkkbiMTUrUPTknjZdhwPLR.ybpdqDxB3o5vY+38bkC84mtqG7.xjX5kNYl2j9pxzy\",\n          \"original\": \"https://uwVYCmXtaSeUsfFDGMhylFlBSvpl.qovpjnn7PaBt+F6Ba82,ZwzfHn+fKsDK,nWVFQ8\",\n          \"reduced\": \"http://GMxqlAzBgxIGeRJlNC.mwoohNt2r5ikvPZK4mOf-HZ838dNbXsnAgvWDPZ0iwR\"\n        },\n        \"is_admin\": false\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"0lsb@NvmdN.wift\",\n        \"first_name\": \"string\",\n        \"middle_name\": \"string\",\n        \"last_name\": \"string\",\n        \"display_picture\": {\n          \"large\": \"https://eCTKMiuWGFRIqj.wzqmE94N89oNw.ORTeKgj8EN2Hlz3ukKTs0tLwTgKHGBn3TtoHXErHRYg8bxLd2XS\",\n          \"medium\": \"http://eGOgdETIMxGELPjDFYfceApRqm.klDWBLb4gbvCHDOBBktiXygD7mfl2uhDbX7b\",\n          \"small\": \"https://NjanQKqAdwtKiI.dnzvlYtUczKKuBVHeAStrkuD+9NqY0\",\n          \"original\": \"http://gsvhz.riKRBYiGoOm,fSkXlo4-yhk7v.juqo4,.9ba.N-iXj0l1Eu5og\",\n          \"reduced\": \"https://VTSPgVLBGlfqmVjpofsJDEhbNrXjvAd.dohwOAhA3rpRdtg1IIwKCIW.eD4-zd56YaQV+i2ySJb-Kb2m8lpDF\"\n        },\n        \"is_admin\": false\n      }\n    ],\n    \"custom_attributes\": {\n      \"key_0\": \"string\",\n      \"key_1\": 5630\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0d5815a0-b1df-4277-87ab-e39a6cf6df38",
+              "name": "Unauthorized — invalid or missing ClientKey/SecretKey",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include",
+                      "value": "primary_reporter,direct_reports,hr_managers,secondary_managers"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    },\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5bc3af4e-49b7-4589-9f42-8646942ca295",
+              "name": "Not Found — resource does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include",
+                      "value": "primary_reporter,direct_reports,hr_managers,secondary_managers"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    },\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "696e0f25-56a4-4710-8de4-938ea0e1365c",
+          "name": "Update an existing user",
+          "request": {
+            "name": "Update an existing user",
+            "description": {
+              "content": "Fully updates an existing user record by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier of the resource"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"first_name\": \"<string>\",\n  \"middle_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"employee_id\": \"<string>\",\n  \"joining_date\": \"<date>\",\n  \"birth_date\": \"<date>\",\n  \"location\": \"<string>\",\n  \"job_title\": \"<string>\",\n  \"level\": \"<string>\",\n  \"phone_number\": \"<string>\",\n  \"secondary_phone_number\": \"<string>\",\n  \"promotion_date\": \"<string>\",\n  \"review_date\": \"<string>\",\n  \"departments\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"businesses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"hr_managers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"secondary_managers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"manager_id\": \"<string>\",\n  \"custom_attributes\": {\n    \"key_0\": 5193.802297246549\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "91a23fe8-03bc-45e3-8d26-b36f23b5bc27",
+              "name": "User updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"first_name\": \"<string>\",\n  \"middle_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"employee_id\": \"<string>\",\n  \"joining_date\": \"<date>\",\n  \"birth_date\": \"<date>\",\n  \"location\": \"<string>\",\n  \"job_title\": \"<string>\",\n  \"level\": \"<string>\",\n  \"phone_number\": \"<string>\",\n  \"secondary_phone_number\": \"<string>\",\n  \"promotion_date\": \"<string>\",\n  \"review_date\": \"<string>\",\n  \"departments\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"businesses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"hr_managers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"secondary_managers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"manager_id\": \"<string>\",\n  \"custom_attributes\": {\n    \"key_0\": true,\n    \"key_1\": 2629.3051702550974\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"data\": {\n    \"id\": \"b62167d0-2718-4e45-9721-27535991becf\",\n    \"name\": \"Adam Smith\",\n    \"status\": \"Active\",\n    \"email\": \"adam.smith@company.com\",\n    \"first_name\": \"Adam\",\n    \"middle_name\": \"string\",\n    \"last_name\": \"Smith\",\n    \"employee_id\": \"E007\",\n    \"display_picture\": {\n      \"large\": \"https://wlgPIrLIsRvXnhhpgCaKgpxiNEd.qidbeeTofRcXd7Mwp.uBTzMR\",\n      \"medium\": \"http://NyjpmTTQjzdpSGHDbTQnZubbLi.rfcxzwfp9uGDlO-JHfyA7rVsSJtDr9sSvi71RxGXg\",\n      \"small\": \"https://Y.llfUjvrRVFAKWIWdV6ugTNonVT2XpuEr\",\n      \"original\": \"http://aJqJoBwnjhdBeCjDSNHnZpaqXXsHYj.pwkrdyK2YHm9VH4Bd358mLsKvj3btXbr1.URIIYvyoW4r7HxeGqDaL\",\n      \"reduced\": \"https://a.rrgrIvgt,qU,mBL+IbIVFErVkx2B-WV1uapuxjjXIPI+OlADPeOewCRqY6ZClhVnxy\"\n    },\n    \"job_title\": {\n      \"id\": \"string\",\n      \"name\": \"string\"\n    },\n    \"location\": {\n      \"id\": \"string\",\n      \"name\": \"string\"\n    },\n    \"departments\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"is_admin\": false\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"is_admin\": false\n      }\n    ],\n    \"education\": \"string\",\n    \"about_me\": \"string\",\n    \"phone_number\": \"string\",\n    \"secondary_phone_number\": \"string\",\n    \"level\": \"string\",\n    \"joining_date\": \"string\",\n    \"birthdate\": \"string\",\n    \"promotion_date\": \"string\",\n    \"review_date\": \"string\",\n    \"employee_type\": \"string\",\n    \"primary_reporter\": {},\n    \"direct_reports\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"jAkFi@YkxQVJOhSguDVQSHjtihSWZTnQ.gmie\",\n        \"first_name\": \"string\",\n        \"middle_name\": \"string\",\n        \"last_name\": \"string\",\n        \"display_picture\": {\n          \"large\": \"http://yrtAzxkhSvqmpdndPWErLkyRAJPump.gjwxsRGwPBsZTnKwTae3Jk0gPRyoVURSiGobLtliVGw23,2IoWXc5oWNnCvF3IrEPmN\",\n          \"medium\": \"https://LNGmwG.sleksigIA8ZZP-3s68aUnfPN8nmtWq9\",\n          \"small\": \"https://PBfGVvBJmAYalQS.whna4A8.uVjVUfxDPQnJH3ljO8toLHAMejDazV4VbxOdiamzOHKeUszV,qB,jKAnbz77.Gkof\",\n          \"original\": \"https://jAbvtAPbLxMsfdRMhkmiGFXDDyRg.qhiza+RQ4uNcX3PmpF5nqvm3X1k94CLsxbd0lH\",\n          \"reduced\": \"https://WulgABpNhNasNto.ciX311Q+UNf051SPFBjTLUUbj3srsKpVcCMBS\"\n        },\n        \"is_admin\": false\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"bHhYE7mzsb@pStilqalTvWTJMYcpdAeO.prxx\",\n        \"first_name\": \"string\",\n        \"middle_name\": \"string\",\n        \"last_name\": \"string\",\n        \"display_picture\": {\n          \"large\": \"https://CAFBCgjEXmYyJXf.rnirnq37l6M5RFox6Yxi1Hk-qVkK,SW4ij7uyrECV4GzvzK2N8pXbM.dNmjJG1o+L8o\",\n          \"medium\": \"http://mxDsYr.ostiN-ANxnxHjCsCjKTCGEzNdDK\",\n          \"small\": \"https://aVfUocZxvLobbmbBGkfDCWriFX.qgkkKeBpYVfUAqjLom9,zgHSyP.lAGoVEMXvXFsXexPjhLVwJD7VkfzsvFkuI,\",\n          \"original\": \"https://GOpUtMZNEzCITfdOToNV.lchXbkYEogCBGFjSrhZpNGcE\",\n          \"reduced\": \"http://cmbWJrpVKCzBm.lswnEJrWw9VFjA.G.igXGvsSTSn9XzCtq+W1n3fQIc09hbGqxuIuYdz8t\"\n        },\n        \"is_admin\": false\n      }\n    ],\n    \"hr_managers\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"WHMF3Jyy7Oo@SxoAwIfnYawf.fkv\",\n        \"first_name\": \"string\",\n        \"middle_name\": \"string\",\n        \"last_name\": \"string\",\n        \"display_picture\": {\n          \"large\": \"https://sFCARpiJgkMnuSnOIqYpv.npmEU6fkVa1Q3RJVj7Ix4WeP+Gf8YaMxsSosxRGfyWmkq9Qw\",\n          \"medium\": \"http://MNBdKrSfQ.qtwLpxx+tSaXAabClW3CmF5\",\n          \"small\": \"https://UhHlWjTKXmgXHjDIMHsBjCbkVychUq.naawfhw4g\",\n          \"original\": \"https://k.bpmv11bVqFll80KQztlKWMWUr0GVtlfip3G31.sPW-uhFGu+\",\n          \"reduced\": \"http://xFuBjPwrRQZcpzimfpYgZynY.capNOPPiF5mZmVw-vn9076fU.crk\"\n        },\n        \"is_admin\": true\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"SYywDniZQL8@uINhC.sxn\",\n        \"first_name\": \"string\",\n        \"middle_name\": \"string\",\n        \"last_name\": \"string\",\n        \"display_picture\": {\n          \"large\": \"https://UPNjfvxSjRJKisddm.yvfyEzlt,ZQA\",\n          \"medium\": \"https://QHEvvzsylyzlTblImblnPsP.fpqJJlQuPwUa.wJWvcv\",\n          \"small\": \"http://XdNFbNMLtlorjzBsghWMBuFvHbWCyKx.uiqBIg8H.IEOrFfULWiRS,DVzFGwQ7.EI2ZsL-Vk4VnKf\",\n          \"original\": \"https://SLGQrORgsDDSlZM.pupdOzsv,AjWAr,FaTUsrAlOqtrLN8.8\",\n          \"reduced\": \"http://RxCodgSTLfstAJaUhgQQ.sruoY1DX7PpqOnprxYuDJykq\"\n        },\n        \"is_admin\": false\n      }\n    ],\n    \"secondary_managers\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"PrwZ5XKb4Kz@ytJnOkaJBRKrkCuUHizJlK.ctuk\",\n        \"first_name\": \"string\",\n        \"middle_name\": \"string\",\n        \"last_name\": \"string\",\n        \"display_picture\": {\n          \"large\": \"http://rJsDnUMlJJOAUkXrs.mhrryj5ZaBOi93r9JcKSJcmSfEv\",\n          \"medium\": \"http://WySrMGpgetQZswdfdNmgEBUfvx.jtqGQzkvmT8NfRkqSDkPV5kNqqPHvvx7UH7qCC4cgEBX4v83DKTdRH,QT-e\",\n          \"small\": \"http://tkkbiMTUrUPTknjZdhwPLR.ybpdqDxB3o5vY+38bkC84mtqG7.xjX5kNYl2j9pxzy\",\n          \"original\": \"https://uwVYCmXtaSeUsfFDGMhylFlBSvpl.qovpjnn7PaBt+F6Ba82,ZwzfHn+fKsDK,nWVFQ8\",\n          \"reduced\": \"http://GMxqlAzBgxIGeRJlNC.mwoohNt2r5ikvPZK4mOf-HZ838dNbXsnAgvWDPZ0iwR\"\n        },\n        \"is_admin\": false\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"0lsb@NvmdN.wift\",\n        \"first_name\": \"string\",\n        \"middle_name\": \"string\",\n        \"last_name\": \"string\",\n        \"display_picture\": {\n          \"large\": \"https://eCTKMiuWGFRIqj.wzqmE94N89oNw.ORTeKgj8EN2Hlz3ukKTs0tLwTgKHGBn3TtoHXErHRYg8bxLd2XS\",\n          \"medium\": \"http://eGOgdETIMxGELPjDFYfceApRqm.klDWBLb4gbvCHDOBBktiXygD7mfl2uhDbX7b\",\n          \"small\": \"https://NjanQKqAdwtKiI.dnzvlYtUczKKuBVHeAStrkuD+9NqY0\",\n          \"original\": \"http://gsvhz.riKRBYiGoOm,fSkXlo4-yhk7v.juqo4,.9ba.N-iXj0l1Eu5og\",\n          \"reduced\": \"https://VTSPgVLBGlfqmVjpofsJDEhbNrXjvAd.dohwOAhA3rpRdtg1IIwKCIW.eD4-zd56YaQV+i2ySJb-Kb2m8lpDF\"\n        },\n        \"is_admin\": false\n      }\n    ],\n    \"custom_attributes\": {\n      \"key_0\": \"string\",\n      \"key_1\": 5630\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4e572a68-f8f4-444c-9cab-c161df461c5a",
+              "name": "Bad request — missing or invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"first_name\": \"<string>\",\n  \"middle_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"employee_id\": \"<string>\",\n  \"joining_date\": \"<date>\",\n  \"birth_date\": \"<date>\",\n  \"location\": \"<string>\",\n  \"job_title\": \"<string>\",\n  \"level\": \"<string>\",\n  \"phone_number\": \"<string>\",\n  \"secondary_phone_number\": \"<string>\",\n  \"promotion_date\": \"<string>\",\n  \"review_date\": \"<string>\",\n  \"departments\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"businesses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"hr_managers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"secondary_managers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"manager_id\": \"<string>\",\n  \"custom_attributes\": {\n    \"key_0\": true,\n    \"key_1\": 2629.3051702550974\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    },\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f1f9adfe-91a0-4f92-ad0a-2d9e17bf25e5",
+              "name": "Unauthorized — invalid or missing ClientKey/SecretKey",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"first_name\": \"<string>\",\n  \"middle_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"employee_id\": \"<string>\",\n  \"joining_date\": \"<date>\",\n  \"birth_date\": \"<date>\",\n  \"location\": \"<string>\",\n  \"job_title\": \"<string>\",\n  \"level\": \"<string>\",\n  \"phone_number\": \"<string>\",\n  \"secondary_phone_number\": \"<string>\",\n  \"promotion_date\": \"<string>\",\n  \"review_date\": \"<string>\",\n  \"departments\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"businesses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"hr_managers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"secondary_managers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"manager_id\": \"<string>\",\n  \"custom_attributes\": {\n    \"key_0\": true,\n    \"key_1\": 2629.3051702550974\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    },\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d03a8a1e-d9fb-461b-8fb8-b18bf9fe0918",
+              "name": "Not Found — resource does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"first_name\": \"<string>\",\n  \"middle_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"employee_id\": \"<string>\",\n  \"joining_date\": \"<date>\",\n  \"birth_date\": \"<date>\",\n  \"location\": \"<string>\",\n  \"job_title\": \"<string>\",\n  \"level\": \"<string>\",\n  \"phone_number\": \"<string>\",\n  \"secondary_phone_number\": \"<string>\",\n  \"promotion_date\": \"<string>\",\n  \"review_date\": \"<string>\",\n  \"departments\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"businesses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"hr_managers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"secondary_managers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"manager_id\": \"<string>\",\n  \"custom_attributes\": {\n    \"key_0\": true,\n    \"key_1\": 2629.3051702550974\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    },\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f0739bb1-6139-4bd8-80ca-2acec0a2c7d6",
+              "name": "Unprocessable Entity — validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"first_name\": \"<string>\",\n  \"middle_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"employee_id\": \"<string>\",\n  \"joining_date\": \"<date>\",\n  \"birth_date\": \"<date>\",\n  \"location\": \"<string>\",\n  \"job_title\": \"<string>\",\n  \"level\": \"<string>\",\n  \"phone_number\": \"<string>\",\n  \"secondary_phone_number\": \"<string>\",\n  \"promotion_date\": \"<string>\",\n  \"review_date\": \"<string>\",\n  \"departments\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"businesses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"hr_managers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"secondary_managers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"manager_id\": \"<string>\",\n  \"custom_attributes\": {\n    \"key_0\": true,\n    \"key_1\": 2629.3051702550974\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    },\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5ada6735-57d9-45ee-9e6a-275f3d0d0844",
+          "name": "Partially update an existing user",
+          "request": {
+            "name": "Partially update an existing user",
+            "description": {
+              "content": "Partially updates a user record. Only the fields provided in the request body are updated.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier of the resource"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"first_name\": \"<string>\",\n  \"middle_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"employee_id\": \"<string>\",\n  \"joining_date\": \"<date>\",\n  \"birth_date\": \"<date>\",\n  \"location\": \"<string>\",\n  \"job_title\": \"<string>\",\n  \"level\": \"<string>\",\n  \"phone_number\": \"<string>\",\n  \"secondary_phone_number\": \"<string>\",\n  \"promotion_date\": \"<string>\",\n  \"review_date\": \"<string>\",\n  \"departments\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"businesses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"hr_managers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"secondary_managers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"manager_id\": \"<string>\",\n  \"custom_attributes\": {\n    \"key_0\": false\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0f4b6096-1bdc-4a65-8fc7-980b1a05ee8d",
+              "name": "User partially updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"first_name\": \"<string>\",\n  \"middle_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"employee_id\": \"<string>\",\n  \"joining_date\": \"<date>\",\n  \"birth_date\": \"<date>\",\n  \"location\": \"<string>\",\n  \"job_title\": \"<string>\",\n  \"level\": \"<string>\",\n  \"phone_number\": \"<string>\",\n  \"secondary_phone_number\": \"<string>\",\n  \"promotion_date\": \"<string>\",\n  \"review_date\": \"<string>\",\n  \"departments\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"businesses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"hr_managers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"secondary_managers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"manager_id\": \"<string>\",\n  \"custom_attributes\": {\n    \"key_0\": true,\n    \"key_1\": 2629.3051702550974\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"data\": {\n    \"id\": \"b62167d0-2718-4e45-9721-27535991becf\",\n    \"name\": \"Adam Smith\",\n    \"status\": \"Active\",\n    \"email\": \"adam.smith@company.com\",\n    \"first_name\": \"Adam\",\n    \"middle_name\": \"string\",\n    \"last_name\": \"Smith\",\n    \"employee_id\": \"E007\",\n    \"display_picture\": {\n      \"large\": \"https://wlgPIrLIsRvXnhhpgCaKgpxiNEd.qidbeeTofRcXd7Mwp.uBTzMR\",\n      \"medium\": \"http://NyjpmTTQjzdpSGHDbTQnZubbLi.rfcxzwfp9uGDlO-JHfyA7rVsSJtDr9sSvi71RxGXg\",\n      \"small\": \"https://Y.llfUjvrRVFAKWIWdV6ugTNonVT2XpuEr\",\n      \"original\": \"http://aJqJoBwnjhdBeCjDSNHnZpaqXXsHYj.pwkrdyK2YHm9VH4Bd358mLsKvj3btXbr1.URIIYvyoW4r7HxeGqDaL\",\n      \"reduced\": \"https://a.rrgrIvgt,qU,mBL+IbIVFErVkx2B-WV1uapuxjjXIPI+OlADPeOewCRqY6ZClhVnxy\"\n    },\n    \"job_title\": {\n      \"id\": \"string\",\n      \"name\": \"string\"\n    },\n    \"location\": {\n      \"id\": \"string\",\n      \"name\": \"string\"\n    },\n    \"departments\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"is_admin\": false\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"is_admin\": false\n      }\n    ],\n    \"education\": \"string\",\n    \"about_me\": \"string\",\n    \"phone_number\": \"string\",\n    \"secondary_phone_number\": \"string\",\n    \"level\": \"string\",\n    \"joining_date\": \"string\",\n    \"birthdate\": \"string\",\n    \"promotion_date\": \"string\",\n    \"review_date\": \"string\",\n    \"employee_type\": \"string\",\n    \"primary_reporter\": {},\n    \"direct_reports\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"jAkFi@YkxQVJOhSguDVQSHjtihSWZTnQ.gmie\",\n        \"first_name\": \"string\",\n        \"middle_name\": \"string\",\n        \"last_name\": \"string\",\n        \"display_picture\": {\n          \"large\": \"http://yrtAzxkhSvqmpdndPWErLkyRAJPump.gjwxsRGwPBsZTnKwTae3Jk0gPRyoVURSiGobLtliVGw23,2IoWXc5oWNnCvF3IrEPmN\",\n          \"medium\": \"https://LNGmwG.sleksigIA8ZZP-3s68aUnfPN8nmtWq9\",\n          \"small\": \"https://PBfGVvBJmAYalQS.whna4A8.uVjVUfxDPQnJH3ljO8toLHAMejDazV4VbxOdiamzOHKeUszV,qB,jKAnbz77.Gkof\",\n          \"original\": \"https://jAbvtAPbLxMsfdRMhkmiGFXDDyRg.qhiza+RQ4uNcX3PmpF5nqvm3X1k94CLsxbd0lH\",\n          \"reduced\": \"https://WulgABpNhNasNto.ciX311Q+UNf051SPFBjTLUUbj3srsKpVcCMBS\"\n        },\n        \"is_admin\": false\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"bHhYE7mzsb@pStilqalTvWTJMYcpdAeO.prxx\",\n        \"first_name\": \"string\",\n        \"middle_name\": \"string\",\n        \"last_name\": \"string\",\n        \"display_picture\": {\n          \"large\": \"https://CAFBCgjEXmYyJXf.rnirnq37l6M5RFox6Yxi1Hk-qVkK,SW4ij7uyrECV4GzvzK2N8pXbM.dNmjJG1o+L8o\",\n          \"medium\": \"http://mxDsYr.ostiN-ANxnxHjCsCjKTCGEzNdDK\",\n          \"small\": \"https://aVfUocZxvLobbmbBGkfDCWriFX.qgkkKeBpYVfUAqjLom9,zgHSyP.lAGoVEMXvXFsXexPjhLVwJD7VkfzsvFkuI,\",\n          \"original\": \"https://GOpUtMZNEzCITfdOToNV.lchXbkYEogCBGFjSrhZpNGcE\",\n          \"reduced\": \"http://cmbWJrpVKCzBm.lswnEJrWw9VFjA.G.igXGvsSTSn9XzCtq+W1n3fQIc09hbGqxuIuYdz8t\"\n        },\n        \"is_admin\": false\n      }\n    ],\n    \"hr_managers\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"WHMF3Jyy7Oo@SxoAwIfnYawf.fkv\",\n        \"first_name\": \"string\",\n        \"middle_name\": \"string\",\n        \"last_name\": \"string\",\n        \"display_picture\": {\n          \"large\": \"https://sFCARpiJgkMnuSnOIqYpv.npmEU6fkVa1Q3RJVj7Ix4WeP+Gf8YaMxsSosxRGfyWmkq9Qw\",\n          \"medium\": \"http://MNBdKrSfQ.qtwLpxx+tSaXAabClW3CmF5\",\n          \"small\": \"https://UhHlWjTKXmgXHjDIMHsBjCbkVychUq.naawfhw4g\",\n          \"original\": \"https://k.bpmv11bVqFll80KQztlKWMWUr0GVtlfip3G31.sPW-uhFGu+\",\n          \"reduced\": \"http://xFuBjPwrRQZcpzimfpYgZynY.capNOPPiF5mZmVw-vn9076fU.crk\"\n        },\n        \"is_admin\": true\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"SYywDniZQL8@uINhC.sxn\",\n        \"first_name\": \"string\",\n        \"middle_name\": \"string\",\n        \"last_name\": \"string\",\n        \"display_picture\": {\n          \"large\": \"https://UPNjfvxSjRJKisddm.yvfyEzlt,ZQA\",\n          \"medium\": \"https://QHEvvzsylyzlTblImblnPsP.fpqJJlQuPwUa.wJWvcv\",\n          \"small\": \"http://XdNFbNMLtlorjzBsghWMBuFvHbWCyKx.uiqBIg8H.IEOrFfULWiRS,DVzFGwQ7.EI2ZsL-Vk4VnKf\",\n          \"original\": \"https://SLGQrORgsDDSlZM.pupdOzsv,AjWAr,FaTUsrAlOqtrLN8.8\",\n          \"reduced\": \"http://RxCodgSTLfstAJaUhgQQ.sruoY1DX7PpqOnprxYuDJykq\"\n        },\n        \"is_admin\": false\n      }\n    ],\n    \"secondary_managers\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"PrwZ5XKb4Kz@ytJnOkaJBRKrkCuUHizJlK.ctuk\",\n        \"first_name\": \"string\",\n        \"middle_name\": \"string\",\n        \"last_name\": \"string\",\n        \"display_picture\": {\n          \"large\": \"http://rJsDnUMlJJOAUkXrs.mhrryj5ZaBOi93r9JcKSJcmSfEv\",\n          \"medium\": \"http://WySrMGpgetQZswdfdNmgEBUfvx.jtqGQzkvmT8NfRkqSDkPV5kNqqPHvvx7UH7qCC4cgEBX4v83DKTdRH,QT-e\",\n          \"small\": \"http://tkkbiMTUrUPTknjZdhwPLR.ybpdqDxB3o5vY+38bkC84mtqG7.xjX5kNYl2j9pxzy\",\n          \"original\": \"https://uwVYCmXtaSeUsfFDGMhylFlBSvpl.qovpjnn7PaBt+F6Ba82,ZwzfHn+fKsDK,nWVFQ8\",\n          \"reduced\": \"http://GMxqlAzBgxIGeRJlNC.mwoohNt2r5ikvPZK4mOf-HZ838dNbXsnAgvWDPZ0iwR\"\n        },\n        \"is_admin\": false\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"0lsb@NvmdN.wift\",\n        \"first_name\": \"string\",\n        \"middle_name\": \"string\",\n        \"last_name\": \"string\",\n        \"display_picture\": {\n          \"large\": \"https://eCTKMiuWGFRIqj.wzqmE94N89oNw.ORTeKgj8EN2Hlz3ukKTs0tLwTgKHGBn3TtoHXErHRYg8bxLd2XS\",\n          \"medium\": \"http://eGOgdETIMxGELPjDFYfceApRqm.klDWBLb4gbvCHDOBBktiXygD7mfl2uhDbX7b\",\n          \"small\": \"https://NjanQKqAdwtKiI.dnzvlYtUczKKuBVHeAStrkuD+9NqY0\",\n          \"original\": \"http://gsvhz.riKRBYiGoOm,fSkXlo4-yhk7v.juqo4,.9ba.N-iXj0l1Eu5og\",\n          \"reduced\": \"https://VTSPgVLBGlfqmVjpofsJDEhbNrXjvAd.dohwOAhA3rpRdtg1IIwKCIW.eD4-zd56YaQV+i2ySJb-Kb2m8lpDF\"\n        },\n        \"is_admin\": false\n      }\n    ],\n    \"custom_attributes\": {\n      \"key_0\": \"string\",\n      \"key_1\": 5630\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "758c3c01-aca4-4a51-baa5-f052309280bb",
+              "name": "Bad request — missing or invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"first_name\": \"<string>\",\n  \"middle_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"employee_id\": \"<string>\",\n  \"joining_date\": \"<date>\",\n  \"birth_date\": \"<date>\",\n  \"location\": \"<string>\",\n  \"job_title\": \"<string>\",\n  \"level\": \"<string>\",\n  \"phone_number\": \"<string>\",\n  \"secondary_phone_number\": \"<string>\",\n  \"promotion_date\": \"<string>\",\n  \"review_date\": \"<string>\",\n  \"departments\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"businesses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"hr_managers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"secondary_managers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"manager_id\": \"<string>\",\n  \"custom_attributes\": {\n    \"key_0\": true,\n    \"key_1\": 2629.3051702550974\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    },\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bc17b261-1b1b-4c14-ab06-05199fb43d06",
+              "name": "Unauthorized — invalid or missing ClientKey/SecretKey",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"first_name\": \"<string>\",\n  \"middle_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"employee_id\": \"<string>\",\n  \"joining_date\": \"<date>\",\n  \"birth_date\": \"<date>\",\n  \"location\": \"<string>\",\n  \"job_title\": \"<string>\",\n  \"level\": \"<string>\",\n  \"phone_number\": \"<string>\",\n  \"secondary_phone_number\": \"<string>\",\n  \"promotion_date\": \"<string>\",\n  \"review_date\": \"<string>\",\n  \"departments\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"businesses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"hr_managers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"secondary_managers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"manager_id\": \"<string>\",\n  \"custom_attributes\": {\n    \"key_0\": true,\n    \"key_1\": 2629.3051702550974\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    },\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8f7b5261-3508-4184-b066-8b47c6a7beed",
+              "name": "Not Found — resource does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"first_name\": \"<string>\",\n  \"middle_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"employee_id\": \"<string>\",\n  \"joining_date\": \"<date>\",\n  \"birth_date\": \"<date>\",\n  \"location\": \"<string>\",\n  \"job_title\": \"<string>\",\n  \"level\": \"<string>\",\n  \"phone_number\": \"<string>\",\n  \"secondary_phone_number\": \"<string>\",\n  \"promotion_date\": \"<string>\",\n  \"review_date\": \"<string>\",\n  \"departments\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"businesses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"hr_managers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"secondary_managers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"manager_id\": \"<string>\",\n  \"custom_attributes\": {\n    \"key_0\": true,\n    \"key_1\": 2629.3051702550974\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    },\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "27586b8c-2f39-487b-a666-d978d994d6ef",
+              "name": "Unprocessable Entity — validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"first_name\": \"<string>\",\n  \"middle_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"employee_id\": \"<string>\",\n  \"joining_date\": \"<date>\",\n  \"birth_date\": \"<date>\",\n  \"location\": \"<string>\",\n  \"job_title\": \"<string>\",\n  \"level\": \"<string>\",\n  \"phone_number\": \"<string>\",\n  \"secondary_phone_number\": \"<string>\",\n  \"promotion_date\": \"<string>\",\n  \"review_date\": \"<string>\",\n  \"departments\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"businesses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"hr_managers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"secondary_managers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"manager_id\": \"<string>\",\n  \"custom_attributes\": {\n    \"key_0\": true,\n    \"key_1\": 2629.3051702550974\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    },\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "667a1edb-8245-469b-8789-e5e913e4569c",
+          "name": "Update user's profile picture",
+          "request": {
+            "name": "Update user's profile picture",
+            "description": {
+              "content": "Uploads and sets a new profile picture for the specified user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":id",
+                "profile",
+                "picture"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier of the resource"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"profile_picture\": \"<byte>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "04050559-fa6f-41ab-93d3-07292febf7f3",
+              "name": "Profile picture updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id",
+                    "profile",
+                    "picture"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"profile_picture\": \"<byte>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "08dc5fc6-cfba-4369-aa08-e2e49b43c0c4",
+              "name": "Unauthorized — invalid or missing ClientKey/SecretKey",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id",
+                    "profile",
+                    "picture"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"profile_picture\": \"<byte>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    },\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e6be9e5e-8149-4ffc-a2c0-c6898f659ab9",
+              "name": "Not Found — resource does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id",
+                    "profile",
+                    "picture"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"profile_picture\": \"<byte>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    },\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7f69108f-77b3-48cc-b8f2-4507ec696776",
+          "name": "Deactivate a user",
+          "request": {
+            "name": "Deactivate a user",
+            "description": {
+              "content": "Deactivates (blocks) the specified user, optionally with a reason code.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":id",
+                "deactivate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier of the resource"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"block_reason_code\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "96296dd7-94fe-4c63-8f32-283f92582b83",
+              "name": "User deactivated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id",
+                    "deactivate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"block_reason_code\": \"involuntary\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"data\": {\n    \"id\": \"b62167d0-2718-4e45-9721-27535991becf\",\n    \"name\": \"Adam Smith\",\n    \"status\": \"Active\",\n    \"email\": \"adam.smith@company.com\",\n    \"first_name\": \"Adam\",\n    \"middle_name\": \"string\",\n    \"last_name\": \"Smith\",\n    \"employee_id\": \"E007\",\n    \"display_picture\": {\n      \"large\": \"https://wlgPIrLIsRvXnhhpgCaKgpxiNEd.qidbeeTofRcXd7Mwp.uBTzMR\",\n      \"medium\": \"http://NyjpmTTQjzdpSGHDbTQnZubbLi.rfcxzwfp9uGDlO-JHfyA7rVsSJtDr9sSvi71RxGXg\",\n      \"small\": \"https://Y.llfUjvrRVFAKWIWdV6ugTNonVT2XpuEr\",\n      \"original\": \"http://aJqJoBwnjhdBeCjDSNHnZpaqXXsHYj.pwkrdyK2YHm9VH4Bd358mLsKvj3btXbr1.URIIYvyoW4r7HxeGqDaL\",\n      \"reduced\": \"https://a.rrgrIvgt,qU,mBL+IbIVFErVkx2B-WV1uapuxjjXIPI+OlADPeOewCRqY6ZClhVnxy\"\n    },\n    \"job_title\": {\n      \"id\": \"string\",\n      \"name\": \"string\"\n    },\n    \"location\": {\n      \"id\": \"string\",\n      \"name\": \"string\"\n    },\n    \"departments\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"is_admin\": false\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"is_admin\": false\n      }\n    ],\n    \"education\": \"string\",\n    \"about_me\": \"string\",\n    \"phone_number\": \"string\",\n    \"secondary_phone_number\": \"string\",\n    \"level\": \"string\",\n    \"joining_date\": \"string\",\n    \"birthdate\": \"string\",\n    \"promotion_date\": \"string\",\n    \"review_date\": \"string\",\n    \"employee_type\": \"string\",\n    \"primary_reporter\": {},\n    \"direct_reports\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"jAkFi@YkxQVJOhSguDVQSHjtihSWZTnQ.gmie\",\n        \"first_name\": \"string\",\n        \"middle_name\": \"string\",\n        \"last_name\": \"string\",\n        \"display_picture\": {\n          \"large\": \"http://yrtAzxkhSvqmpdndPWErLkyRAJPump.gjwxsRGwPBsZTnKwTae3Jk0gPRyoVURSiGobLtliVGw23,2IoWXc5oWNnCvF3IrEPmN\",\n          \"medium\": \"https://LNGmwG.sleksigIA8ZZP-3s68aUnfPN8nmtWq9\",\n          \"small\": \"https://PBfGVvBJmAYalQS.whna4A8.uVjVUfxDPQnJH3ljO8toLHAMejDazV4VbxOdiamzOHKeUszV,qB,jKAnbz77.Gkof\",\n          \"original\": \"https://jAbvtAPbLxMsfdRMhkmiGFXDDyRg.qhiza+RQ4uNcX3PmpF5nqvm3X1k94CLsxbd0lH\",\n          \"reduced\": \"https://WulgABpNhNasNto.ciX311Q+UNf051SPFBjTLUUbj3srsKpVcCMBS\"\n        },\n        \"is_admin\": false\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"bHhYE7mzsb@pStilqalTvWTJMYcpdAeO.prxx\",\n        \"first_name\": \"string\",\n        \"middle_name\": \"string\",\n        \"last_name\": \"string\",\n        \"display_picture\": {\n          \"large\": \"https://CAFBCgjEXmYyJXf.rnirnq37l6M5RFox6Yxi1Hk-qVkK,SW4ij7uyrECV4GzvzK2N8pXbM.dNmjJG1o+L8o\",\n          \"medium\": \"http://mxDsYr.ostiN-ANxnxHjCsCjKTCGEzNdDK\",\n          \"small\": \"https://aVfUocZxvLobbmbBGkfDCWriFX.qgkkKeBpYVfUAqjLom9,zgHSyP.lAGoVEMXvXFsXexPjhLVwJD7VkfzsvFkuI,\",\n          \"original\": \"https://GOpUtMZNEzCITfdOToNV.lchXbkYEogCBGFjSrhZpNGcE\",\n          \"reduced\": \"http://cmbWJrpVKCzBm.lswnEJrWw9VFjA.G.igXGvsSTSn9XzCtq+W1n3fQIc09hbGqxuIuYdz8t\"\n        },\n        \"is_admin\": false\n      }\n    ],\n    \"hr_managers\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"WHMF3Jyy7Oo@SxoAwIfnYawf.fkv\",\n        \"first_name\": \"string\",\n        \"middle_name\": \"string\",\n        \"last_name\": \"string\",\n        \"display_picture\": {\n          \"large\": \"https://sFCARpiJgkMnuSnOIqYpv.npmEU6fkVa1Q3RJVj7Ix4WeP+Gf8YaMxsSosxRGfyWmkq9Qw\",\n          \"medium\": \"http://MNBdKrSfQ.qtwLpxx+tSaXAabClW3CmF5\",\n          \"small\": \"https://UhHlWjTKXmgXHjDIMHsBjCbkVychUq.naawfhw4g\",\n          \"original\": \"https://k.bpmv11bVqFll80KQztlKWMWUr0GVtlfip3G31.sPW-uhFGu+\",\n          \"reduced\": \"http://xFuBjPwrRQZcpzimfpYgZynY.capNOPPiF5mZmVw-vn9076fU.crk\"\n        },\n        \"is_admin\": true\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"SYywDniZQL8@uINhC.sxn\",\n        \"first_name\": \"string\",\n        \"middle_name\": \"string\",\n        \"last_name\": \"string\",\n        \"display_picture\": {\n          \"large\": \"https://UPNjfvxSjRJKisddm.yvfyEzlt,ZQA\",\n          \"medium\": \"https://QHEvvzsylyzlTblImblnPsP.fpqJJlQuPwUa.wJWvcv\",\n          \"small\": \"http://XdNFbNMLtlorjzBsghWMBuFvHbWCyKx.uiqBIg8H.IEOrFfULWiRS,DVzFGwQ7.EI2ZsL-Vk4VnKf\",\n          \"original\": \"https://SLGQrORgsDDSlZM.pupdOzsv,AjWAr,FaTUsrAlOqtrLN8.8\",\n          \"reduced\": \"http://RxCodgSTLfstAJaUhgQQ.sruoY1DX7PpqOnprxYuDJykq\"\n        },\n        \"is_admin\": false\n      }\n    ],\n    \"secondary_managers\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"PrwZ5XKb4Kz@ytJnOkaJBRKrkCuUHizJlK.ctuk\",\n        \"first_name\": \"string\",\n        \"middle_name\": \"string\",\n        \"last_name\": \"string\",\n        \"display_picture\": {\n          \"large\": \"http://rJsDnUMlJJOAUkXrs.mhrryj5ZaBOi93r9JcKSJcmSfEv\",\n          \"medium\": \"http://WySrMGpgetQZswdfdNmgEBUfvx.jtqGQzkvmT8NfRkqSDkPV5kNqqPHvvx7UH7qCC4cgEBX4v83DKTdRH,QT-e\",\n          \"small\": \"http://tkkbiMTUrUPTknjZdhwPLR.ybpdqDxB3o5vY+38bkC84mtqG7.xjX5kNYl2j9pxzy\",\n          \"original\": \"https://uwVYCmXtaSeUsfFDGMhylFlBSvpl.qovpjnn7PaBt+F6Ba82,ZwzfHn+fKsDK,nWVFQ8\",\n          \"reduced\": \"http://GMxqlAzBgxIGeRJlNC.mwoohNt2r5ikvPZK4mOf-HZ838dNbXsnAgvWDPZ0iwR\"\n        },\n        \"is_admin\": false\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"0lsb@NvmdN.wift\",\n        \"first_name\": \"string\",\n        \"middle_name\": \"string\",\n        \"last_name\": \"string\",\n        \"display_picture\": {\n          \"large\": \"https://eCTKMiuWGFRIqj.wzqmE94N89oNw.ORTeKgj8EN2Hlz3ukKTs0tLwTgKHGBn3TtoHXErHRYg8bxLd2XS\",\n          \"medium\": \"http://eGOgdETIMxGELPjDFYfceApRqm.klDWBLb4gbvCHDOBBktiXygD7mfl2uhDbX7b\",\n          \"small\": \"https://NjanQKqAdwtKiI.dnzvlYtUczKKuBVHeAStrkuD+9NqY0\",\n          \"original\": \"http://gsvhz.riKRBYiGoOm,fSkXlo4-yhk7v.juqo4,.9ba.N-iXj0l1Eu5og\",\n          \"reduced\": \"https://VTSPgVLBGlfqmVjpofsJDEhbNrXjvAd.dohwOAhA3rpRdtg1IIwKCIW.eD4-zd56YaQV+i2ySJb-Kb2m8lpDF\"\n        },\n        \"is_admin\": false\n      }\n    ],\n    \"custom_attributes\": {\n      \"key_0\": \"string\",\n      \"key_1\": 5630\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b006d97d-622d-46bd-bf9c-7f0aa931eda0",
+              "name": "Unauthorized — invalid or missing ClientKey/SecretKey",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id",
+                    "deactivate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"block_reason_code\": \"involuntary\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    },\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1a476bbd-459e-44a4-807e-599b43fa6a42",
+              "name": "Not Found — resource does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id",
+                    "deactivate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"block_reason_code\": \"involuntary\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    },\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8ad3aa11-2b6a-46e1-abce-52397fec81d5",
+          "name": "Activate a user",
+          "request": {
+            "name": "Activate a user",
+            "description": {
+              "content": "Re-activates a previously deactivated user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":id",
+                "activate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier of the resource"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "639e738e-95bc-4591-91a6-8e1888726ecd",
+              "name": "User activated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id",
+                    "activate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"data\": {\n    \"id\": \"b62167d0-2718-4e45-9721-27535991becf\",\n    \"name\": \"Adam Smith\",\n    \"status\": \"Active\",\n    \"email\": \"adam.smith@company.com\",\n    \"first_name\": \"Adam\",\n    \"middle_name\": \"string\",\n    \"last_name\": \"Smith\",\n    \"employee_id\": \"E007\",\n    \"display_picture\": {\n      \"large\": \"https://wlgPIrLIsRvXnhhpgCaKgpxiNEd.qidbeeTofRcXd7Mwp.uBTzMR\",\n      \"medium\": \"http://NyjpmTTQjzdpSGHDbTQnZubbLi.rfcxzwfp9uGDlO-JHfyA7rVsSJtDr9sSvi71RxGXg\",\n      \"small\": \"https://Y.llfUjvrRVFAKWIWdV6ugTNonVT2XpuEr\",\n      \"original\": \"http://aJqJoBwnjhdBeCjDSNHnZpaqXXsHYj.pwkrdyK2YHm9VH4Bd358mLsKvj3btXbr1.URIIYvyoW4r7HxeGqDaL\",\n      \"reduced\": \"https://a.rrgrIvgt,qU,mBL+IbIVFErVkx2B-WV1uapuxjjXIPI+OlADPeOewCRqY6ZClhVnxy\"\n    },\n    \"job_title\": {\n      \"id\": \"string\",\n      \"name\": \"string\"\n    },\n    \"location\": {\n      \"id\": \"string\",\n      \"name\": \"string\"\n    },\n    \"departments\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"is_admin\": false\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"is_admin\": false\n      }\n    ],\n    \"education\": \"string\",\n    \"about_me\": \"string\",\n    \"phone_number\": \"string\",\n    \"secondary_phone_number\": \"string\",\n    \"level\": \"string\",\n    \"joining_date\": \"string\",\n    \"birthdate\": \"string\",\n    \"promotion_date\": \"string\",\n    \"review_date\": \"string\",\n    \"employee_type\": \"string\",\n    \"primary_reporter\": {},\n    \"direct_reports\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"jAkFi@YkxQVJOhSguDVQSHjtihSWZTnQ.gmie\",\n        \"first_name\": \"string\",\n        \"middle_name\": \"string\",\n        \"last_name\": \"string\",\n        \"display_picture\": {\n          \"large\": \"http://yrtAzxkhSvqmpdndPWErLkyRAJPump.gjwxsRGwPBsZTnKwTae3Jk0gPRyoVURSiGobLtliVGw23,2IoWXc5oWNnCvF3IrEPmN\",\n          \"medium\": \"https://LNGmwG.sleksigIA8ZZP-3s68aUnfPN8nmtWq9\",\n          \"small\": \"https://PBfGVvBJmAYalQS.whna4A8.uVjVUfxDPQnJH3ljO8toLHAMejDazV4VbxOdiamzOHKeUszV,qB,jKAnbz77.Gkof\",\n          \"original\": \"https://jAbvtAPbLxMsfdRMhkmiGFXDDyRg.qhiza+RQ4uNcX3PmpF5nqvm3X1k94CLsxbd0lH\",\n          \"reduced\": \"https://WulgABpNhNasNto.ciX311Q+UNf051SPFBjTLUUbj3srsKpVcCMBS\"\n        },\n        \"is_admin\": false\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"bHhYE7mzsb@pStilqalTvWTJMYcpdAeO.prxx\",\n        \"first_name\": \"string\",\n        \"middle_name\": \"string\",\n        \"last_name\": \"string\",\n        \"display_picture\": {\n          \"large\": \"https://CAFBCgjEXmYyJXf.rnirnq37l6M5RFox6Yxi1Hk-qVkK,SW4ij7uyrECV4GzvzK2N8pXbM.dNmjJG1o+L8o\",\n          \"medium\": \"http://mxDsYr.ostiN-ANxnxHjCsCjKTCGEzNdDK\",\n          \"small\": \"https://aVfUocZxvLobbmbBGkfDCWriFX.qgkkKeBpYVfUAqjLom9,zgHSyP.lAGoVEMXvXFsXexPjhLVwJD7VkfzsvFkuI,\",\n          \"original\": \"https://GOpUtMZNEzCITfdOToNV.lchXbkYEogCBGFjSrhZpNGcE\",\n          \"reduced\": \"http://cmbWJrpVKCzBm.lswnEJrWw9VFjA.G.igXGvsSTSn9XzCtq+W1n3fQIc09hbGqxuIuYdz8t\"\n        },\n        \"is_admin\": false\n      }\n    ],\n    \"hr_managers\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"WHMF3Jyy7Oo@SxoAwIfnYawf.fkv\",\n        \"first_name\": \"string\",\n        \"middle_name\": \"string\",\n        \"last_name\": \"string\",\n        \"display_picture\": {\n          \"large\": \"https://sFCARpiJgkMnuSnOIqYpv.npmEU6fkVa1Q3RJVj7Ix4WeP+Gf8YaMxsSosxRGfyWmkq9Qw\",\n          \"medium\": \"http://MNBdKrSfQ.qtwLpxx+tSaXAabClW3CmF5\",\n          \"small\": \"https://UhHlWjTKXmgXHjDIMHsBjCbkVychUq.naawfhw4g\",\n          \"original\": \"https://k.bpmv11bVqFll80KQztlKWMWUr0GVtlfip3G31.sPW-uhFGu+\",\n          \"reduced\": \"http://xFuBjPwrRQZcpzimfpYgZynY.capNOPPiF5mZmVw-vn9076fU.crk\"\n        },\n        \"is_admin\": true\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"SYywDniZQL8@uINhC.sxn\",\n        \"first_name\": \"string\",\n        \"middle_name\": \"string\",\n        \"last_name\": \"string\",\n        \"display_picture\": {\n          \"large\": \"https://UPNjfvxSjRJKisddm.yvfyEzlt,ZQA\",\n          \"medium\": \"https://QHEvvzsylyzlTblImblnPsP.fpqJJlQuPwUa.wJWvcv\",\n          \"small\": \"http://XdNFbNMLtlorjzBsghWMBuFvHbWCyKx.uiqBIg8H.IEOrFfULWiRS,DVzFGwQ7.EI2ZsL-Vk4VnKf\",\n          \"original\": \"https://SLGQrORgsDDSlZM.pupdOzsv,AjWAr,FaTUsrAlOqtrLN8.8\",\n          \"reduced\": \"http://RxCodgSTLfstAJaUhgQQ.sruoY1DX7PpqOnprxYuDJykq\"\n        },\n        \"is_admin\": false\n      }\n    ],\n    \"secondary_managers\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"PrwZ5XKb4Kz@ytJnOkaJBRKrkCuUHizJlK.ctuk\",\n        \"first_name\": \"string\",\n        \"middle_name\": \"string\",\n        \"last_name\": \"string\",\n        \"display_picture\": {\n          \"large\": \"http://rJsDnUMlJJOAUkXrs.mhrryj5ZaBOi93r9JcKSJcmSfEv\",\n          \"medium\": \"http://WySrMGpgetQZswdfdNmgEBUfvx.jtqGQzkvmT8NfRkqSDkPV5kNqqPHvvx7UH7qCC4cgEBX4v83DKTdRH,QT-e\",\n          \"small\": \"http://tkkbiMTUrUPTknjZdhwPLR.ybpdqDxB3o5vY+38bkC84mtqG7.xjX5kNYl2j9pxzy\",\n          \"original\": \"https://uwVYCmXtaSeUsfFDGMhylFlBSvpl.qovpjnn7PaBt+F6Ba82,ZwzfHn+fKsDK,nWVFQ8\",\n          \"reduced\": \"http://GMxqlAzBgxIGeRJlNC.mwoohNt2r5ikvPZK4mOf-HZ838dNbXsnAgvWDPZ0iwR\"\n        },\n        \"is_admin\": false\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"0lsb@NvmdN.wift\",\n        \"first_name\": \"string\",\n        \"middle_name\": \"string\",\n        \"last_name\": \"string\",\n        \"display_picture\": {\n          \"large\": \"https://eCTKMiuWGFRIqj.wzqmE94N89oNw.ORTeKgj8EN2Hlz3ukKTs0tLwTgKHGBn3TtoHXErHRYg8bxLd2XS\",\n          \"medium\": \"http://eGOgdETIMxGELPjDFYfceApRqm.klDWBLb4gbvCHDOBBktiXygD7mfl2uhDbX7b\",\n          \"small\": \"https://NjanQKqAdwtKiI.dnzvlYtUczKKuBVHeAStrkuD+9NqY0\",\n          \"original\": \"http://gsvhz.riKRBYiGoOm,fSkXlo4-yhk7v.juqo4,.9ba.N-iXj0l1Eu5og\",\n          \"reduced\": \"https://VTSPgVLBGlfqmVjpofsJDEhbNrXjvAd.dohwOAhA3rpRdtg1IIwKCIW.eD4-zd56YaQV+i2ySJb-Kb2m8lpDF\"\n        },\n        \"is_admin\": false\n      }\n    ],\n    \"custom_attributes\": {\n      \"key_0\": \"string\",\n      \"key_1\": 5630\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "215c9963-d04a-4a4a-a2c5-9430146735e5",
+              "name": "Unauthorized — invalid or missing ClientKey/SecretKey",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id",
+                    "activate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    },\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "44002118-8a16-4daa-92b8-94ba74729513",
+              "name": "Not Found — resource does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id",
+                    "activate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    },\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2b4c1365-4520-4342-bd10-bb9a5d4ddd13",
+          "name": "Get permissions of a user",
+          "request": {
+            "name": "Get permissions of a user",
+            "description": {
+              "content": "Returns all permission roles assigned to the specified user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":id",
+                "permissions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier of the resource"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ce01ffa5-2a05-4490-9cae-d0c003bc3620",
+              "name": "User permissions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id",
+                    "permissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": 9904,\n      \"name\": \"Site Administrator\",\n      \"is_admin\": false,\n      \"description\": \"string\"\n    },\n    {\n      \"id\": 1234,\n      \"name\": \"Site Administrator\",\n      \"is_admin\": false,\n      \"description\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a615e083-f2aa-441e-bfd3-7c21515e4a95",
+              "name": "Unauthorized — invalid or missing ClientKey/SecretKey",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id",
+                    "permissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    },\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9e8a63a9-0985-4e18-9f03-51fd07cd3909",
+              "name": "Not Found — resource does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id",
+                    "permissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    },\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6d396ede-a3fd-4529-8d02-67e38f3666e1",
+          "name": "Update permissions of a user",
+          "request": {
+            "name": "Update permissions of a user",
+            "description": {
+              "content": "Replaces the permission roles assigned to the specified user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":id",
+                "permissions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier of the resource"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"permission_ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "12c20c2c-2384-46b1-bb9a-aec9f8b8fb75",
+              "name": "User permissions updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id",
+                    "permissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"permission_ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": 7394,\n      \"name\": \"Site Administrator\",\n      \"is_admin\": false,\n      \"description\": \"string\"\n    },\n    {\n      \"id\": 9479,\n      \"name\": \"Site Administrator\",\n      \"is_admin\": false,\n      \"description\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "08178cee-4fa6-4737-b544-d034fb798ea2",
+              "name": "Unauthorized — invalid or missing ClientKey/SecretKey",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id",
+                    "permissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"permission_ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    },\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0a2e71dd-c2b4-4646-9d2a-9d17e4700289",
+              "name": "Not Found — resource does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id",
+                    "permissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"permission_ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    },\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.engagedly.com/beta",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "ClientKey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "97c37bbe-a23e-479a-a5b3-61125478989e",
+    "name": "Engagedly Activities Users API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the Engagedly people strategy execution platform. Provides endpoints for managing users, departments, locations, job titles, business units, permissions, user attributes, and employee activities such as praises and recognition. Supports performance review workflows, goal management, and organizational data integration using header-based authentication with ClientKey and SecretKey.\n",
+      "type": "text/plain"
+    }
+  }
+}

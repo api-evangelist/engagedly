@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Engagedly Activities Permissions API",
+    "version": "beta"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "ClientKey",
+      "value": "{{ClientKey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Permissions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all permissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.engagedly.com/beta/permissions",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number (starts at 1)"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of records per page (maximum 50)"
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of all permission roles available in the system."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

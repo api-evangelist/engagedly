@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Engagedly Activities User Attributes API",
+    "version": "beta"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "ClientKey",
+      "value": "{{ClientKey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "User Attributes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all user attributes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.engagedly.com/beta/user-attributes",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number (starts at 1)"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of records per page (maximum 50)"
+              }
+            ]
+          },
+          "docs": "Retrieves all available user attributes including both system attributes (preset: true) and custom attributes (preset: false). Returns field configurations, validation rules, and available options.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

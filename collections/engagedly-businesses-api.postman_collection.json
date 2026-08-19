@@ -1,0 +1,1035 @@
+{
+  "item": [
+    {
+      "id": "fd24bb51-1927-483b-998d-9cb5a52faac7",
+      "name": "Businesses",
+      "description": {
+        "content": "Handle business unit operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9ce7d7bc-5794-4bb9-97c3-01b8ff280c25",
+          "name": "List all businesses",
+          "request": {
+            "name": "List all businesses",
+            "description": {
+              "content": "Returns a paginated list of all business units in the organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "businesses"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number (starts at 1)"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "25",
+                  "description": "Number of records per page (maximum 50)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bd3ee35e-48c6-4c49-843f-5af057db51b5",
+              "name": "Paginated list of business units",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "businesses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"pagination\": {\n    \"page\": 1,\n    \"size\": 25,\n    \"has_more\": false,\n    \"total_records\": 42\n  },\n  \"data\": [\n    {\n      \"id\": \"f5afec62-21ff-40d3-a06e-9a2162ef6b69\",\n      \"name\": \"Manufacturing Unit\",\n      \"members_count\": \"10\",\n      \"administrators_count\": \"2\",\n      \"members\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"email\": \"FdOtN2GtEOGvID@ahOkqVzWbliqQupwkZQhT.xo\",\n          \"first_name\": \"string\",\n          \"middle_name\": \"string\",\n          \"last_name\": \"string\",\n          \"display_picture\": {\n            \"large\": \"http://ogtbaCQS.faocgZR9FIEQI5Avm7HfRwOUFhq\",\n            \"medium\": \"http://UQXrAnANIv.bdebYsMHHUQFJQP4AkazDb,FbX3+leh3WfpOJAPWtqMOfewPz0ikQVCTtaQIpPvB5uFIh4Y3\",\n            \"small\": \"https://FCbPArLNkzTNdYDQnAiTIfhSluJhQEqlg.mrsDc7J\",\n            \"original\": \"https://tdsBYEwFdaNTUuyHLmEjW.fvaseqeiOqGxIeFEcwfalqTRvVo+FV5l\",\n            \"reduced\": \"http://SdcCnxMwfUceWSRtVKg.ylpNCP2f-\"\n          },\n          \"is_admin\": false\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"email\": \"qlT@EqEEgebJfHleYmCalJjsxjiiXmgIfy.kjz\",\n          \"first_name\": \"string\",\n          \"middle_name\": \"string\",\n          \"last_name\": \"string\",\n          \"display_picture\": {\n            \"large\": \"https://RAiPVmwUHIil.rlgjJ59VLUO9joN9zysLXYSwxCZaR.1NK6iFx9b.beTXkn\",\n            \"medium\": \"http://PVUSAgyfORceRBiOXiJnMQUUFKhGk.lrtyz\",\n            \"small\": \"https://GbBzzvlArBRiJknVFWg.unzkPhYFDUdIVfc\",\n            \"original\": \"https://HhgDMYioyGruRuHABqk.lfE27lCpmgi0MahkSbnuxMpoI36qFipuRSOtsvuk,dqZK\",\n            \"reduced\": \"http://HqhVviHEvXbLglUyWbrlvUsDwDQ.iwtUu6PIPrRLfzqZsIv55yxFN-nh\"\n          },\n          \"is_admin\": true\n        }\n      ]\n    },\n    {\n      \"id\": \"f5afec62-21ff-40d3-a06e-9a2162ef6b69\",\n      \"name\": \"Manufacturing Unit\",\n      \"members_count\": \"10\",\n      \"administrators_count\": \"2\",\n      \"members\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"email\": \"NWEsoM2V1c3fs@WnyELcpKGIjQVVMqva.pbe\",\n          \"first_name\": \"string\",\n          \"middle_name\": \"string\",\n          \"last_name\": \"string\",\n          \"display_picture\": {\n            \"large\": \"http://LqyVfXIXRpgaVpxJJlaFXUlbcMO.jwGM1irQ0oAiulTIhfebxnhQ6BWr0wxeO2tVv1ZCM-O4fSgW-Pb4TgFc-30xzZ79,myj6pm.t\",\n            \"medium\": \"http://dAhsvMQavmROIAWjnPRIuBi.mouhK0RqG+nXw4rWVRSsw2goJ2Wa5PCKoQpkOXbb+Ra.n\",\n            \"small\": \"https://akacuIk.pbptfu0BzhE3lKRbY4uzPuLGZKLSAZhw4GKIKdPaAJ,kN\",\n            \"original\": \"http://QoUboCOPhFysRHghOVvppgiaoAFt.rytkVVQvWS.ww,,fVIxYdbjN\",\n            \"reduced\": \"http://LhNJBaBCn.sgtOO2K6+SJxARg1F8yE\"\n          },\n          \"is_admin\": true\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"email\": \"YhRe9en0Qhxc8MA@WVCmoFLmjNdbDJsPnowBObqDmxZ.mta\",\n          \"first_name\": \"string\",\n          \"middle_name\": \"string\",\n          \"last_name\": \"string\",\n          \"display_picture\": {\n            \"large\": \"http://eyAaIibSxbXoBFGmz.iioYeXueC8DDq\",\n            \"medium\": \"https://Pse.ecTo3CWaTA4oZsElw+-RMBKQeFPqPQ6mFU6npzVm,y6WWnrDJwDQQ\",\n            \"small\": \"https://mHKLxmRRzyKJyHNTlVxqfCbMI.gcudYR04D+jQZEu9dICaGRujKnQ.jzjQKaOwilp0\",\n            \"original\": \"https://OPIGAjbXSQqMCM.ugZVxDO+VLok1nSr4vjeU\",\n            \"reduced\": \"http://ZM.wvcgcHjcKyvDRzTlA2rkrOr6Mn3\"\n          },\n          \"is_admin\": true\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ccabeec5-c5f2-4056-9ad4-350732679dc4",
+              "name": "Unauthorized — invalid or missing ClientKey/SecretKey",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "businesses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    },\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4997ef5a-a080-44a9-b5e4-286423d64598",
+          "name": "Create a new business",
+          "request": {
+            "name": "Create a new business",
+            "description": {
+              "content": "Creates a new business unit in the organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "businesses"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"members\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "53bdccf2-e2f3-442b-9dc5-936fdee6b6db",
+              "name": "Business created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "businesses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"members\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"data\": {\n    \"id\": \"f5afec62-21ff-40d3-a06e-9a2162ef6b69\",\n    \"name\": \"Manufacturing Unit\",\n    \"members_count\": \"10\",\n    \"administrators_count\": \"2\",\n    \"members\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"aC9@ZIvRRBdrH.xf\",\n        \"first_name\": \"string\",\n        \"middle_name\": \"string\",\n        \"last_name\": \"string\",\n        \"display_picture\": {\n          \"large\": \"https://rBJfQsTloqW.btyLJE+aMOlHpHWYVK5JWOC+Lxyx.c1Fdhx\",\n          \"medium\": \"https://MVCaNkwAquiBLjxiseFTaGCExVKDEb.kinTjWh\",\n          \"small\": \"http://rlHWkqOLTPPoTOvNC.ycsmSD7E,aWNtw6\",\n          \"original\": \"https://MJWGFGnoz.denHjVQ-985QybSo+xjZnM8OPK\",\n          \"reduced\": \"https://gSvaagDKBHSONXybwslGqXVsmc.chwbOOMCk4deE4qiUTAiSHw1mWfGDIkRjJ7QaY-CFAqYf\"\n        },\n        \"is_admin\": false\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"jE7FRuglz@NriigEszOvy.bk\",\n        \"first_name\": \"string\",\n        \"middle_name\": \"string\",\n        \"last_name\": \"string\",\n        \"display_picture\": {\n          \"large\": \"http://oWaidgcEpcKplvhCXsKGrlnEOOhc.kkpoXjCVXPwp6q82eBsTnioB.0IHhMousnAtMbRjY9,7Ed0eqLcSSL.7nLM6IaVo42\",\n          \"medium\": \"http://AQBsCdJkwAmdc.fpanFcon6epFe\",\n          \"small\": \"https://WYfFCHcRjuhJr.zpiTo-s1fQSiO5g4L1SjiwOhfdbCEami0SgUEyyXIcuSt1mChp\",\n          \"original\": \"http://EVuSDejHaRcjVOez.crnJ.nU0NjsKhyEBH+Z8ZsobD0QZOZVRRFingNG+Y1dd,GG9+\",\n          \"reduced\": \"http://MfgTQNpM.ctQ-IW6BzpWs2ulzUy45YdnpU451+EIT71N7.jL\"\n        },\n        \"is_admin\": false\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "48dbde50-bce1-4293-a8ba-e59911948318",
+              "name": "Bad request — missing or invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "businesses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"members\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    },\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f4e57937-75fa-4b6d-a41f-2b6d6a60ad5b",
+              "name": "Unauthorized — invalid or missing ClientKey/SecretKey",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "businesses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"members\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    },\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "946db8c9-00b4-4087-9009-2d2db33799e1",
+          "name": "Get a single business",
+          "request": {
+            "name": "Get a single business",
+            "description": {
+              "content": "Returns details for a single business unit including its members.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "businesses",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier of the resource"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0da3b944-3775-4ef6-bb8a-338bfa29ebe4",
+              "name": "Business details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "businesses",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"data\": {\n    \"id\": \"f5afec62-21ff-40d3-a06e-9a2162ef6b69\",\n    \"name\": \"Manufacturing Unit\",\n    \"members_count\": \"10\",\n    \"administrators_count\": \"2\",\n    \"members\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"aC9@ZIvRRBdrH.xf\",\n        \"first_name\": \"string\",\n        \"middle_name\": \"string\",\n        \"last_name\": \"string\",\n        \"display_picture\": {\n          \"large\": \"https://rBJfQsTloqW.btyLJE+aMOlHpHWYVK5JWOC+Lxyx.c1Fdhx\",\n          \"medium\": \"https://MVCaNkwAquiBLjxiseFTaGCExVKDEb.kinTjWh\",\n          \"small\": \"http://rlHWkqOLTPPoTOvNC.ycsmSD7E,aWNtw6\",\n          \"original\": \"https://MJWGFGnoz.denHjVQ-985QybSo+xjZnM8OPK\",\n          \"reduced\": \"https://gSvaagDKBHSONXybwslGqXVsmc.chwbOOMCk4deE4qiUTAiSHw1mWfGDIkRjJ7QaY-CFAqYf\"\n        },\n        \"is_admin\": false\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"jE7FRuglz@NriigEszOvy.bk\",\n        \"first_name\": \"string\",\n        \"middle_name\": \"string\",\n        \"last_name\": \"string\",\n        \"display_picture\": {\n          \"large\": \"http://oWaidgcEpcKplvhCXsKGrlnEOOhc.kkpoXjCVXPwp6q82eBsTnioB.0IHhMousnAtMbRjY9,7Ed0eqLcSSL.7nLM6IaVo42\",\n          \"medium\": \"http://AQBsCdJkwAmdc.fpanFcon6epFe\",\n          \"small\": \"https://WYfFCHcRjuhJr.zpiTo-s1fQSiO5g4L1SjiwOhfdbCEami0SgUEyyXIcuSt1mChp\",\n          \"original\": \"http://EVuSDejHaRcjVOez.crnJ.nU0NjsKhyEBH+Z8ZsobD0QZOZVRRFingNG+Y1dd,GG9+\",\n          \"reduced\": \"http://MfgTQNpM.ctQ-IW6BzpWs2ulzUy45YdnpU451+EIT71N7.jL\"\n        },\n        \"is_admin\": false\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6c3c184c-186c-492c-9362-44e9e61fd4ac",
+              "name": "Unauthorized — invalid or missing ClientKey/SecretKey",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "businesses",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    },\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6a3324e8-b1a5-4866-9b57-9447d8ff4698",
+              "name": "Not Found — resource does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "businesses",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    },\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b7b86f07-ad61-45f8-b9b2-f6598e394f7f",
+          "name": "Update an existing business",
+          "request": {
+            "name": "Update an existing business",
+            "description": {
+              "content": "Updates the name and/or members of an existing business unit.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "businesses",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier of the resource"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"members\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "dcc70b30-d4a1-4112-a503-6c8f6e1f40bf",
+              "name": "Business updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "businesses",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"members\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"data\": {\n    \"id\": \"f5afec62-21ff-40d3-a06e-9a2162ef6b69\",\n    \"name\": \"Manufacturing Unit\",\n    \"members_count\": \"10\",\n    \"administrators_count\": \"2\",\n    \"members\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"aC9@ZIvRRBdrH.xf\",\n        \"first_name\": \"string\",\n        \"middle_name\": \"string\",\n        \"last_name\": \"string\",\n        \"display_picture\": {\n          \"large\": \"https://rBJfQsTloqW.btyLJE+aMOlHpHWYVK5JWOC+Lxyx.c1Fdhx\",\n          \"medium\": \"https://MVCaNkwAquiBLjxiseFTaGCExVKDEb.kinTjWh\",\n          \"small\": \"http://rlHWkqOLTPPoTOvNC.ycsmSD7E,aWNtw6\",\n          \"original\": \"https://MJWGFGnoz.denHjVQ-985QybSo+xjZnM8OPK\",\n          \"reduced\": \"https://gSvaagDKBHSONXybwslGqXVsmc.chwbOOMCk4deE4qiUTAiSHw1mWfGDIkRjJ7QaY-CFAqYf\"\n        },\n        \"is_admin\": false\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"jE7FRuglz@NriigEszOvy.bk\",\n        \"first_name\": \"string\",\n        \"middle_name\": \"string\",\n        \"last_name\": \"string\",\n        \"display_picture\": {\n          \"large\": \"http://oWaidgcEpcKplvhCXsKGrlnEOOhc.kkpoXjCVXPwp6q82eBsTnioB.0IHhMousnAtMbRjY9,7Ed0eqLcSSL.7nLM6IaVo42\",\n          \"medium\": \"http://AQBsCdJkwAmdc.fpanFcon6epFe\",\n          \"small\": \"https://WYfFCHcRjuhJr.zpiTo-s1fQSiO5g4L1SjiwOhfdbCEami0SgUEyyXIcuSt1mChp\",\n          \"original\": \"http://EVuSDejHaRcjVOez.crnJ.nU0NjsKhyEBH+Z8ZsobD0QZOZVRRFingNG+Y1dd,GG9+\",\n          \"reduced\": \"http://MfgTQNpM.ctQ-IW6BzpWs2ulzUy45YdnpU451+EIT71N7.jL\"\n        },\n        \"is_admin\": false\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5c39b878-71cd-4edc-8e56-886af575fdab",
+              "name": "Unauthorized — invalid or missing ClientKey/SecretKey",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "businesses",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"members\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    },\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "30ade8ae-8e90-4088-9cc5-9fe746e4fea2",
+              "name": "Not Found — resource does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "businesses",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"members\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    },\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a632f931-9e97-4e20-9d03-105d3fc58837",
+          "name": "Delete a business",
+          "request": {
+            "name": "Delete a business",
+            "description": {
+              "content": "Permanently deletes the specified business unit.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "businesses",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier of the resource"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b55accf2-5825-4c74-a8c9-0bbba067b31c",
+              "name": "Business deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "businesses",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "43d18dac-1bd7-4415-87bc-b86f6da5e4dd",
+              "name": "Unauthorized — invalid or missing ClientKey/SecretKey",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "businesses",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    },\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a8383321-2d6b-4779-a213-4a60d85b6623",
+              "name": "Not Found — resource does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "businesses",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    },\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.engagedly.com/beta",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "ClientKey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "50ecb821-cf53-483a-8415-37b3a948ef3f",
+    "name": "Engagedly Activities Businesses API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the Engagedly people strategy execution platform. Provides endpoints for managing users, departments, locations, job titles, business units, permissions, user attributes, and employee activities such as praises and recognition. Supports performance review workflows, goal management, and organizational data integration using header-based authentication with ClientKey and SecretKey.\n",
+      "type": "text/plain"
+    }
+  }
+}

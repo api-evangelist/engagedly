@@ -1,0 +1,201 @@
+{
+  "item": [
+    {
+      "id": "b66d8b5b-aecb-4710-adb1-049dfe3858e3",
+      "name": "User Attributes",
+      "description": {
+        "content": "Retrieve system and custom user attribute definitions",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9e960766-b3f0-45fa-b7a9-6808839fd650",
+          "name": "List all user attributes",
+          "request": {
+            "name": "List all user attributes",
+            "description": {
+              "content": "Retrieves all available user attributes including both system attributes (preset: true) and custom attributes (preset: false). Returns field configurations, validation rules, and available options.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "user-attributes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number (starts at 1)"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "25",
+                  "description": "Number of records per page (maximum 50)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8274cfcd-556e-4b2b-8efe-af1fdbd50061",
+              "name": "List of user attributes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user-attributes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"data\": [\n    {\n      \"id\": 865,\n      \"name\": \"Department\",\n      \"attribute_key\": \"custom-attribute-93cbf\",\n      \"preset\": false,\n      \"mandatory\": false,\n      \"data_type\": \"boolean\",\n      \"attribute_options\": [\n        {\n          \"id\": 7859,\n          \"value\": \"string\"\n        },\n        {\n          \"id\": 9165,\n          \"value\": \"string\"\n        }\n      ]\n    },\n    {\n      \"id\": 865,\n      \"name\": \"Department\",\n      \"attribute_key\": \"custom-attribute-93cbf\",\n      \"preset\": false,\n      \"mandatory\": false,\n      \"data_type\": \"multiple-select\",\n      \"attribute_options\": [\n        {\n          \"id\": 6238,\n          \"value\": \"string\"\n        },\n        {\n          \"id\": 3360,\n          \"value\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "63b9b521-b32c-41b8-a98a-532a71e8fbf8",
+              "name": "Unauthorized — invalid or missing ClientKey/SecretKey",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user-attributes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    },\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.engagedly.com/beta",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "ClientKey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d898dfb5-f594-4cd6-8e2a-ef95982e353c",
+    "name": "Engagedly Activities User Attributes API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the Engagedly people strategy execution platform. Provides endpoints for managing users, departments, locations, job titles, business units, permissions, user attributes, and employee activities such as praises and recognition. Supports performance review workflows, goal management, and organizational data integration using header-based authentication with ClientKey and SecretKey.\n",
+      "type": "text/plain"
+    }
+  }
+}

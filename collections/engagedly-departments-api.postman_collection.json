@@ -1,0 +1,1086 @@
+{
+  "item": [
+    {
+      "id": "76a85821-c614-45bf-a963-34c062d208cb",
+      "name": "Departments",
+      "description": {
+        "content": "Create and manage organizational departments",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4c059364-02af-4f23-898d-10cff5fee0b8",
+          "name": "List all departments",
+          "request": {
+            "name": "List all departments",
+            "description": {
+              "content": "Returns a paginated list of all departments in the organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "departments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number (starts at 1)"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "25",
+                  "description": "Number of records per page (maximum 50)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "339454f5-be56-4393-87a0-c56702bebc3d",
+              "name": "Paginated list of departments",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "departments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"pagination\": {\n    \"page\": 1,\n    \"size\": 25,\n    \"has_more\": false,\n    \"total_records\": 42\n  },\n  \"data\": [\n    {\n      \"id\": \"f5afec62-21ff-40d3-a06e-9a2162ef6b69\",\n      \"name\": \"Customer Support\",\n      \"members_count\": \"10\",\n      \"administrators_count\": \"2\",\n      \"members\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"email\": \"VxTV85tN8S@LXXEyGbGVMJsek.oxsy\",\n          \"first_name\": \"string\",\n          \"middle_name\": \"string\",\n          \"last_name\": \"string\",\n          \"display_picture\": {\n            \"large\": \"https://UaXqAbCPVLSQlSoXMuxSaQDJyUsumebK.dorbOp23LAds2NtGd,w5KUyWsGy1GU4uV0,w9n6e-nMYmbFNWkLQU8YduI2F4yK,r3UA2G+S,f8\",\n            \"medium\": \"https://RtAbRaPoXMctMYJCauvmjlOVkBNNN.lctCTBTrqAX,66\",\n            \"small\": \"https://pTdrCJDiqdxWmaLgvjrm.jinpeBJp5sFqj1MsLFBZM72f-JOyscGU3Tr7V7DBhZjd-97Ec\",\n            \"original\": \"http://OpRxmvItYpgjNCpsVIUvjlYzpGcNqSc.srMWcTX0tJLtDqg3m9xffqqJbzvFmIcf,KVe..ZGQday.V\",\n            \"reduced\": \"https://EirUIxCcuybLFSREMaQjilWustmWnH.felBfu\"\n          },\n          \"is_admin\": false\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"email\": \"min-5@JD.nl\",\n          \"first_name\": \"string\",\n          \"middle_name\": \"string\",\n          \"last_name\": \"string\",\n          \"display_picture\": {\n            \"large\": \"https://ylkjpmdYatlfYlEleYQjHst.pleega,oYf9SYydz\",\n            \"medium\": \"https://jJb.hvtq8anpKsCsMMRIlK-ExFDmZc-ItkDNr+C+1-2g8r\",\n            \"small\": \"http://OB.axIuiRjibqTANLcltpXV\",\n            \"original\": \"http://MeUwbRKfPMLpekhOVToaL.fgyX+o7a98fDvYsVCVoPzYqmT.dAyahKYAQOpqMCBfoLW-8Jajq96prV00d37Icr\",\n            \"reduced\": \"https://ggjx.bdei7jey.Sp8sHGlMLRB96+\"\n          },\n          \"is_admin\": true\n        }\n      ]\n    },\n    {\n      \"id\": \"f5afec62-21ff-40d3-a06e-9a2162ef6b69\",\n      \"name\": \"Customer Support\",\n      \"members_count\": \"10\",\n      \"administrators_count\": \"2\",\n      \"members\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"email\": \"rzIjb3j8EBkNA@ZWh.lqer\",\n          \"first_name\": \"string\",\n          \"middle_name\": \"string\",\n          \"last_name\": \"string\",\n          \"display_picture\": {\n            \"large\": \"https://mFguQLVqvgpEBdHZGvMjxsMBpjkfYqE.hpzZcHnCDYumCGUOo09-JdzCmyxp9Rg9rtrQpf1tYBgHifHi\",\n            \"medium\": \"http://BdtudKndMBMlTMeoKtjJTnlpOra.dmihdFlqH3M3-K1a0ae3VrwnU7nkrFhcDTu\",\n            \"small\": \"https://kfWIIjmNQRFI.gxaxZPcsQHzw8Yo4UFSrydJakmaHAWRsfE,OwdshG,.iMqTqzM\",\n            \"original\": \"http://GzfdrgiPGj.dmwt+MhEaT5n.Grd.hyvlx5URNt0.,bmTDmkooL\",\n            \"reduced\": \"http://jieqYZUKNTIJuZkGB.iwuVLK0eyA54tUFjP1G4k2Y1dZQSbDETB6G15fu1PTJ1\"\n          },\n          \"is_admin\": true\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"email\": \"hwcHpLIXham05kJ@OVYmlNjWLVDCwsZNb.lqs\",\n          \"first_name\": \"string\",\n          \"middle_name\": \"string\",\n          \"last_name\": \"string\",\n          \"display_picture\": {\n            \"large\": \"http://LwXMobwShXBrpsZpc.rayuS1k4n0k1FrEHu7cR3Qpy4AovVQ,I-QsTzTD\",\n            \"medium\": \"https://HffROIt.hfbsfoyknXnjuIpI9c6DZ.-q9hyQ2\",\n            \"small\": \"http://jjQzkRRvjKiILjO.irgkzhzdbR9Gila.qJzGJ,LBxO3MRJaUaqCbHvZnIGKemGYoC1jpprm+R\",\n            \"original\": \"http://SQaogCBknLNAyWQilMueLdRyFbux.fqMwPzYAPNcb9CjOsFn9mH1hHfWGG92hscmgvMqDUzU22wS\",\n            \"reduced\": \"https://aqizKYhjFmbEZzyjSyBzdH.bcbmvyc7vZ3m-iC.diItIpTAzVHMhACAblP7-GAXKe9oxkIn.l0gkGskwJzmi.T6soaiG1QReJ\"\n          },\n          \"is_admin\": true\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "566db866-5a23-4cae-b5f6-643e07486128",
+              "name": "Unauthorized — invalid or missing ClientKey/SecretKey",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "departments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    },\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f083d01d-9939-4fd6-ad40-d92ec8a6d828",
+          "name": "Create a new department",
+          "request": {
+            "name": "Create a new department",
+            "description": {
+              "content": "Creates a new department in the organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "departments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"members\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "dbabeda4-57bb-49ad-a039-998bae9dc6f5",
+              "name": "Department created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "departments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"members\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"data\": {\n    \"id\": \"f5afec62-21ff-40d3-a06e-9a2162ef6b69\",\n    \"name\": \"Customer Support\",\n    \"members_count\": \"10\",\n    \"administrators_count\": \"2\",\n    \"members\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"ly-qhEhFc8qaXSX@CCpQi.prm\",\n        \"first_name\": \"string\",\n        \"middle_name\": \"string\",\n        \"last_name\": \"string\",\n        \"display_picture\": {\n          \"large\": \"http://hEMkhUzonkq.wmacfFUEcJ-Ox6XaGR5kNC4GZ0J0yiWHvYJPu\",\n          \"medium\": \"http://rdtjzLzSGJYonDxWNtrsGi.qfH0U+eO85WXLKBT1yrf.JellSjhOfAS6PiQDDusnRXeYTaTli+Uq-7jfBZY.jt\",\n          \"small\": \"https://XtadHS.lyO7zZoCEQAZ7LpmSRNUtMpFnL0\",\n          \"original\": \"http://GXP.fiouxh1ml4AwC0B\",\n          \"reduced\": \"http://xfstZScy.sgww4z2MDYUu4GqEcnTmkeFA\"\n        },\n        \"is_admin\": true\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"W-KtmZMYE@hBprOmLoMkuXbgAH.agff\",\n        \"first_name\": \"string\",\n        \"middle_name\": \"string\",\n        \"last_name\": \"string\",\n        \"display_picture\": {\n          \"large\": \"https://DtwToayFydEAbCfJWnkPfAcko.qmnyym,BhVjyF6dlUGXyA2ztA.adgp0\",\n          \"medium\": \"https://TAvl.mdvP9RVXGg.azvZUrkBdTDrfIYY.,\",\n          \"small\": \"http://EFEfiaeRdqrDCAROtE.ieOTFVfL6ywUCz\",\n          \"original\": \"https://OyPDyYruue.ftze0n+v,YA.gTFi+TIrqV1c.a,CSzkZ\",\n          \"reduced\": \"https://jRMfwVnsCbOuzeClDYUKTwxZEolBdFh.sheToxrOyYnJdhRZg2pFxpg2K8cIBDaVgVrLiUcQ7r40YD+FUKdvV\"\n        },\n        \"is_admin\": false\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8ea8cdc0-dc9e-4d20-8189-f4fbed0ddffd",
+              "name": "Bad request — missing or invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "departments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"members\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    },\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e3c3a93d-17ea-4f34-be1c-3634fad00df5",
+              "name": "Unauthorized — invalid or missing ClientKey/SecretKey",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "departments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"members\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    },\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6832ce16-9c6c-414f-8ab9-d73f00afce8d",
+              "name": "Unprocessable Entity — validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "departments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"members\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    },\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "58e6b61d-7ac0-467f-8612-a8a99f56864d",
+          "name": "Get a single department",
+          "request": {
+            "name": "Get a single department",
+            "description": {
+              "content": "Returns details for a single department including its members.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "departments",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier of the resource"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a68f7ecf-d5bb-4fce-bfb9-83202b30979c",
+              "name": "Department details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "departments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"data\": {\n    \"id\": \"f5afec62-21ff-40d3-a06e-9a2162ef6b69\",\n    \"name\": \"Customer Support\",\n    \"members_count\": \"10\",\n    \"administrators_count\": \"2\",\n    \"members\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"ly-qhEhFc8qaXSX@CCpQi.prm\",\n        \"first_name\": \"string\",\n        \"middle_name\": \"string\",\n        \"last_name\": \"string\",\n        \"display_picture\": {\n          \"large\": \"http://hEMkhUzonkq.wmacfFUEcJ-Ox6XaGR5kNC4GZ0J0yiWHvYJPu\",\n          \"medium\": \"http://rdtjzLzSGJYonDxWNtrsGi.qfH0U+eO85WXLKBT1yrf.JellSjhOfAS6PiQDDusnRXeYTaTli+Uq-7jfBZY.jt\",\n          \"small\": \"https://XtadHS.lyO7zZoCEQAZ7LpmSRNUtMpFnL0\",\n          \"original\": \"http://GXP.fiouxh1ml4AwC0B\",\n          \"reduced\": \"http://xfstZScy.sgww4z2MDYUu4GqEcnTmkeFA\"\n        },\n        \"is_admin\": true\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"W-KtmZMYE@hBprOmLoMkuXbgAH.agff\",\n        \"first_name\": \"string\",\n        \"middle_name\": \"string\",\n        \"last_name\": \"string\",\n        \"display_picture\": {\n          \"large\": \"https://DtwToayFydEAbCfJWnkPfAcko.qmnyym,BhVjyF6dlUGXyA2ztA.adgp0\",\n          \"medium\": \"https://TAvl.mdvP9RVXGg.azvZUrkBdTDrfIYY.,\",\n          \"small\": \"http://EFEfiaeRdqrDCAROtE.ieOTFVfL6ywUCz\",\n          \"original\": \"https://OyPDyYruue.ftze0n+v,YA.gTFi+TIrqV1c.a,CSzkZ\",\n          \"reduced\": \"https://jRMfwVnsCbOuzeClDYUKTwxZEolBdFh.sheToxrOyYnJdhRZg2pFxpg2K8cIBDaVgVrLiUcQ7r40YD+FUKdvV\"\n        },\n        \"is_admin\": false\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8ef3d6d0-4f9d-49b2-9a42-e82304c7ede7",
+              "name": "Unauthorized — invalid or missing ClientKey/SecretKey",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "departments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    },\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cc430457-3b5c-4226-91aa-f20e5ae69009",
+              "name": "Not Found — resource does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "departments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    },\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d215e250-3576-4272-bd78-61b68638e5a2",
+          "name": "Update an existing department",
+          "request": {
+            "name": "Update an existing department",
+            "description": {
+              "content": "Updates the name and/or members of an existing department.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "departments",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier of the resource"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"members\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "18fc475b-3c17-4c94-bb4b-36f6089cc282",
+              "name": "Department updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "departments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"members\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"data\": {\n    \"id\": \"f5afec62-21ff-40d3-a06e-9a2162ef6b69\",\n    \"name\": \"Customer Support\",\n    \"members_count\": \"10\",\n    \"administrators_count\": \"2\",\n    \"members\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"ly-qhEhFc8qaXSX@CCpQi.prm\",\n        \"first_name\": \"string\",\n        \"middle_name\": \"string\",\n        \"last_name\": \"string\",\n        \"display_picture\": {\n          \"large\": \"http://hEMkhUzonkq.wmacfFUEcJ-Ox6XaGR5kNC4GZ0J0yiWHvYJPu\",\n          \"medium\": \"http://rdtjzLzSGJYonDxWNtrsGi.qfH0U+eO85WXLKBT1yrf.JellSjhOfAS6PiQDDusnRXeYTaTli+Uq-7jfBZY.jt\",\n          \"small\": \"https://XtadHS.lyO7zZoCEQAZ7LpmSRNUtMpFnL0\",\n          \"original\": \"http://GXP.fiouxh1ml4AwC0B\",\n          \"reduced\": \"http://xfstZScy.sgww4z2MDYUu4GqEcnTmkeFA\"\n        },\n        \"is_admin\": true\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"W-KtmZMYE@hBprOmLoMkuXbgAH.agff\",\n        \"first_name\": \"string\",\n        \"middle_name\": \"string\",\n        \"last_name\": \"string\",\n        \"display_picture\": {\n          \"large\": \"https://DtwToayFydEAbCfJWnkPfAcko.qmnyym,BhVjyF6dlUGXyA2ztA.adgp0\",\n          \"medium\": \"https://TAvl.mdvP9RVXGg.azvZUrkBdTDrfIYY.,\",\n          \"small\": \"http://EFEfiaeRdqrDCAROtE.ieOTFVfL6ywUCz\",\n          \"original\": \"https://OyPDyYruue.ftze0n+v,YA.gTFi+TIrqV1c.a,CSzkZ\",\n          \"reduced\": \"https://jRMfwVnsCbOuzeClDYUKTwxZEolBdFh.sheToxrOyYnJdhRZg2pFxpg2K8cIBDaVgVrLiUcQ7r40YD+FUKdvV\"\n        },\n        \"is_admin\": false\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b8130e82-9399-4ef6-8c8c-9b66b4abbab7",
+              "name": "Unauthorized — invalid or missing ClientKey/SecretKey",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "departments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"members\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    },\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d434daac-ae9e-40f8-99e8-e320567402bb",
+              "name": "Not Found — resource does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "departments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"members\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    },\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a4108852-2f29-4195-bbb7-88b049a8f3cb",
+          "name": "Delete a department",
+          "request": {
+            "name": "Delete a department",
+            "description": {
+              "content": "Permanently deletes the specified department.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "departments",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier of the resource"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8652443d-9cd5-4856-8be3-a2a00510345d",
+              "name": "Department deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "departments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "35f2cf54-2000-4f06-9afe-3d225625820d",
+              "name": "Unauthorized — invalid or missing ClientKey/SecretKey",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "departments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    },\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1ff937ca-785b-4fbc-a975-3e32c846610c",
+              "name": "Not Found — resource does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "departments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier of the resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "ClientKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_type\": \"validation_error\",\n  \"errors\": [\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    },\n    {\n      \"field\": \"name\",\n      \"message\": \"Mandatory attribute missing\",\n      \"code\": \"missing_field\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.engagedly.com/beta",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "ClientKey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "efb51611-60eb-4927-b301-98b76f195494",
+    "name": "Engagedly Activities Departments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the Engagedly people strategy execution platform. Provides endpoints for managing users, departments, locations, job titles, business units, permissions, user attributes, and employee activities such as praises and recognition. Supports performance review workflows, goal management, and organizational data integration using header-based authentication with ClientKey and SecretKey.\n",
+      "type": "text/plain"
+    }
+  }
+}

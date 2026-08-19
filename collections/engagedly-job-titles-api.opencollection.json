@@ -1,0 +1,127 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Engagedly Activities Job Titles API",
+    "version": "beta"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "ClientKey",
+      "value": "{{ClientKey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Job Titles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all job titles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.engagedly.com/beta/job_titles",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number (starts at 1)"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of records per page (maximum 50)"
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of all job titles in the organization."
+        },
+        {
+          "info": {
+            "name": "Create a new job title",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.engagedly.com/beta/job_titles",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new job title in the organization."
+        },
+        {
+          "info": {
+            "name": "Get a single job title",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.engagedly.com/beta/job_titles/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the resource"
+              }
+            ]
+          },
+          "docs": "Returns details for a single job title."
+        },
+        {
+          "info": {
+            "name": "Update an existing job title",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.engagedly.com/beta/job_titles/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the resource"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates details of an existing job title."
+        },
+        {
+          "info": {
+            "name": "Delete a job title",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.engagedly.com/beta/job_titles/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the resource"
+              }
+            ]
+          },
+          "docs": "Permanently deletes the specified job title."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
