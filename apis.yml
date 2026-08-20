@@ -121,6 +121,8 @@ apis:
   humanURL: https://engagedly.github.io/api-docs/
   baseURL: https://api.engagedly.com/beta/
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
