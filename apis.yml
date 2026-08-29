@@ -1,6 +1,18 @@
 aid: engagedly
 name: Engagedly
 description: Engagedly is a people strategy execution platform with a REST API for managing performance reviews, goal tracking, 360 feedback, learning paths, and employee recognition programs. The API enables programmatic access to users, departments, locations, job titles, activities, and organizational data using header-based authentication with client and secret keys.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve
