@@ -41,6 +41,17 @@ tags:
   - Learning Management
   - Employee Recognition
   - Talent Management
+  - OKRs
+  - People Operations
+tags_raw:
+  - Performance Management
+  - HR Software
+  - Employee Engagement
+  - Goal Tracking
+  - 360 Feedback
+  - Learning Management
+  - Employee Recognition
+  - Talent Management
   - OKR
   - People Operations
 apis:
@@ -62,6 +73,8 @@ apis:
   humanURL: https://engagedly.github.io/api-docs/
   baseURL: https://api.engagedly.com/beta/
   tags:
+  - Business
+  tags_raw:
   - Businesses
   properties:
   - type: OpenAPI
@@ -98,6 +111,8 @@ apis:
   humanURL: https://engagedly.github.io/api-docs/
   baseURL: https://api.engagedly.com/beta/
   tags:
+  - Location
+  tags_raw:
   - Locations
   properties:
   - type: OpenAPI
