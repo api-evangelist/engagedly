@@ -1,9 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Engagedly Activities Permissions API
-  description: 'REST API for the Engagedly people strategy execution platform. Provides endpoints for managing users, departments, locations, job titles, business units, permissions, user attributes, and employee activities such as praises and recognition. Supports performance review workflows, goal management, and organizational data integration using header-based authentication with ClientKey and SecretKey.
-
-    '
+  title: Engagedly Permissions API
+  description: REST API for the Engagedly people strategy execution platform. Provides endpoints for managing users, departments, locations, job titles, business units, permissions, user attributes, and employee activities such as praises and recognition. Supports performance review workflows, goal management, and organizational data integration using header-based authentication with ClientKey and SecretKey.
   version: beta
   contact:
     url: https://engagedly.com
@@ -40,19 +38,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    Permission:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-          example: Site Administrator
-        is_admin:
-          type: boolean
-          nullable: true
-        description:
-          type: string
     PermissionListResponse:
       type: object
       properties:
@@ -64,6 +49,18 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Permission'
+    ErrorDetail:
+      type: object
+      properties:
+        field:
+          type: string
+          example: name
+        message:
+          type: string
+          example: Mandatory attribute missing
+        code:
+          type: string
+          example: missing_field
     ErrorResponse:
       type: object
       properties:
@@ -79,18 +76,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ErrorDetail'
-    ErrorDetail:
-      type: object
-      properties:
-        field:
-          type: string
-          example: name
-        message:
-          type: string
-          example: Mandatory attribute missing
-        code:
-          type: string
-          example: missing_field
     Pagination:
       type: object
       properties:
@@ -106,13 +91,20 @@ components:
         total_records:
           type: integer
           example: 42
-  responses:
-    Unauthorized:
-      description: Unauthorized — invalid or missing ClientKey/SecretKey
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
+    Permission:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+          example: Site Administrator
+        is_admin:
+          type:
+          - boolean
+          - 'null'
+        description:
+          type: string
   parameters:
     pageParam:
       name: page
@@ -131,6 +123,13 @@ components:
         minimum: 1
         maximum: 50
         default: 25
+  responses:
+    Unauthorized:
+      description: Unauthorized — invalid or missing ClientKey/SecretKey
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     clientKeyAuth:
       type: apiKey

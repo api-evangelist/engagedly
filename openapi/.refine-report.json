@@ -1,14 +1,7 @@
 {
   "provider": "engagedly",
   "sources": [
-    "engagedly-activities-api-openapi.yml",
-    "engagedly-businesses-api-openapi.yml",
-    "engagedly-departments-api-openapi.yml",
-    "engagedly-job-titles-api-openapi.yml",
-    "engagedly-locations-api-openapi.yml",
-    "engagedly-permissions-api-openapi.yml",
-    "engagedly-user-attributes-api-openapi.yml",
-    "engagedly-users-api-openapi.yml"
+    "_original/engagedly-openapi.yml"
   ],
   "outputs": [
     "engagedly-activities-api-openapi.yml",
@@ -23,6 +16,19 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "engagedly-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "engagedly-activities-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "engagedly-businesses-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "engagedly-departments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "engagedly-job-titles-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "engagedly-locations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "engagedly-permissions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "engagedly-user-attributes-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "engagedly-users-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

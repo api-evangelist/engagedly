@@ -1,9 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Engagedly Activities Job Titles API
-  description: 'REST API for the Engagedly people strategy execution platform. Provides endpoints for managing users, departments, locations, job titles, business units, permissions, user attributes, and employee activities such as praises and recognition. Supports performance review workflows, goal management, and organizational data integration using header-based authentication with ClientKey and SecretKey.
-
-    '
+  title: Engagedly Job Titles API
+  description: REST API for the Engagedly people strategy execution platform. Provides endpoints for managing users, departments, locations, job titles, business units, permissions, user attributes, and employee activities such as praises and recognition. Supports performance review workflows, goal management, and organizational data integration using header-based authentication with ClientKey and SecretKey.
   version: beta
   contact:
     url: https://engagedly.com
@@ -122,14 +120,63 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    NotFound:
+      description: Not Found — resource does not exist
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Unauthorized — invalid or missing ClientKey/SecretKey
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Bad request — missing or invalid parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    idPathParam:
+      name: id
+      in: path
+      required: true
+      description: The unique identifier of the resource
+      schema:
+        type: string
+    pageParam:
+      name: page
+      in: query
+      description: Page number (starts at 1)
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+    sizeParam:
+      name: size
+      in: query
+      description: Number of records per page (maximum 50)
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 50
+        default: 25
   schemas:
-    JobTitleSingleResponse:
+    ErrorDetail:
       type: object
       properties:
-        success:
-          type: boolean
-        data:
-          $ref: '#/components/schemas/JobTitle'
+        field:
+          type: string
+          example: name
+        message:
+          type: string
+          example: Mandatory attribute missing
+        code:
+          type: string
+          example: missing_field
     JobTitleRequest:
       type: object
       required:
@@ -141,30 +188,6 @@ components:
           type: string
         responsibilities:
           type: string
-    JobTitle:
-      type: object
-      properties:
-        id:
-          type: string
-          example: '1'
-        name:
-          type: string
-          example: CEO
-        description:
-          type: string
-        responsibilities:
-          type: string
-    JobTitleListResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/JobTitle'
     ErrorResponse:
       type: object
       properties:
@@ -180,18 +203,17 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ErrorDetail'
-    ErrorDetail:
+    JobTitleListResponse:
       type: object
       properties:
-        field:
-          type: string
-          example: name
-        message:
-          type: string
-          example: Mandatory attribute missing
-        code:
-          type: string
-          example: missing_field
+        success:
+          type: boolean
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/JobTitle'
     Pagination:
       type: object
       properties:
@@ -207,50 +229,26 @@ components:
         total_records:
           type: integer
           example: 42
-  responses:
-    Unauthorized:
-      description: Unauthorized — invalid or missing ClientKey/SecretKey
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Bad request — missing or invalid parameters
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: Not Found — resource does not exist
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-  parameters:
-    pageParam:
-      name: page
-      in: query
-      description: Page number (starts at 1)
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-    idPathParam:
-      name: id
-      in: path
-      required: true
-      description: The unique identifier of the resource
-      schema:
-        type: string
-    sizeParam:
-      name: size
-      in: query
-      description: Number of records per page (maximum 50)
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 50
-        default: 25
+    JobTitleSingleResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          $ref: '#/components/schemas/JobTitle'
+    JobTitle:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '1'
+        name:
+          type: string
+          example: CEO
+        description:
+          type: string
+        responsibilities:
+          type: string
   securitySchemes:
     clientKeyAuth:
       type: apiKey

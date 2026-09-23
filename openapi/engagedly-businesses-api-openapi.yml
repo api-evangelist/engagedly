@@ -1,9 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Engagedly Activities Businesses API
-  description: 'REST API for the Engagedly people strategy execution platform. Provides endpoints for managing users, departments, locations, job titles, business units, permissions, user attributes, and employee activities such as praises and recognition. Supports performance review workflows, goal management, and organizational data integration using header-based authentication with ClientKey and SecretKey.
-
-    '
+  title: Engagedly Businesses API
+  description: REST API for the Engagedly people strategy execution platform. Provides endpoints for managing users, departments, locations, job titles, business units, permissions, user attributes, and employee activities such as praises and recognition. Supports performance review workflows, goal management, and organizational data integration using header-based authentication with ClientKey and SecretKey.
   version: beta
   contact:
     url: https://engagedly.com
@@ -123,6 +121,12 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   responses:
+    NotFound:
+      description: Not Found — resource does not exist
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
     Unauthorized:
       description: Unauthorized — invalid or missing ClientKey/SecretKey
       content:
@@ -135,13 +139,84 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: Not Found — resource does not exist
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   schemas:
+    BusinessSingleResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          $ref: '#/components/schemas/Business'
+    ErrorDetail:
+      type: object
+      properties:
+        field:
+          type: string
+          example: name
+        message:
+          type: string
+          example: Mandatory attribute missing
+        code:
+          type: string
+          example: missing_field
+    DisplayPicture:
+      type: object
+      properties:
+        large:
+          type:
+          - string
+          - 'null'
+          format: uri
+        medium:
+          type:
+          - string
+          - 'null'
+          format: uri
+        small:
+          type:
+          - string
+          - 'null'
+          format: uri
+        original:
+          type:
+          - string
+          - 'null'
+          format: uri
+        reduced:
+          type:
+          - string
+          - 'null'
+          format: uri
+    Pagination:
+      type: object
+      properties:
+        page:
+          type: integer
+          example: 1
+        size:
+          type: integer
+          example: 25
+        has_more:
+          type: boolean
+          example: false
+        total_records:
+          type: integer
+          example: 42
+    ErrorResponse:
+      type: object
+      properties:
+        error_type:
+          type: string
+          enum:
+          - api_connection_error
+          - authentication_error
+          - invalid_request_error
+          - validation_error
+          example: validation_error
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorDetail'
     BusinessRequest:
       type: object
       required:
@@ -154,6 +229,17 @@ components:
           items:
             type: string
           description: Array of user IDs
+    BusinessListResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Business'
     Business:
       type: object
       properties:
@@ -173,33 +259,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/UserRef'
-    ErrorResponse:
-      type: object
-      properties:
-        error_type:
-          type: string
-          enum:
-          - api_connection_error
-          - authentication_error
-          - invalid_request_error
-          - validation_error
-          example: validation_error
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ErrorDetail'
-    ErrorDetail:
-      type: object
-      properties:
-        field:
-          type: string
-          example: name
-        message:
-          type: string
-          example: Mandatory attribute missing
-        code:
-          type: string
-          example: missing_field
     UserRef:
       type: object
       properties:
@@ -213,72 +272,25 @@ components:
         first_name:
           type: string
         middle_name:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         last_name:
           type: string
         display_picture:
           $ref: '#/components/schemas/DisplayPicture'
         is_admin:
-          type: boolean
-          nullable: true
-    BusinessSingleResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        data:
-          $ref: '#/components/schemas/Business'
-    BusinessListResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Business'
-    Pagination:
-      type: object
-      properties:
-        page:
-          type: integer
-          example: 1
-        size:
-          type: integer
-          example: 25
-        has_more:
-          type: boolean
-          example: false
-        total_records:
-          type: integer
-          example: 42
-    DisplayPicture:
-      type: object
-      properties:
-        large:
-          type: string
-          format: uri
-          nullable: true
-        medium:
-          type: string
-          format: uri
-          nullable: true
-        small:
-          type: string
-          format: uri
-          nullable: true
-        original:
-          type: string
-          format: uri
-          nullable: true
-        reduced:
-          type: string
-          format: uri
-          nullable: true
+          type:
+          - boolean
+          - 'null'
   parameters:
+    idPathParam:
+      name: id
+      in: path
+      required: true
+      description: The unique identifier of the resource
+      schema:
+        type: string
     pageParam:
       name: page
       in: query
@@ -296,13 +308,6 @@ components:
         minimum: 1
         maximum: 50
         default: 25
-    idPathParam:
-      name: id
-      in: path
-      required: true
-      description: The unique identifier of the resource
-      schema:
-        type: string
   securitySchemes:
     clientKeyAuth:
       type: apiKey

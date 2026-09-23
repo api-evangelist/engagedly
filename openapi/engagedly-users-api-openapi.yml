@@ -1,9 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Engagedly Activities Users API
-  description: 'REST API for the Engagedly people strategy execution platform. Provides endpoints for managing users, departments, locations, job titles, business units, permissions, user attributes, and employee activities such as praises and recognition. Supports performance review workflows, goal management, and organizational data integration using header-based authentication with ClientKey and SecretKey.
-
-    '
+  title: Engagedly Users API
+  description: REST API for the Engagedly people strategy execution platform. Provides endpoints for managing users, departments, locations, job titles, business units, permissions, user attributes, and employee activities such as praises and recognition. Supports performance review workflows, goal management, and organizational data integration using header-based authentication with ClientKey and SecretKey.
   version: beta
   contact:
     url: https://engagedly.com
@@ -53,9 +51,7 @@ paths:
     post:
       operationId: createUser
       summary: Create a new user
-      description: 'Creates a new user in the organization. Both system attributes and custom attributes (using their attribute_key as field names) can be included in the request body.
-
-        '
+      description: Creates a new user in the organization. Both system attributes and custom attributes (using their attribute_key as field names) can be included in the request body.
       tags:
       - Users
       requestBody:
@@ -162,9 +158,7 @@ paths:
     patch:
       operationId: partialUpdateUser
       summary: Partially update an existing user
-      description: 'Partially updates a user record. Only the fields provided in the request body are updated.
-
-        '
+      description: Partially updates a user record. Only the fields provided in the request body are updated.
       tags:
       - Users
       parameters:
@@ -323,187 +317,32 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    UnprocessableEntity:
-      description: Unprocessable Entity — validation error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: Not Found — resource does not exist
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Unauthorized — invalid or missing ClientKey/SecretKey
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Bad request — missing or invalid parameters
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    idPathParam:
+      name: id
+      in: path
+      required: true
+      description: The unique identifier of the resource
+      schema:
+        type: string
+    pageParam:
+      name: page
+      in: query
+      description: Page number (starts at 1)
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+    sizeParam:
+      name: size
+      in: query
+      description: Number of records per page (maximum 50)
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 50
+        default: 25
   schemas:
-    BlockReasonCodeListResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/BlockReasonCode'
-    ErrorDetail:
-      type: object
-      properties:
-        field:
-          type: string
-          example: name
-        message:
-          type: string
-          example: Mandatory attribute missing
-        code:
-          type: string
-          example: missing_field
-    User:
-      type: object
-      properties:
-        id:
-          type: string
-          example: b62167d0-2718-4e45-9721-27535991becf
-        name:
-          type: string
-          example: Adam Smith
-        status:
-          type: string
-          enum:
-          - Active
-          - Blocked
-          example: Active
-        email:
-          type: string
-          format: email
-          example: adam.smith@company.com
-        first_name:
-          type: string
-          example: Adam
-        middle_name:
-          type: string
-          nullable: true
-        last_name:
-          type: string
-          example: Smith
-        employee_id:
-          type: string
-          example: E007
-        display_picture:
-          $ref: '#/components/schemas/DisplayPicture'
-        job_title:
-          type: object
-          nullable: true
-          properties:
-            id:
-              type: string
-            name:
-              type: string
-        location:
-          type: object
-          nullable: true
-          properties:
-            id:
-              type: string
-            name:
-              type: string
-        departments:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: string
-              name:
-                type: string
-              is_admin:
-                type: boolean
-                nullable: true
-        business_unit:
-          type: array
-          items:
-            type: object
-        education:
-          type: string
-          nullable: true
-        about_me:
-          type: string
-          nullable: true
-        phone_number:
-          type: string
-          nullable: true
-        secondary_phone_number:
-          type: string
-          nullable: true
-        level:
-          type: string
-          nullable: true
-        joining_date:
-          type: string
-          nullable: true
-        birthdate:
-          type: string
-          nullable: true
-        promotion_date:
-          type: string
-          nullable: true
-        review_date:
-          type: string
-          nullable: true
-        employee_type:
-          type: string
-          nullable: true
-        primary_reporter:
-          nullable: true
-          type: object
-        direct_reports:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserRef'
-        hr_managers:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserRef'
-        secondary_managers:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserRef'
-        custom_attributes:
-          type: object
-          additionalProperties: true
-          description: Organization-specific custom attributes keyed by attribute_key
-    UserPermissionsResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Permission'
-    BlockReasonCode:
-      type: object
-      properties:
-        code:
-          type: string
-          example: involuntary
-        display_text:
-          type: string
-          example: Involuntary
-        description:
-          type: string
     Pagination:
       type: object
       properties:
@@ -519,24 +358,6 @@ components:
         total_records:
           type: integer
           example: 42
-    UserSingleResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        data:
-          $ref: '#/components/schemas/User'
-    UserListResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/User'
     ErrorResponse:
       type: object
       properties:
@@ -552,51 +373,132 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ErrorDetail'
-    UserRef:
+    BlockReasonCode:
       type: object
       properties:
-        id:
+        code:
           type: string
-        name:
+          example: involuntary
+        display_text:
           type: string
-        email:
+          example: Involuntary
+        description:
           type: string
-          format: email
+    UserListResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+    UserUpdateRequest:
+      type: object
+      properties:
         first_name:
           type: string
         middle_name:
           type: string
-          nullable: true
         last_name:
           type: string
-        display_picture:
-          $ref: '#/components/schemas/DisplayPicture'
-        is_admin:
+        email:
+          type: string
+          format: email
+        employee_id:
+          type: string
+        joining_date:
+          type: string
+          format: date
+        birth_date:
+          type: string
+          format: date
+        location:
+          type: string
+          description: ID of the location
+        job_title:
+          type: string
+          description: ID of the job title
+        level:
+          type: string
+        phone_number:
+          type: string
+        secondary_phone_number:
+          type: string
+        promotion_date:
+          type: string
+        review_date:
+          type: string
+        departments:
+          type: array
+          items:
+            type: string
+        businesses:
+          type: array
+          items:
+            type: string
+        hr_managers:
+          type: array
+          items:
+            type: string
+        secondary_managers:
+          type: array
+          items:
+            type: string
+        manager_id:
+          type: string
+        custom_attributes:
+          type: object
+          additionalProperties: true
+          description: Custom attributes using their attribute_key as field names
+    BlockReasonCodeListResponse:
+      type: object
+      properties:
+        success:
           type: boolean
-          nullable: true
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/BlockReasonCode'
     DisplayPicture:
       type: object
       properties:
         large:
-          type: string
+          type:
+          - string
+          - 'null'
           format: uri
-          nullable: true
         medium:
-          type: string
+          type:
+          - string
+          - 'null'
           format: uri
-          nullable: true
         small:
-          type: string
+          type:
+          - string
+          - 'null'
           format: uri
-          nullable: true
         original:
-          type: string
+          type:
+          - string
+          - 'null'
           format: uri
-          nullable: true
         reduced:
-          type: string
+          type:
+          - string
+          - 'null'
           format: uri
-          nullable: true
+    UserPermissionsResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Permission'
     Permission:
       type: object
       properties:
@@ -606,10 +508,29 @@ components:
           type: string
           example: Site Administrator
         is_admin:
-          type: boolean
-          nullable: true
+          type:
+          - boolean
+          - 'null'
         description:
           type: string
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+    ErrorDetail:
+      type: object
+      properties:
+        field:
+          type: string
+          example: name
+        message:
+          type: string
+          example: Mandatory attribute missing
+        code:
+          type: string
+          example: missing_field
     UserCreateRequest:
       type: object
       required:
@@ -675,95 +596,191 @@ components:
         manager_id:
           type: string
           description: ID of the primary manager
-    SuccessResponse:
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          example: b62167d0-2718-4e45-9721-27535991becf
+        name:
+          type: string
+          example: Adam Smith
+        status:
+          type: string
+          enum:
+          - Active
+          - Blocked
+          example: Active
+        email:
+          type: string
+          format: email
+          example: adam.smith@company.com
+        first_name:
+          type: string
+          example: Adam
+        middle_name:
+          type:
+          - string
+          - 'null'
+        last_name:
+          type: string
+          example: Smith
+        employee_id:
+          type: string
+          example: E007
+        display_picture:
+          $ref: '#/components/schemas/DisplayPicture'
+        job_title:
+          type:
+          - object
+          - 'null'
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+        location:
+          type:
+          - object
+          - 'null'
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+        departments:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              name:
+                type: string
+              is_admin:
+                type:
+                - boolean
+                - 'null'
+        business_unit:
+          type: array
+          items:
+            type: object
+        education:
+          type:
+          - string
+          - 'null'
+        about_me:
+          type:
+          - string
+          - 'null'
+        phone_number:
+          type:
+          - string
+          - 'null'
+        secondary_phone_number:
+          type:
+          - string
+          - 'null'
+        level:
+          type:
+          - string
+          - 'null'
+        joining_date:
+          type:
+          - string
+          - 'null'
+        birthdate:
+          type:
+          - string
+          - 'null'
+        promotion_date:
+          type:
+          - string
+          - 'null'
+        review_date:
+          type:
+          - string
+          - 'null'
+        employee_type:
+          type:
+          - string
+          - 'null'
+        primary_reporter:
+          type:
+          - object
+          - 'null'
+        direct_reports:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserRef'
+        hr_managers:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserRef'
+        secondary_managers:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserRef'
+        custom_attributes:
+          type: object
+          additionalProperties: true
+          description: Organization-specific custom attributes keyed by attribute_key
+    UserSingleResponse:
       type: object
       properties:
         success:
           type: boolean
-          example: true
-    UserUpdateRequest:
+        data:
+          $ref: '#/components/schemas/User'
+    UserRef:
       type: object
       properties:
-        first_name:
+        id:
           type: string
-        middle_name:
-          type: string
-        last_name:
+        name:
           type: string
         email:
           type: string
           format: email
-        employee_id:
+        first_name:
           type: string
-        joining_date:
+        middle_name:
+          type:
+          - string
+          - 'null'
+        last_name:
           type: string
-          format: date
-        birth_date:
-          type: string
-          format: date
-        location:
-          type: string
-          description: ID of the location
-        job_title:
-          type: string
-          description: ID of the job title
-        level:
-          type: string
-        phone_number:
-          type: string
-        secondary_phone_number:
-          type: string
-        promotion_date:
-          type: string
-        review_date:
-          type: string
-        departments:
-          type: array
-          items:
-            type: string
-        businesses:
-          type: array
-          items:
-            type: string
-        hr_managers:
-          type: array
-          items:
-            type: string
-        secondary_managers:
-          type: array
-          items:
-            type: string
-        manager_id:
-          type: string
-        custom_attributes:
-          type: object
-          additionalProperties: true
-          description: Custom attributes using their attribute_key as field names
-  parameters:
-    pageParam:
-      name: page
-      in: query
-      description: Page number (starts at 1)
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-    sizeParam:
-      name: size
-      in: query
-      description: Number of records per page (maximum 50)
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 50
-        default: 25
-    idPathParam:
-      name: id
-      in: path
-      required: true
-      description: The unique identifier of the resource
-      schema:
-        type: string
+        display_picture:
+          $ref: '#/components/schemas/DisplayPicture'
+        is_admin:
+          type:
+          - boolean
+          - 'null'
+  responses:
+    BadRequest:
+      description: Bad request — missing or invalid parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    UnprocessableEntity:
+      description: Unprocessable Entity — validation error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Unauthorized — invalid or missing ClientKey/SecretKey
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Not Found — resource does not exist
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     clientKeyAuth:
       type: apiKey

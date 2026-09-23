@@ -1,9 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Engagedly Activities API
-  description: 'REST API for the Engagedly people strategy execution platform. Provides endpoints for managing users, departments, locations, job titles, business units, permissions, user attributes, and employee activities such as praises and recognition. Supports performance review workflows, goal management, and organizational data integration using header-based authentication with ClientKey and SecretKey.
-
-    '
+  description: REST API for the Engagedly people strategy execution platform. Provides endpoints for managing users, departments, locations, job titles, business units, permissions, user attributes, and employee activities such as praises and recognition. Supports performance review workflows, goal management, and organizational data integration using header-based authentication with ClientKey and SecretKey.
   version: beta
   contact:
     url: https://engagedly.com
@@ -39,13 +37,6 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    Unauthorized:
-      description: Unauthorized — invalid or missing ClientKey/SecretKey
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   schemas:
     PraiseAudience:
       type: object
@@ -58,13 +49,72 @@ components:
           $ref: '#/components/schemas/DisplayPicture'
         type:
           type: string
-    PraiseTag:
+    DisplayPicture:
       type: object
       properties:
+        large:
+          type:
+          - string
+          - 'null'
+          format: uri
+        medium:
+          type:
+          - string
+          - 'null'
+          format: uri
+        small:
+          type:
+          - string
+          - 'null'
+          format: uri
+        original:
+          type:
+          - string
+          - 'null'
+          format: uri
+        reduced:
+          type:
+          - string
+          - 'null'
+          format: uri
+    ErrorDetail:
+      type: object
+      properties:
+        field:
+          type: string
+          example: name
+        message:
+          type: string
+          example: Mandatory attribute missing
         code:
           type: string
-        label:
+          example: missing_field
+    PraiseAuthor:
+      type: object
+      properties:
+        id:
           type: string
+        name:
+          type: string
+        display_picture:
+          $ref: '#/components/schemas/DisplayPicture'
+        designation:
+          type: string
+    Pagination:
+      type: object
+      properties:
+        page:
+          type: integer
+          example: 1
+        size:
+          type: integer
+          example: 25
+        has_more:
+          type: boolean
+          example: false
+        total_records:
+          type: integer
+          example: 42
     PraiseActor:
       type: object
       properties:
@@ -75,6 +125,39 @@ components:
         display_picture:
           $ref: '#/components/schemas/DisplayPicture'
         designation:
+          type: string
+    ErrorResponse:
+      type: object
+      properties:
+        error_type:
+          type: string
+          enum:
+          - api_connection_error
+          - authentication_error
+          - invalid_request_error
+          - validation_error
+          example: validation_error
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorDetail'
+    PraiseListResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Praise'
+    PraiseTag:
+      type: object
+      properties:
+        code:
+          type: string
+        label:
           type: string
     Praise:
       type: object
@@ -91,8 +174,9 @@ components:
           type: string
           format: date-time
         title:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         content:
           type: string
         pinned:
@@ -135,93 +219,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PraiseActor'
-    PraiseListResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Praise'
-    PraiseAuthor:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        display_picture:
-          $ref: '#/components/schemas/DisplayPicture'
-        designation:
-          type: string
-    ErrorResponse:
-      type: object
-      properties:
-        error_type:
-          type: string
-          enum:
-          - api_connection_error
-          - authentication_error
-          - invalid_request_error
-          - validation_error
-          example: validation_error
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ErrorDetail'
-    ErrorDetail:
-      type: object
-      properties:
-        field:
-          type: string
-          example: name
-        message:
-          type: string
-          example: Mandatory attribute missing
-        code:
-          type: string
-          example: missing_field
-    Pagination:
-      type: object
-      properties:
-        page:
-          type: integer
-          example: 1
-        size:
-          type: integer
-          example: 25
-        has_more:
-          type: boolean
-          example: false
-        total_records:
-          type: integer
-          example: 42
-    DisplayPicture:
-      type: object
-      properties:
-        large:
-          type: string
-          format: uri
-          nullable: true
-        medium:
-          type: string
-          format: uri
-          nullable: true
-        small:
-          type: string
-          format: uri
-          nullable: true
-        original:
-          type: string
-          format: uri
-          nullable: true
-        reduced:
-          type: string
-          format: uri
-          nullable: true
   parameters:
     pageParam:
       name: page
@@ -240,6 +237,13 @@ components:
         minimum: 1
         maximum: 50
         default: 25
+  responses:
+    Unauthorized:
+      description: Unauthorized — invalid or missing ClientKey/SecretKey
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     clientKeyAuth:
       type: apiKey

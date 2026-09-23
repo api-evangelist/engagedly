@@ -1,9 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Engagedly Activities Locations API
-  description: 'REST API for the Engagedly people strategy execution platform. Provides endpoints for managing users, departments, locations, job titles, business units, permissions, user attributes, and employee activities such as praises and recognition. Supports performance review workflows, goal management, and organizational data integration using header-based authentication with ClientKey and SecretKey.
-
-    '
+  title: Engagedly Locations API
+  description: REST API for the Engagedly people strategy execution platform. Provides endpoints for managing users, departments, locations, job titles, business units, permissions, user attributes, and employee activities such as praises and recognition. Supports performance review workflows, goal management, and organizational data integration using header-based authentication with ClientKey and SecretKey.
   version: beta
   contact:
     url: https://engagedly.com
@@ -123,6 +121,12 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   responses:
+    NotFound:
+      description: Not Found — resource does not exist
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
     Unauthorized:
       description: Unauthorized — invalid or missing ClientKey/SecretKey
       content:
@@ -135,24 +139,7 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: Not Found — resource does not exist
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    LocationListResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Location'
     Location:
       type: object
       properties:
@@ -174,6 +161,66 @@ components:
           type: string
         postal_code:
           type: string
+    LocationSingleResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          $ref: '#/components/schemas/Location'
+    LocationListResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Location'
+    ErrorDetail:
+      type: object
+      properties:
+        field:
+          type: string
+          example: name
+        message:
+          type: string
+          example: Mandatory attribute missing
+        code:
+          type: string
+          example: missing_field
+    ErrorResponse:
+      type: object
+      properties:
+        error_type:
+          type: string
+          enum:
+          - api_connection_error
+          - authentication_error
+          - invalid_request_error
+          - validation_error
+          example: validation_error
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorDetail'
+    Pagination:
+      type: object
+      properties:
+        page:
+          type: integer
+          example: 1
+        size:
+          type: integer
+          example: 25
+        has_more:
+          type: boolean
+          example: false
+        total_records:
+          type: integer
+          example: 42
     LocationRequest:
       type: object
       required:
@@ -193,56 +240,14 @@ components:
           type: string
         postal_code:
           type: string
-    LocationSingleResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        data:
-          $ref: '#/components/schemas/Location'
-    ErrorResponse:
-      type: object
-      properties:
-        error_type:
-          type: string
-          enum:
-          - api_connection_error
-          - authentication_error
-          - invalid_request_error
-          - validation_error
-          example: validation_error
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ErrorDetail'
-    ErrorDetail:
-      type: object
-      properties:
-        field:
-          type: string
-          example: name
-        message:
-          type: string
-          example: Mandatory attribute missing
-        code:
-          type: string
-          example: missing_field
-    Pagination:
-      type: object
-      properties:
-        page:
-          type: integer
-          example: 1
-        size:
-          type: integer
-          example: 25
-        has_more:
-          type: boolean
-          example: false
-        total_records:
-          type: integer
-          example: 42
   parameters:
+    idPathParam:
+      name: id
+      in: path
+      required: true
+      description: The unique identifier of the resource
+      schema:
+        type: string
     pageParam:
       name: page
       in: query
@@ -251,13 +256,6 @@ components:
         type: integer
         minimum: 1
         default: 1
-    idPathParam:
-      name: id
-      in: path
-      required: true
-      description: The unique identifier of the resource
-      schema:
-        type: string
     sizeParam:
       name: size
       in: query
