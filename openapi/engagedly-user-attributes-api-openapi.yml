@@ -70,18 +70,15 @@ components:
           - 'null'
           items:
             $ref: '#/components/schemas/AttributeOption'
-    ErrorDetail:
+    UserAttributeListResponse:
       type: object
       properties:
-        field:
-          type: string
-          example: name
-        message:
-          type: string
-          example: Mandatory attribute missing
-        code:
-          type: string
-          example: missing_field
+        success:
+          type: boolean
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserAttribute'
     ErrorResponse:
       type: object
       properties:
@@ -97,15 +94,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ErrorDetail'
-    UserAttributeListResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserAttribute'
     AttributeOption:
       type: object
       properties:
@@ -113,15 +101,26 @@ components:
           type: integer
         value:
           type: string
+    ErrorDetail:
+      type: object
+      properties:
+        field:
+          type: string
+          example: name
+        message:
+          type: string
+          example: Mandatory attribute missing
+        code:
+          type: string
+          example: missing_field
+  responses:
+    Unauthorized:
+      description: Unauthorized — invalid or missing ClientKey/SecretKey
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   parameters:
-    pageParam:
-      name: page
-      in: query
-      description: Page number (starts at 1)
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
     sizeParam:
       name: size
       in: query
@@ -131,13 +130,14 @@ components:
         minimum: 1
         maximum: 50
         default: 25
-  responses:
-    Unauthorized:
-      description: Unauthorized — invalid or missing ClientKey/SecretKey
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
+    pageParam:
+      name: page
+      in: query
+      description: Page number (starts at 1)
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
   securitySchemes:
     clientKeyAuth:
       type: apiKey
