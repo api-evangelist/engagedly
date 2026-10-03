@@ -120,6 +120,25 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    NotFound:
+      description: Not Found — resource does not exist
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Unauthorized — invalid or missing ClientKey/SecretKey
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Bad request — missing or invalid parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   schemas:
     JobTitleRequest:
       type: object
@@ -132,21 +151,31 @@ components:
           type: string
         responsibilities:
           type: string
-    Pagination:
+    JobTitle:
       type: object
       properties:
-        page:
-          type: integer
-          example: 1
-        size:
-          type: integer
-          example: 25
-        has_more:
-          type: boolean
-          example: false
-        total_records:
-          type: integer
-          example: 42
+        id:
+          type: string
+          example: '1'
+        name:
+          type: string
+          example: CEO
+        description:
+          type: string
+        responsibilities:
+          type: string
+    ErrorDetail:
+      type: object
+      properties:
+        field:
+          type: string
+          example: name
+        message:
+          type: string
+          example: Mandatory attribute missing
+        code:
+          type: string
+          example: missing_field
     ErrorResponse:
       type: object
       properties:
@@ -162,31 +191,28 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ErrorDetail'
-    ErrorDetail:
+    JobTitleSingleResponse:
       type: object
       properties:
-        field:
-          type: string
-          example: name
-        message:
-          type: string
-          example: Mandatory attribute missing
-        code:
-          type: string
-          example: missing_field
-    JobTitle:
+        success:
+          type: boolean
+        data:
+          $ref: '#/components/schemas/JobTitle'
+    Pagination:
       type: object
       properties:
-        id:
-          type: string
-          example: '1'
-        name:
-          type: string
-          example: CEO
-        description:
-          type: string
-        responsibilities:
-          type: string
+        page:
+          type: integer
+          example: 1
+        size:
+          type: integer
+          example: 25
+        has_more:
+          type: boolean
+          example: false
+        total_records:
+          type: integer
+          example: 42
     JobTitleListResponse:
       type: object
       properties:
@@ -198,13 +224,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/JobTitle'
-    JobTitleSingleResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        data:
-          $ref: '#/components/schemas/JobTitle'
   parameters:
     idPathParam:
       name: id
@@ -230,25 +249,6 @@ components:
         type: integer
         minimum: 1
         default: 1
-  responses:
-    Unauthorized:
-      description: Unauthorized — invalid or missing ClientKey/SecretKey
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: Not Found — resource does not exist
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Bad request — missing or invalid parameters
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     clientKeyAuth:
       type: apiKey

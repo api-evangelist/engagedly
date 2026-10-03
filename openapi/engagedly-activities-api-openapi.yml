@@ -38,6 +38,13 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
+    PraiseTag:
+      type: object
+      properties:
+        code:
+          type: string
+        label:
+          type: string
     Pagination:
       type: object
       properties:
@@ -53,73 +60,34 @@ components:
         total_records:
           type: integer
           example: 42
-    ErrorResponse:
+    DisplayPicture:
       type: object
       properties:
-        error_type:
-          type: string
-          enum:
-          - api_connection_error
-          - authentication_error
-          - invalid_request_error
-          - validation_error
-          example: validation_error
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ErrorDetail'
-    ErrorDetail:
-      type: object
-      properties:
-        field:
-          type: string
-          example: name
-        message:
-          type: string
-          example: Mandatory attribute missing
-        code:
-          type: string
-          example: missing_field
-    PraiseListResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Praise'
-    PraiseTag:
-      type: object
-      properties:
-        code:
-          type: string
-        label:
-          type: string
-    PraiseAuthor:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        display_picture:
-          $ref: '#/components/schemas/DisplayPicture'
-        designation:
-          type: string
-    PraiseAudience:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        display_picture:
-          $ref: '#/components/schemas/DisplayPicture'
-        type:
-          type: string
+        large:
+          type:
+          - string
+          - 'null'
+          format: uri
+        medium:
+          type:
+          - string
+          - 'null'
+          format: uri
+        small:
+          type:
+          - string
+          - 'null'
+          format: uri
+        original:
+          type:
+          - string
+          - 'null'
+          format: uri
+        reduced:
+          type:
+          - string
+          - 'null'
+          format: uri
     Praise:
       type: object
       properties:
@@ -180,34 +148,55 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PraiseActor'
-    DisplayPicture:
+    ErrorDetail:
       type: object
       properties:
-        large:
-          type:
-          - string
-          - 'null'
-          format: uri
-        medium:
-          type:
-          - string
-          - 'null'
-          format: uri
-        small:
-          type:
-          - string
-          - 'null'
-          format: uri
-        original:
-          type:
-          - string
-          - 'null'
-          format: uri
-        reduced:
-          type:
-          - string
-          - 'null'
-          format: uri
+        field:
+          type: string
+          example: name
+        message:
+          type: string
+          example: Mandatory attribute missing
+        code:
+          type: string
+          example: missing_field
+    ErrorResponse:
+      type: object
+      properties:
+        error_type:
+          type: string
+          enum:
+          - api_connection_error
+          - authentication_error
+          - invalid_request_error
+          - validation_error
+          example: validation_error
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorDetail'
+    PraiseListResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Praise'
+    PraiseAudience:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        display_picture:
+          $ref: '#/components/schemas/DisplayPicture'
+        type:
+          type: string
     PraiseActor:
       type: object
       properties:
@@ -219,13 +208,17 @@ components:
           $ref: '#/components/schemas/DisplayPicture'
         designation:
           type: string
-  responses:
-    Unauthorized:
-      description: Unauthorized — invalid or missing ClientKey/SecretKey
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
+    PraiseAuthor:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        display_picture:
+          $ref: '#/components/schemas/DisplayPicture'
+        designation:
+          type: string
   parameters:
     sizeParam:
       name: size
@@ -244,6 +237,13 @@ components:
         type: integer
         minimum: 1
         default: 1
+  responses:
+    Unauthorized:
+      description: Unauthorized — invalid or missing ClientKey/SecretKey
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     clientKeyAuth:
       type: apiKey

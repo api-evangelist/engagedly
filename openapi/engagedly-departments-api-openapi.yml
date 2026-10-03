@@ -122,7 +122,47 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    NotFound:
+      description: Not Found — resource does not exist
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    UnprocessableEntity:
+      description: Unprocessable Entity — validation error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Unauthorized — invalid or missing ClientKey/SecretKey
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Bad request — missing or invalid parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   schemas:
+    Pagination:
+      type: object
+      properties:
+        page:
+          type: integer
+          example: 1
+        size:
+          type: integer
+          example: 25
+        has_more:
+          type: boolean
+          example: false
+        total_records:
+          type: integer
+          example: 42
     DisplayPicture:
       type: object
       properties:
@@ -151,43 +191,18 @@ components:
           - string
           - 'null'
           format: uri
-    DepartmentListResponse:
+    ErrorDetail:
       type: object
       properties:
-        success:
-          type: boolean
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Department'
-    Department:
-      type: object
-      properties:
-        id:
+        field:
           type: string
-          example: f5afec62-21ff-40d3-a06e-9a2162ef6b69
-        name:
+          example: name
+        message:
           type: string
-          example: Customer Support
-        members_count:
+          example: Mandatory attribute missing
+        code:
           type: string
-          example: '10'
-        administrators_count:
-          type: string
-          example: '2'
-        members:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserRef'
-    DepartmentSingleResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        data:
-          $ref: '#/components/schemas/Department'
+          example: missing_field
     ErrorResponse:
       type: object
       properties:
@@ -203,33 +218,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ErrorDetail'
-    Pagination:
-      type: object
-      properties:
-        page:
-          type: integer
-          example: 1
-        size:
-          type: integer
-          example: 25
-        has_more:
-          type: boolean
-          example: false
-        total_records:
-          type: integer
-          example: 42
-    DepartmentRequest:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-        members:
-          type: array
-          items:
-            type: string
-          description: Array of user IDs
     UserRef:
       type: object
       properties:
@@ -254,18 +242,55 @@ components:
           type:
           - boolean
           - 'null'
-    ErrorDetail:
+    DepartmentSingleResponse:
       type: object
       properties:
-        field:
+        success:
+          type: boolean
+        data:
+          $ref: '#/components/schemas/Department'
+    Department:
+      type: object
+      properties:
+        id:
           type: string
-          example: name
-        message:
+          example: f5afec62-21ff-40d3-a06e-9a2162ef6b69
+        name:
           type: string
-          example: Mandatory attribute missing
-        code:
+          example: Customer Support
+        members_count:
           type: string
-          example: missing_field
+          example: '10'
+        administrators_count:
+          type: string
+          example: '2'
+        members:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserRef'
+    DepartmentListResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Department'
+    DepartmentRequest:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+        members:
+          type: array
+          items:
+            type: string
+          description: Array of user IDs
   parameters:
     idPathParam:
       name: id
@@ -291,31 +316,6 @@ components:
         type: integer
         minimum: 1
         default: 1
-  responses:
-    Unauthorized:
-      description: Unauthorized — invalid or missing ClientKey/SecretKey
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: Not Found — resource does not exist
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    UnprocessableEntity:
-      description: Unprocessable Entity — validation error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Bad request — missing or invalid parameters
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     clientKeyAuth:
       type: apiKey

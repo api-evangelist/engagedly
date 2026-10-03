@@ -70,15 +70,18 @@ components:
           - 'null'
           items:
             $ref: '#/components/schemas/AttributeOption'
-    UserAttributeListResponse:
+    ErrorDetail:
       type: object
       properties:
-        success:
-          type: boolean
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserAttribute'
+        field:
+          type: string
+          example: name
+        message:
+          type: string
+          example: Mandatory attribute missing
+        code:
+          type: string
+          example: missing_field
     ErrorResponse:
       type: object
       properties:
@@ -101,25 +104,15 @@ components:
           type: integer
         value:
           type: string
-    ErrorDetail:
+    UserAttributeListResponse:
       type: object
       properties:
-        field:
-          type: string
-          example: name
-        message:
-          type: string
-          example: Mandatory attribute missing
-        code:
-          type: string
-          example: missing_field
-  responses:
-    Unauthorized:
-      description: Unauthorized — invalid or missing ClientKey/SecretKey
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
+        success:
+          type: boolean
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserAttribute'
   parameters:
     sizeParam:
       name: size
@@ -138,6 +131,13 @@ components:
         type: integer
         minimum: 1
         default: 1
+  responses:
+    Unauthorized:
+      description: Unauthorized — invalid or missing ClientKey/SecretKey
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     clientKeyAuth:
       type: apiKey
