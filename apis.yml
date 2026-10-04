@@ -158,6 +158,9 @@ apis:
   - type: Documentation
     url: https://engagedly.github.io/api-docs/
 common:
+  - type: CapabilityMap
+    url: capabilities/engagedly-capability-edges.yml
+    name: Engagedly Business Capability Map
   - type: AgenticAccess
     url: agentic-access/engagedly-agentic-access.yml
   - type: DomainSecurity

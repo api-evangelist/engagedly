@@ -1,0 +1,35 @@
+slug: engagedly
+provider: Engagedly
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: Users
+  spec_file: engagedly-users-api-openapi.yml
+  capability_id: BC-300.70
+  capability_id_l1: BC-300
+  capability_name: HR Operations Management
+  confidence: 0.75
+  evidence: POST /users 'Create a new user', PUT /users/{id}/deactivate 'Deactivate a user', 'Update user's
+    profile picture' in the Engagedly people strategy platform
+  reason: Users here are employees; create/update/activate/deactivate with profile data is employee record
+    administration (HR operations), not generic account management.
+- tag: Activities
+  spec_file: engagedly-activities-api-openapi.yml
+  capability_id: BC-300.60
+  capability_id_l1: BC-300
+  capability_name: Employee Experience Management
+  confidence: 0.72
+  evidence: GET /activities/praises listPublicPraises 'Get all public praises'; schemas Praise, PraiseAudience,
+    PraiseActor — 'employee activities such as praises and recognition'
+  reason: Operations expose employee recognition/praise feeds inside a people-strategy platform, which
+    is employee engagement/experience under HCM rather than any generic activity log.
