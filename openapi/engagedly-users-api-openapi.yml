@@ -318,28 +318,6 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
-    UserListResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/User'
-    BlockReasonCode:
-      type: object
-      properties:
-        code:
-          type: string
-          example: involuntary
-        display_text:
-          type: string
-          example: Involuntary
-        description:
-          type: string
     UserCreateRequest:
       type: object
       required:
@@ -405,61 +383,6 @@ components:
         manager_id:
           type: string
           description: ID of the primary manager
-    Pagination:
-      type: object
-      properties:
-        page:
-          type: integer
-          example: 1
-        size:
-          type: integer
-          example: 25
-        has_more:
-          type: boolean
-          example: false
-        total_records:
-          type: integer
-          example: 42
-    UserSingleResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        data:
-          $ref: '#/components/schemas/User'
-    BlockReasonCodeListResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/BlockReasonCode'
-    ErrorResponse:
-      type: object
-      properties:
-        error_type:
-          type: string
-          enum:
-          - api_connection_error
-          - authentication_error
-          - invalid_request_error
-          - validation_error
-          example: validation_error
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ErrorDetail'
-    UserPermissionsResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Permission'
     User:
       type: object
       properties:
@@ -589,6 +512,53 @@ components:
           type: object
           additionalProperties: true
           description: Organization-specific custom attributes keyed by attribute_key
+    ErrorDetail:
+      type: object
+      properties:
+        field:
+          type: string
+          example: name
+        message:
+          type: string
+          example: Mandatory attribute missing
+        code:
+          type: string
+          example: missing_field
+    UserPermissionsResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Permission'
+    UserListResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+    Pagination:
+      type: object
+      properties:
+        page:
+          type: integer
+          example: 1
+        size:
+          type: integer
+          example: 25
+        has_more:
+          type: boolean
+          example: false
+        total_records:
+          type: integer
+          example: 42
     UserUpdateRequest:
       type: object
       properties:
@@ -647,20 +617,48 @@ components:
           type: object
           additionalProperties: true
           description: Custom attributes using their attribute_key as field names
-    Permission:
+    UserSingleResponse:
       type: object
       properties:
-        id:
-          type: integer
-        name:
+        success:
+          type: boolean
+        data:
+          $ref: '#/components/schemas/User'
+    BlockReasonCodeListResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/BlockReasonCode'
+    BlockReasonCode:
+      type: object
+      properties:
+        code:
           type: string
-          example: Site Administrator
-        is_admin:
-          type:
-          - boolean
-          - 'null'
+          example: involuntary
+        display_text:
+          type: string
+          example: Involuntary
         description:
           type: string
+    ErrorResponse:
+      type: object
+      properties:
+        error_type:
+          type: string
+          enum:
+          - api_connection_error
+          - authentication_error
+          - invalid_request_error
+          - validation_error
+          example: validation_error
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorDetail'
     DisplayPicture:
       type: object
       properties:
@@ -689,18 +687,12 @@ components:
           - string
           - 'null'
           format: uri
-    ErrorDetail:
+    SuccessResponse:
       type: object
       properties:
-        field:
-          type: string
-          example: name
-        message:
-          type: string
-          example: Mandatory attribute missing
-        code:
-          type: string
-          example: missing_field
+        success:
+          type: boolean
+          example: true
     UserRef:
       type: object
       properties:
@@ -725,13 +717,36 @@ components:
           type:
           - boolean
           - 'null'
-    SuccessResponse:
+    Permission:
       type: object
       properties:
-        success:
-          type: boolean
-          example: true
+        id:
+          type: integer
+        name:
+          type: string
+          example: Site Administrator
+        is_admin:
+          type:
+          - boolean
+          - 'null'
+        description:
+          type: string
   parameters:
+    idPathParam:
+      name: id
+      in: path
+      required: true
+      description: The unique identifier of the resource
+      schema:
+        type: string
+    pageParam:
+      name: page
+      in: query
+      description: Page number (starts at 1)
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
     sizeParam:
       name: size
       in: query
@@ -741,30 +756,9 @@ components:
         minimum: 1
         maximum: 50
         default: 25
-    pageParam:
-      name: page
-      in: query
-      description: Page number (starts at 1)
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-    idPathParam:
-      name: id
-      in: path
-      required: true
-      description: The unique identifier of the resource
-      schema:
-        type: string
   responses:
-    Unauthorized:
-      description: Unauthorized — invalid or missing ClientKey/SecretKey
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Bad request — missing or invalid parameters
+    NotFound:
+      description: Not Found — resource does not exist
       content:
         application/json:
           schema:
@@ -775,8 +769,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: Not Found — resource does not exist
+    BadRequest:
+      description: Bad request — missing or invalid parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Unauthorized — invalid or missing ClientKey/SecretKey
       content:
         application/json:
           schema:
