@@ -1,3 +1,7 @@
+# Provenance stamped 2026-10-07 (roadmap#943): written by an API Evangelist sweep (undated — the file carries no date and git cannot supply one), not
+# harvested from the provider. `method: generated` so the economics campaign may replace it with a
+# dated, verbatim transcription; every figure below is unverified until it does.
+method: generated
 name: Engagedly Plans and Pricing
 description: Pricing plans for Engagedly's people strategy execution platform, covering performance management, learning, recognition, engagement, and talent mobility modules.
 url: https://engagedly.com/pricing
@@ -148,3 +152,57 @@ notes:
   - Enterprise pricing available for large organizations
   - Full platform bundle pricing available via custom quote
   - API access included with platform subscription (no separate API tier documented)
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models: []
+  units: []
+  plans:
+  - name: Manage Performance
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Learn and Grow
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Recognize and Reward
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Engage and Listen
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Talent Mobility
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Mentoring Suite
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Manage Compensation
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Deskless Employee Communication
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
