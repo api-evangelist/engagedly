@@ -123,6 +123,59 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
+    Department:
+      type: object
+      properties:
+        id:
+          type: string
+          example: f5afec62-21ff-40d3-a06e-9a2162ef6b69
+        name:
+          type: string
+          example: Customer Support
+        members_count:
+          type: string
+          example: '10'
+        administrators_count:
+          type: string
+          example: '2'
+        members:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserRef'
+    Pagination:
+      type: object
+      properties:
+        page:
+          type: integer
+          example: 1
+        size:
+          type: integer
+          example: 25
+        has_more:
+          type: boolean
+          example: false
+        total_records:
+          type: integer
+          example: 42
+    DepartmentRequest:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+        members:
+          type: array
+          items:
+            type: string
+          description: Array of user IDs
+    DepartmentSingleResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          $ref: '#/components/schemas/Department'
     ErrorResponse:
       type: object
       properties:
@@ -138,6 +191,17 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ErrorDetail'
+    DepartmentListResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Department'
     DisplayPicture:
       type: object
       properties:
@@ -166,17 +230,6 @@ components:
           - string
           - 'null'
           format: uri
-    DepartmentListResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Department'
     UserRef:
       type: object
       properties:
@@ -213,62 +266,9 @@ components:
         code:
           type: string
           example: missing_field
-    DepartmentSingleResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        data:
-          $ref: '#/components/schemas/Department'
-    Pagination:
-      type: object
-      properties:
-        page:
-          type: integer
-          example: 1
-        size:
-          type: integer
-          example: 25
-        has_more:
-          type: boolean
-          example: false
-        total_records:
-          type: integer
-          example: 42
-    Department:
-      type: object
-      properties:
-        id:
-          type: string
-          example: f5afec62-21ff-40d3-a06e-9a2162ef6b69
-        name:
-          type: string
-          example: Customer Support
-        members_count:
-          type: string
-          example: '10'
-        administrators_count:
-          type: string
-          example: '2'
-        members:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserRef'
-    DepartmentRequest:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-        members:
-          type: array
-          items:
-            type: string
-          description: Array of user IDs
   responses:
-    UnprocessableEntity:
-      description: Unprocessable Entity — validation error
+    NotFound:
+      description: Not Found — resource does not exist
       content:
         application/json:
           schema:
@@ -279,26 +279,19 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: Not Found — resource does not exist
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
     Unauthorized:
       description: Unauthorized — invalid or missing ClientKey/SecretKey
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
+    UnprocessableEntity:
+      description: Unprocessable Entity — validation error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   parameters:
-    idPathParam:
-      name: id
-      in: path
-      required: true
-      description: The unique identifier of the resource
-      schema:
-        type: string
     pageParam:
       name: page
       in: query
@@ -316,6 +309,13 @@ components:
         minimum: 1
         maximum: 50
         default: 25
+    idPathParam:
+      name: id
+      in: path
+      required: true
+      description: The unique identifier of the resource
+      schema:
+        type: string
   securitySchemes:
     clientKeyAuth:
       type: apiKey

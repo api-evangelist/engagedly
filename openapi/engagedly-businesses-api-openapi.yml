@@ -121,21 +121,58 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
-    ErrorResponse:
+    BusinessListResponse:
       type: object
       properties:
-        error_type:
-          type: string
-          enum:
-          - api_connection_error
-          - authentication_error
-          - invalid_request_error
-          - validation_error
-          example: validation_error
-        errors:
+        success:
+          type: boolean
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        data:
           type: array
           items:
-            $ref: '#/components/schemas/ErrorDetail'
+            $ref: '#/components/schemas/Business'
+    Pagination:
+      type: object
+      properties:
+        page:
+          type: integer
+          example: 1
+        size:
+          type: integer
+          example: 25
+        has_more:
+          type: boolean
+          example: false
+        total_records:
+          type: integer
+          example: 42
+    BusinessSingleResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          $ref: '#/components/schemas/Business'
+    Business:
+      type: object
+      properties:
+        id:
+          type: string
+          example: f5afec62-21ff-40d3-a06e-9a2162ef6b69
+        name:
+          type: string
+          example: Manufacturing Unit
+        members_count:
+          type: string
+          example: '10'
+        administrators_count:
+          type: string
+          example: '2'
+        members:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserRef'
     DisplayPicture:
       type: object
       properties:
@@ -164,13 +201,6 @@ components:
           - string
           - 'null'
           format: uri
-    BusinessSingleResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        data:
-          $ref: '#/components/schemas/Business'
     UserRef:
       type: object
       properties:
@@ -195,6 +225,21 @@ components:
           type:
           - boolean
           - 'null'
+    ErrorResponse:
+      type: object
+      properties:
+        error_type:
+          type: string
+          enum:
+          - api_connection_error
+          - authentication_error
+          - invalid_request_error
+          - validation_error
+          example: validation_error
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorDetail'
     ErrorDetail:
       type: object
       properties:
@@ -207,51 +252,6 @@ components:
         code:
           type: string
           example: missing_field
-    Business:
-      type: object
-      properties:
-        id:
-          type: string
-          example: f5afec62-21ff-40d3-a06e-9a2162ef6b69
-        name:
-          type: string
-          example: Manufacturing Unit
-        members_count:
-          type: string
-          example: '10'
-        administrators_count:
-          type: string
-          example: '2'
-        members:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserRef'
-    Pagination:
-      type: object
-      properties:
-        page:
-          type: integer
-          example: 1
-        size:
-          type: integer
-          example: 25
-        has_more:
-          type: boolean
-          example: false
-        total_records:
-          type: integer
-          example: 42
-    BusinessListResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Business'
     BusinessRequest:
       type: object
       required:
@@ -264,40 +264,15 @@ components:
           items:
             type: string
           description: Array of user IDs
-  parameters:
-    idPathParam:
-      name: id
-      in: path
-      required: true
-      description: The unique identifier of the resource
-      schema:
-        type: string
-    pageParam:
-      name: page
-      in: query
-      description: Page number (starts at 1)
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-    sizeParam:
-      name: size
-      in: query
-      description: Number of records per page (maximum 50)
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 50
-        default: 25
   responses:
-    BadRequest:
-      description: Bad request — missing or invalid parameters
+    NotFound:
+      description: Not Found — resource does not exist
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: Not Found — resource does not exist
+    BadRequest:
+      description: Bad request — missing or invalid parameters
       content:
         application/json:
           schema:
@@ -308,6 +283,31 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    sizeParam:
+      name: size
+      in: query
+      description: Number of records per page (maximum 50)
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 50
+        default: 25
+    pageParam:
+      name: page
+      in: query
+      description: Page number (starts at 1)
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+    idPathParam:
+      name: id
+      in: path
+      required: true
+      description: The unique identifier of the resource
+      schema:
+        type: string
   securitySchemes:
     clientKeyAuth:
       type: apiKey
