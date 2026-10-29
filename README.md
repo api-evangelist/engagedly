@@ -64,10 +64,164 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Engagedly is a people strategy execution platform with a REST API for managing performance reviews, goal tracking, 360 feedback, learning paths, and employee recognition programs.
+Engagedly is a people strategy execution platform with a REST API for managing performance reviews, goal tracking, 360 feedback, learning paths, and employee recognition programs. The API enables programmatic access to users, departments, locations, job titles, activities, and organizational data using header-based authentication with client and secret keys.
 
-**API Documentation:** https://engagedly.github.io/api-docs/
+**Areas:** Performance Management · HR Software · Employee Engagement · Goal Tracking · 360 Feedback · LMS · Employee Recognition · Talent Management · OKRs · People Operations
 
-**Website:** https://engagedly.com
+## Engagedly on APIs.io
 
-This repository contains the APIs.json profile for Engagedly, maintained by [API Evangelist](https://apievangelist.com).
+Everything profiled for Engagedly is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/engagedly/](https://apis.io/providers/engagedly/)** — or go straight to one of the APIs or properties below.
+
+### APIs (8)
+
+- [Engagedly Activities API](https://apis.io/apis/engagedly/engagedly-activities-api/) — Access praise and recognition activities
+- [Engagedly Businesses API](https://apis.io/apis/engagedly/engagedly-businesses-api/) — Handle business unit operations
+- [Engagedly Departments API](https://apis.io/apis/engagedly/engagedly-departments-api/) — Create and manage organizational departments
+- [Engagedly Job Titles API](https://apis.io/apis/engagedly/engagedly-job-titles-api/) — Define and manage job roles
+- [Engagedly Locations API](https://apis.io/apis/engagedly/engagedly-locations-api/) — Manage office locations and addresses
+- [Engagedly Permissions API](https://apis.io/apis/engagedly/engagedly-permissions-api/) — List available permission roles
+- [Engagedly User Attributes API](https://apis.io/apis/engagedly/engagedly-user-attributes-api/) — Retrieve system and custom user attribute definitions
+- [Engagedly Users API](https://apis.io/apis/engagedly/engagedly-users-api/) — Manage user profiles, permissions, and activation status
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Engagedly Agentic Access](https://apis.io/agentic-access/engagedly/engagedly-agentic-access/)
+
+#### JSON Schema (1)
+
+The data models the API reads and writes.
+
+- [Engagedly User](https://apis.io/schemas/engagedly/engagedly-user/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Engagedly Context](https://apis.io/jsonld/engagedly/engagedly-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Engagedly API Vocabulary](https://apis.io/vocabularies/engagedly/engagedly-vocabulary/)
+
+#### Examples (3)
+
+Example requests and responses.
+
+- [Create User Request](https://apis.io/examples/engagedly/create-user-request/)
+- [List Praises Response](https://apis.io/examples/engagedly/list-praises-response/)
+- [List Users Response](https://apis.io/examples/engagedly/list-users-response/)
+
+#### Collections (8)
+
+Postman and Open Collection request collections.
+
+- [Engagedly Activities API](https://apis.io/collections/engagedly/open-engagedly-activities-api/)
+- [Engagedly Activities Businesses API](https://apis.io/collections/engagedly/open-engagedly-businesses-api/)
+- [Engagedly Activities Departments API](https://apis.io/collections/engagedly/open-engagedly-departments-api/)
+- [Engagedly Activities Job Titles API](https://apis.io/collections/engagedly/open-engagedly-job-titles-api/)
+- [Engagedly Activities Locations API](https://apis.io/collections/engagedly/open-engagedly-locations-api/)
+- [Engagedly Activities Permissions API](https://apis.io/collections/engagedly/open-engagedly-permissions-api/)
+- [Engagedly Activities User Attributes API](https://apis.io/collections/engagedly/open-engagedly-user-attributes-api/)
+- [Engagedly Activities Users API](https://apis.io/collections/engagedly/open-engagedly-users-api/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [Engagedly — jsonschema rules](https://apis.io/rules/engagedly/engagedly-jsonschema-spectral-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Engagedly Authentication](https://apis.io/security/engagedly/engagedly-authentication/)
+- [Engagedly Domain Security](https://apis.io/security/engagedly/engagedly-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Engagedly Plans Pricing](https://apis.io/plans/engagedly/engagedly-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Engagedly Rate Limits](https://apis.io/rate-limits/engagedly/engagedly-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Engagedly Finops](https://apis.io/finops/engagedly/engagedly-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://engagedly.com)
+- [Documentation](https://engagedly.github.io/api-docs/)
+- [Pricing](https://engagedly.com/pricing)
+- [Blog](https://engagedly.com/blog/)
+- [Status](https://status.engagedly.com/)
+
+## API Evangelist rating
+
+**Kin Score 32.7** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 63.0 |
+| Contract governance | 9.8 |
+| Operational transparency | 13.2 |
+| Developer ergonomics | 23.8 |
+| Access clarity | 18.4 |
+
+**Agent readiness 20.4** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 16.7** — Education & Research
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/engagedly/](https://apis.io/providers/engagedly/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Engagedly: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/engagedly/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
